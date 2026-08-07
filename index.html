@@ -1,105 +1,360 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Happy Birthday ❤️</title>
+<title>Happy Birthday</title>
 
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="style.css">
 
-    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
-    <!-- CSS -->
-    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-<!-- ===================================
-        Animated Background
-=================================== -->
+<!-- Music -->
+<audio autoplay loop>
+    <source src="music/birthday.mp3" type="audio/mpeg">
+</audio>
 
-<div class="bg-animation">
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
+<!-- Page 1 -->
+
+<section class="page active" id="page1">
+
+<div class="center">
+
+<h1>🎉 Happy Birthday 🎉</h1>
+
+<p>Loading Your Surprise...</p>
+
+<div class="loader"></div>
+
+<button onclick="nextPage(2)">Continue</button>
+
 </div>
-
-<!-- Floating Hearts -->
-
-<div class="hearts">
-    <span>❤</span>
-    <span>❤</span>
-    <span>❤</span>
-    <span>❤</span>
-    <span>❤</span>
-    <span>❤</span>
-    <span>❤</span>
-    <span>❤</span>
-</div>
-
-<!-- ===================================
-            Hero Section
-=================================== -->
-
-<section class="hero">
-
-    <div class="glass-card">
-
-        <p class="welcome">
-            ✨ A Special Day ✨
-        </p>
-
-        <h1>
-            Happy Birthday
-        </h1>
-
-        <h2>
-            My Dear ❤️
-        </h2>
-
-        <p class="description">
-
-            Wishing you endless happiness,
-            beautiful memories,
-            and a lifetime filled with love.
-
-        </p>
-
-        <button id="openBtn">
-
-            🎁 Open Surprise
-
-        </button>
-
-    </div>
 
 </section>
 
-<!-- Music Button -->
 
-<button id="musicBtn">
+<!-- Page 2 -->
 
-🔊
+<section class="page" id="page2">
 
-</button>
+<div class="center">
 
-<!-- Audio -->
+<h1>Welcome</h1>
 
-<audio id="bgMusic" loop>
+<h2>To Your Special Day</h2>
 
-    <source src="music/birthday.mp3" type="audio/mpeg">
+<p>Today is all about Happiness 💖</p>
 
-</audio>
+<button onclick="nextPage(3)">Next</button>
 
-<!-- JS -->
+</div>
+
+</section>
+
+
+<!-- Page 3 -->
+
+<section class="page" id="page3">
+
+<div class="center">
+
+<h1>Click The Gift</h1>
+
+<div class="gift" onclick="nextPage(4)">
+🎁
+</div>
+
+<p>Open Your Surprise</p>
+
+</div>
+
+</section>
+
+
+<!-- Page 4 -->
+
+<section class="page" id="page4">
+
+<div class="center">
+
+<h1>Happy Birthday</h1>
+
+<h2>Jhili ❤️</h2>
+
+<p>
+
+May your smile stay forever.
+
+May every dream come true.
+
+May every day be beautiful.
+
+</p>
+
+<button onclick="nextPage(5)">Next</button>
+
+</div>
+
+</section>
+
+
+<!-- Page 5 -->
+
+<section class="page" id="page5">
+
+<div class="center">
+
+<h1>Your Beautiful Memory</h1>
+
+<img
+src="images/birthday (1).jpg"
+class="photo">
+
+<button onclick="nextPage(6)">Continue</button>
+
+</div>
+
+</section>
+
+
+<script>
+
+function nextPage(num){
+
+document.querySelectorAll(".page").forEach(page=>{
+
+page.classList.remove("active");
+
+});
+
+document.getElementById("page"+num).classList.add("active");
+
+}
+
+</script>
 
 <script src="script.js"></script>
 
 </body>
 </html>
+<!-- ========================= -->
+<!-- Page 6 -->
+<!-- ========================= -->
+
+<section class="page" id="page6">
+
+<div class="center">
+
+<h1>Beautiful Smile 😊</h1>
+
+<img src="images/birthday (2).jpg" class="photo">
+
+<p>Your smile makes every moment special ❤️</p>
+
+<button onclick="nextPage(7)">Next</button>
+
+</div>
+
+</section>
+
+
+<!-- ========================= -->
+<!-- Page 7 -->
+<!-- ========================= -->
+
+<section class="page" id="page7">
+
+<div class="center">
+
+<h1>Golden Memories ✨</h1>
+
+<img src="images/birthday (3).jpg" class="photo">
+
+<p>Every picture tells a beautiful story.</p>
+
+<button onclick="nextPage(8)">Next</button>
+
+</div>
+
+</section>
+
+
+<!-- ========================= -->
+<!-- Page 8 -->
+<!-- ========================= -->
+
+<section class="page" id="page8">
+
+<div class="center">
+
+<h1>Birthday Balloons 🎈</h1>
+
+<div class="balloons">
+🎈 🎈 🎈 🎈 🎈
+</div>
+
+<p>May your life always fly high.</p>
+
+<button onclick="nextPage(9)">Next</button>
+
+</div>
+
+</section>
+
+
+<!-- ========================= -->
+<!-- Page 9 -->
+<!-- ========================= -->
+
+<section class="page" id="page9">
+
+<div class="center">
+
+<h1>Best Wishes 💖</h1>
+
+<p>
+
+May happiness always stay with you.<br><br>
+
+May success follow you forever.<br><br>
+
+Stay blessed and keep smiling.
+
+</p>
+
+<button onclick="nextPage(10)">Next</button>
+
+</div>
+
+</section>
+
+
+<!-- ========================= -->
+<!-- Page 10 -->
+<!-- ========================= -->
+
+<section class="page" id="page10">
+
+<div class="center">
+
+<h1>Another Memory 📸</h1>
+
+<img src="images/birthday (4).jpg" class="photo">
+
+<p>More surprises are waiting...</p>
+
+<button onclick="nextPage(11)">Continue</button>
+
+</div>
+
+</section>
+<!-- ========================= -->
+<!-- Page 11 -->
+<!-- ========================= -->
+
+<section class="page" id="page11">
+
+<div class="center">
+
+<h1>Beautiful Moments 💕</h1>
+
+<img src="images/birthday (5).jpg" class="photo">
+
+<p>Every moment with you is unforgettable.</p>
+
+<button onclick="nextPage(12)">Next</button>
+
+</div>
+
+</section>
+
+
+<!-- ========================= -->
+<!-- Page 12 -->
+<!-- ========================= -->
+
+<section class="page" id="page12">
+
+<div class="center">
+
+<h1>Birthday Cake 🎂</h1>
+
+<div class="cake">
+🎂
+</div>
+
+<h2>Make A Wish</h2>
+
+<p>May all your dreams come true.</p>
+
+<button onclick="nextPage(13)">Cut Cake</button>
+
+</div>
+
+</section>
+
+
+<!-- ========================= -->
+<!-- Page 13 -->
+<!-- ========================= -->
+
+<section class="page" id="page13">
+
+<div class="center">
+
+<h1>Special Photo 📷</h1>
+
+<img src="images/birthday (6).jpg" class="photo">
+
+<p>Smile because today is your day.</p>
+
+<button onclick="nextPage(14)">Next</button>
+
+</div>
+
+</section>
+
+
+<!-- ========================= -->
+<!-- Page 14 -->
+<!-- ========================= -->
+
+<section class="page" id="page14">
+
+<div class="center">
+
+<h1>Gift For You 🎁</h1>
+
+<div class="giftbox" onclick="nextPage(15)">
+🎁
+</div>
+
+<p>Click The Gift Box</p>
+
+</div>
+
+</section>
+
+
+<!-- ========================= -->
+<!-- Page 15 -->
+<!-- ========================= -->
+
+<section class="page" id="page15">
+
+<div class="center">
+
+<h1>Another Beautiful Memory ❤️</h1>
+
+<img src="images/birthday (7).jpg" class="photo">
+
+<p>The celebration has just begun...</p>
+
+<button onclick="nextPage(16)">Continue</button>
+
+</div>
+
+</section>
