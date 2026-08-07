@@ -321,3 +321,60 @@ f.remove();
 },6000);
 
 },600);
+/* ==========================
+Sparkles
+========================== */
+
+setInterval(()=>{
+
+const s=document.createElement("div");
+
+s.className="spark";
+
+s.innerHTML="✨";
+
+s.style.left=Math.random()*100+"vw";
+
+s.style.top=Math.random()*100+"vh";
+
+s.style.fontSize=(15+Math.random()*20)+"px";
+
+document.body.appendChild(s);
+
+setTimeout(()=>{
+
+s.remove();
+
+},2000);
+
+},250);
+
+/* ==========================
+Flowers
+========================== */
+
+setInterval(()=>{
+
+const f=document.createElement("div");
+
+f.innerHTML="🌸";
+
+f.style.position="fixed";
+
+f.style.left=Math.random()*100+"vw";
+
+f.style.top="-30px";
+
+f.style.fontSize=(18+Math.random()*18)+"px";
+
+f.style.animation="fall 6s linear";
+
+document.body.appendChild(f);
+
+setTimeout(()=>{
+
+f.remove();
+
+},6000);
+
+},600);
