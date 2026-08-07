@@ -440,3 +440,22 @@ font-size:16px;
 }
 
 }
+@keyframes floatHeart{
+
+0%{
+
+transform:translateY(0) scale(1);
+
+opacity:1;
+
+}
+
+100%{
+
+transform:translateY(-120vh) scale(1.6);
+
+opacity:0;
+
+}
+
+}
