@@ -1,51 +1,57 @@
-/* ===================================
-   Premium Birthday Website Script
-=================================== */
+// =========================
+// Loading
+// =========================
 
-// Loading Screen
-window.addEventListener("load", () => {
+window.onload = function () {
 
-    setTimeout(() => {
+    setTimeout(function () {
 
         document.getElementById("loading").style.display = "none";
-
         document.getElementById("website").style.display = "block";
 
-    }, 2500);
+    }, 2000);
 
-});
+};
 
-// ----------------------
+// =========================
 // Music
-// ----------------------
+// =========================
 
 const music = document.getElementById("music");
 
-document.addEventListener("click", () => {
+document.addEventListener("click", function () {
 
-    music.play();
+    if (music) {
+        music.play().catch(() => {});
+    }
 
 }, { once: true });
 
-// ----------------------
-// Gift
-// ----------------------
+
+// =========================
+// Hero
+// =========================
 
 function goGift() {
 
-    hero.style.display = "none";
-
-    giftSection.style.display = "flex";
+    document.getElementById("hero").style.display = "none";
+    document.getElementById("giftSection").style.display = "flex";
 
 }
 
+
+// =========================
+// Gift
+// =========================
+
 function openGift() {
 
-    giftBox.style.transform = "scale(1.1) rotate(8deg)";
+    document.getElementById("giftBox").style.transform =
+        "scale(1.1) rotate(8deg)";
 
-    setTimeout(() => {
+    setTimeout(function () {
 
-        giftMessage.style.display = "block";
+        document.getElementById("giftMessage").style.display = "block";
 
     }, 600);
 
@@ -53,51 +59,53 @@ function openGift() {
 
 function showCake() {
 
-    giftSection.style.display = "none";
-
-    cakeSection.style.display = "flex";
+    document.getElementById("giftSection").style.display = "none";
+    document.getElementById("cakeSection").style.display = "flex";
 
 }
 
-// ----------------------
+
+// =========================
 // Cake
-// ----------------------
+// =========================
 
 function blowCandles() {
 
-    birthdayCake.src = "images/candle-off.png";
+    document.getElementById("birthdayCake").src =
+        "images/candle-off.png";
 
-    blowBtn.disabled = true;
+    document.getElementById("blowBtn").disabled = true;
 
-    blowBtn.innerHTML = "🎉 Wish Completed";
+    document.getElementById("blowBtn").innerHTML =
+        "🎉 Wish Completed";
 
-    setTimeout(() => {
+    setTimeout(function () {
 
-        wishText.style.display = "block";
+        document.getElementById("wishText").style.display = "block";
 
-    }, 1200);
+    }, 1000);
 
 }
-
-// ----------------------
-// Gallery
-// ----------------------
-
-let photo = 1;
-
-let slide = null;
 
 function showGallery() {
 
-    cakeSection.style.display = "none";
-
-    gallerySection.style.display = "flex";
+    document.getElementById("cakeSection").style.display = "none";
+    document.getElementById("gallerySection").style.display = "flex";
 
 }
 
+
+// =========================
+// Gallery
+// =========================
+
+let photo = 1;
+let slide;
+
 function loadPhoto() {
 
-    galleryImage.src = "images/birthday (" + photo + ").jpg";
+    document.getElementById("galleryImage").src =
+        "images/birthday (" + photo + ").jpg";
 
 }
 
@@ -135,17 +143,17 @@ function stopSlide() {
 
 }
 
-// ----------------------
+
+// =========================
 // Message
-// ----------------------
+// =========================
 
 function showMessage() {
 
     stopSlide();
 
-    gallerySection.style.display = "none";
-
-    messageSection.style.display = "flex";
+    document.getElementById("gallerySection").style.display = "none";
+    document.getElementById("messageSection").style.display = "flex";
 
     typeWriter();
 
@@ -155,71 +163,67 @@ function typeWriter() {
 
     const target = document.getElementById("typingText");
 
-    const txt = target.innerText;
+    const text = target.innerText;
 
     target.innerHTML = "";
 
     let i = 0;
 
-    function write() {
+    function typing() {
 
-        if (i < txt.length) {
+        if (i < text.length) {
 
-            target.innerHTML += txt.charAt(i);
+            target.innerHTML += text.charAt(i);
 
             i++;
 
-            setTimeout(write, 35);
+            setTimeout(typing, 35);
 
         }
 
     }
 
-    write();
+    typing();
 
 }
 
-// ----------------------
+
+// =========================
 // Final
-// ----------------------
+// =========================
 
 function showFinal() {
 
-    messageSection.style.display = "none";
-
-    finalSection.style.display = "flex";
+    document.getElementById("messageSection").style.display = "none";
+    document.getElementById("finalSection").style.display = "flex";
 
     confetti();
-
     hearts();
 
 }
 
-// ----------------------
-// Floating Hearts
-// ----------------------
+
+// =========================
+// Hearts
+// =========================
 
 function hearts() {
 
-    setInterval(() => {
+    setInterval(function () {
 
         const heart = document.createElement("div");
 
         heart.innerHTML = "❤️";
 
         heart.style.position = "fixed";
-
         heart.style.left = Math.random() * 100 + "vw";
-
         heart.style.bottom = "-50px";
-
-        heart.style.fontSize = (20 + Math.random() * 20) + "px";
-
-        heart.style.animation = "floatHeart 5s linear forwards";
+        heart.style.fontSize = "30px";
+        heart.style.animation = "floatHeart 5s linear";
 
         document.body.appendChild(heart);
 
-        setTimeout(() => {
+        setTimeout(function () {
 
             heart.remove();
 
@@ -229,31 +233,28 @@ function hearts() {
 
 }
 
-// ----------------------
+
+// =========================
 // Confetti
-// ----------------------
+// =========================
 
 function confetti() {
 
-    setInterval(() => {
+    setInterval(function () {
 
         const c = document.createElement("div");
 
         c.innerHTML = "🎊";
 
         c.style.position = "fixed";
-
         c.style.left = Math.random() * 100 + "vw";
-
-        c.style.top = "-20px";
-
+        c.style.top = "-30px";
         c.style.fontSize = "24px";
-
         c.style.animation = "fall 4s linear";
 
         document.body.appendChild(c);
 
-        setTimeout(() => {
+        setTimeout(function () {
 
             c.remove();
 
@@ -263,118 +264,57 @@ function confetti() {
 
 }
 
+
+// =========================
+// Sparkles
+// =========================
+
+setInterval(function () {
+
+    const s = document.createElement("div");
+
+    s.className = "spark";
+    s.innerHTML = "✨";
+
+    s.style.left = Math.random() * 100 + "vw";
+    s.style.top = Math.random() * 100 + "vh";
+    s.style.position = "fixed";
+
+    document.body.appendChild(s);
+
+    setTimeout(function () {
+
+        s.remove();
+
+    }, 2000);
+
+}, 250);
+
+
+// =========================
+// Flowers
+// =========================
+
+setInterval(function () {
+
+    const f = document.createElement("div");
+
+    f.innerHTML = "🌸";
+
+    f.style.position = "fixed";
+    f.style.left = Math.random() * 100 + "vw";
+    f.style.top = "-40px";
+    f.style.fontSize = "22px";
+    f.style.animation = "fall 6s linear";
+
+    document.body.appendChild(f);
+
+    setTimeout(function () {
+
+        f.remove();
+
+    }, 6000);
+
+}, 600);
+
 console.log("Birthday Website Loaded Successfully ❤️");
-/* ==========================
-Sparkles
-========================== */
-
-setInterval(()=>{
-
-const s=document.createElement("div");
-
-s.className="spark";
-
-s.innerHTML="✨";
-
-s.style.left=Math.random()*100+"vw";
-
-s.style.top=Math.random()*100+"vh";
-
-s.style.fontSize=(15+Math.random()*20)+"px";
-
-document.body.appendChild(s);
-
-setTimeout(()=>{
-
-s.remove();
-
-},2000);
-
-},250);
-
-/* ==========================
-Flowers
-========================== */
-
-setInterval(()=>{
-
-const f=document.createElement("div");
-
-f.innerHTML="🌸";
-
-f.style.position="fixed";
-
-f.style.left=Math.random()*100+"vw";
-
-f.style.top="-30px";
-
-f.style.fontSize=(18+Math.random()*18)+"px";
-
-f.style.animation="fall 6s linear";
-
-document.body.appendChild(f);
-
-setTimeout(()=>{
-
-f.remove();
-
-},6000);
-
-},600);
-/* ==========================
-Sparkles
-========================== */
-
-setInterval(()=>{
-
-const s=document.createElement("div");
-
-s.className="spark";
-
-s.innerHTML="✨";
-
-s.style.left=Math.random()*100+"vw";
-
-s.style.top=Math.random()*100+"vh";
-
-s.style.fontSize=(15+Math.random()*20)+"px";
-
-document.body.appendChild(s);
-
-setTimeout(()=>{
-
-s.remove();
-
-},2000);
-
-},250);
-
-/* ==========================
-Flowers
-========================== */
-
-setInterval(()=>{
-
-const f=document.createElement("div");
-
-f.innerHTML="🌸";
-
-f.style.position="fixed";
-
-f.style.left=Math.random()*100+"vw";
-
-f.style.top="-30px";
-
-f.style.fontSize=(18+Math.random()*18)+"px";
-
-f.style.animation="fall 6s linear";
-
-document.body.appendChild(f);
-
-setTimeout(()=>{
-
-f.remove();
-
-},6000);
-
-},600);
