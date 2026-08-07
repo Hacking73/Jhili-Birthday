@@ -1,188 +1,266 @@
-function goGift(){
+/* ===================================
+   Premium Birthday Website Script
+=================================== */
 
-document.getElementById("hero").style.display="none";
+// Loading Screen
+window.addEventListener("load", () => {
 
-document.getElementById("giftSection").style.display="block";
+    setTimeout(() => {
+
+        document.getElementById("loading").style.display = "none";
+
+        document.getElementById("website").style.display = "block";
+
+    }, 2500);
+
+});
+
+// ----------------------
+// Music
+// ----------------------
+
+const music = document.getElementById("music");
+
+document.addEventListener("click", () => {
+
+    music.play();
+
+}, { once: true });
+
+// ----------------------
+// Gift
+// ----------------------
+
+function goGift() {
+
+    hero.style.display = "none";
+
+    giftSection.style.display = "flex";
+
+}
+
+function openGift() {
+
+    giftBox.style.transform = "scale(1.1) rotate(8deg)";
+
+    setTimeout(() => {
+
+        giftMessage.style.display = "block";
+
+    }, 600);
 
 }
 
-function openGift(){
+function showCake() {
 
-document.getElementById("giftBox").style.transform="scale(1.1) rotate(8deg)";
+    giftSection.style.display = "none";
 
-setTimeout(()=>{
-
-document.getElementById("giftMessage").style.display="block";
-
-},500);
+    cakeSection.style.display = "flex";
 
 }
 
-function showCake(){
+// ----------------------
+// Cake
+// ----------------------
 
-document.getElementById("giftSection").style.display="none";
+function blowCandles() {
 
-document.getElementById("cakeSection").style.display="block";
+    birthdayCake.src = "images/candle-off.png";
 
-}
+    blowBtn.disabled = true;
 
-function blowCandles(){
+    blowBtn.innerHTML = "🎉 Wish Completed";
 
-const cake=document.getElementById("birthdayCake");
+    setTimeout(() => {
 
-cake.src="images/candle-off.png";
+        wishText.style.display = "block";
 
-document.getElementById("blowBtn").disabled=true;
-
-setTimeout(()=>{
-
-document.getElementById("wishText").style.display="block";
-
-},1000);
+    }, 1200);
 
 }
-/* ===========================
-   PHOTO GALLERY
-=========================== */
 
-let currentPhoto = 1;
+// ----------------------
+// Gallery
+// ----------------------
+
+let photo = 1;
+
 let slide = null;
 
-function showGallery(){
+function showGallery() {
 
-    document.getElementById("cakeSection").style.display="none";
-    document.getElementById("gallerySection").style.display="block";
+    cakeSection.style.display = "none";
 
-}
-
-function loadPhoto(){
-
-    document.getElementById("galleryImage").src =
-    "images/birthday (" + currentPhoto + ").jpg";
+    gallerySection.style.display = "flex";
 
 }
 
-function nextPhoto(){
+function loadPhoto() {
 
-    currentPhoto++;
+    galleryImage.src = "images/birthday (" + photo + ").jpg";
 
-    if(currentPhoto>14){
+}
 
-        currentPhoto=1;
+function nextPhoto() {
 
-    }
+    photo++;
+
+    if (photo > 14) photo = 1;
 
     loadPhoto();
 
 }
 
-function previousPhoto(){
+function previousPhoto() {
 
-    currentPhoto--;
+    photo--;
 
-    if(currentPhoto<1){
-
-        currentPhoto=14;
-
-    }
+    if (photo < 1) photo = 14;
 
     loadPhoto();
 
 }
 
-function autoSlide(){
+function autoSlide() {
 
     stopSlide();
 
-    slide=setInterval(nextPhoto,2500);
+    slide = setInterval(nextPhoto, 2500);
 
 }
 
-function stopSlide(){
+function stopSlide() {
 
     clearInterval(slide);
 
 }
-/* ==========================
-MESSAGE SECTION
-========================== */
 
-function showMessage(){
+// ----------------------
+// Message
+// ----------------------
 
-stopSlide();
+function showMessage() {
 
-document.getElementById("gallerySection").style.display="none";
+    stopSlide();
 
-document.getElementById("messageSection").style.display="block";
+    gallerySection.style.display = "none";
 
-typeMessage();
+    messageSection.style.display = "flex";
 
-}
-
-function showFinal(){
-
-document.getElementById("messageSection").style.display="none";
-
-document.getElementById("finalSection").style.display="block";
-
-startConfetti();
+    typeWriter();
 
 }
 
-function typeMessage(){
+function typeWriter() {
 
-const text=document.getElementById("typingText");
+    const target = document.getElementById("typingText");
 
-const msg=text.innerText;
+    const txt = target.innerText;
 
-text.innerHTML="";
+    target.innerHTML = "";
 
-let i=0;
+    let i = 0;
 
-function typing(){
+    function write() {
 
-if(i<msg.length){
+        if (i < txt.length) {
 
-text.innerHTML+=msg.charAt(i);
+            target.innerHTML += txt.charAt(i);
 
-i++;
+            i++;
 
-setTimeout(typing,35);
+            setTimeout(write, 35);
+
+        }
+
+    }
+
+    write();
+
+}
+
+// ----------------------
+// Final
+// ----------------------
+
+function showFinal() {
+
+    messageSection.style.display = "none";
+
+    finalSection.style.display = "flex";
+
+    confetti();
+
+    hearts();
 
 }
 
-}
+// ----------------------
+// Floating Hearts
+// ----------------------
 
-typing();
+function hearts() {
 
-}
+    setInterval(() => {
 
-function startConfetti(){
+        const heart = document.createElement("div");
 
-setInterval(()=>{
+        heart.innerHTML = "❤️";
 
-const c=document.createElement("div");
+        heart.style.position = "fixed";
 
-c.innerHTML="🎊";
+        heart.style.left = Math.random() * 100 + "vw";
 
-c.style.position="fixed";
+        heart.style.bottom = "-50px";
 
-c.style.left=Math.random()*100+"vw";
+        heart.style.fontSize = (20 + Math.random() * 20) + "px";
 
-c.style.top="-20px";
+        heart.style.animation = "floatHeart 5s linear forwards";
 
-c.style.fontSize=(20+Math.random()*20)+"px";
+        document.body.appendChild(heart);
 
-c.style.animation="fall 4s linear";
+        setTimeout(() => {
 
-document.body.appendChild(c);
+            heart.remove();
 
-setTimeout(()=>{
+        }, 5000);
 
-c.remove();
-
-},4000);
-
-},250);
+    }, 500);
 
 }
+
+// ----------------------
+// Confetti
+// ----------------------
+
+function confetti() {
+
+    setInterval(() => {
+
+        const c = document.createElement("div");
+
+        c.innerHTML = "🎊";
+
+        c.style.position = "fixed";
+
+        c.style.left = Math.random() * 100 + "vw";
+
+        c.style.top = "-20px";
+
+        c.style.fontSize = "24px";
+
+        c.style.animation = "fall 4s linear";
+
+        document.body.appendChild(c);
+
+        setTimeout(() => {
+
+            c.remove();
+
+        }, 4000);
+
+    }, 250);
+
+}
+
+console.log("Birthday Website Loaded Successfully ❤️");
