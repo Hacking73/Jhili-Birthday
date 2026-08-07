@@ -1,173 +1,65 @@
-<!DOCTYPE html>
-<html lang="en">
+<!-- ================= HERO ================= -->
 
-<head>
-
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-
-<title>Happy Birthday Jhili ❤️</title>
-
-<link rel="stylesheet" href="style.css">
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&family=Great+Vibes&display=swap" rel="stylesheet">
-
-</head>
-
-<body>
-
-<!-- Loading -->
-
-<div id="loading">
-
-<div class="loader"></div>
-
-<h2>Loading Surprise...</h2>
-
-</div>
-
-<!-- Music -->
-
-<audio id="music" loop>
-
-<source src="music/birthday.mp3" type="audio/mpeg">
-
-</audio>
-
-<!-- Main Website -->
-
-<div id="website">
-
-<!-- Floating Hearts -->
-
-<div id="hearts"></div>
-
-<!-- ========================= -->
-<!-- Floating Balloons -->
-<!-- ========================= -->
-
-<div class="balloon balloon1">🎈</div>
-<div class="balloon balloon2">🎈</div>
-<div class="balloon balloon3">🎈</div>
-<div class="balloon balloon4">🎈</div>
-<div class="balloon balloon5">🎈</div>
-
-<!-- ========================= -->
-<!-- Falling Flowers -->
-<!-- ========================= -->
-
-<div id="flowers"></div>
-
-<!-- ========================= -->
-<!-- Background Sparkles -->
-<!-- ========================= -->
-
-<div id="sparkles"></div>
-
-<script src="script.js"></script>
-
-</body>
-</html>
-
-<!-- Hero -->
-
-<section id="hero">
-
-<h3>🎉 Happy Birthday 🎉</h3>
+<h3>✨ Happy Birthday ✨</h3>
 
 <h1>Jhili ❤️</h1>
 
 <p>
+Today is all about you.<br><br>
 
-Today is your special day.<br>
+May your smile shine brighter than the stars.<br>
+May all your dreams come true.<br>
+May your life always be filled with love, happiness and success.<br><br>
 
-May your life always be filled with happiness,
-love and success.
-
+Happy Birthday! 🎂🎉
 </p>
 
 <button id="startBtn" onclick="goGift()">
-Start Surprise 🎁
+Start the Surprise 🎁
 </button>
 
-</section>
-  <!-- ========================= -->
-<!-- Gift Section -->
-<!-- ========================= -->
 
-<section id="giftSection">
+<!-- ================= GIFT MESSAGE ================= -->
 
-<h2 class="title">
-A Special Gift For You 🎁
-</h2>
-
-<p class="subtitle">
-Click the gift box to open your surprise ❤️
-</p>
-
-<div class="gift-area">
-
-<img
-id="giftBox"
-src="images/gift.png"
-alt="Gift Box"
-onclick="openGift()">
-
-</div>
-
-<div id="giftMessage">
-
-<h2>🎉 Surprise! 🎉</h2>
+<h2>🎉 A Special Surprise 🎉</h2>
 
 <p>
 
-Happy Birthday Jhili ❤️<br><br>
+Dear Jhili ❤️,<br><br>
 
-May your life be filled with happiness,
-love, success and lots of beautiful memories.
+Today is your special day.<br>
+
+May every moment bring you happiness.<br>
+May every dream become reality.<br>
+May your smile last forever.<br><br>
+
+Happy Birthday! 🎂💖
 
 </p>
 
 <button onclick="showCake()">
-
 Continue ➜
-
 </button>
 
-</div>
 
-</section>
-<!-- ========================= -->
-<!-- Cake Section -->
-<!-- ========================= -->
-
-<section id="cakeSection">
+<!-- ================= CAKE ================= -->
 
 <h2 class="title">
-🎂 Make A Wish 🎂
+🎂 Make a Wish 🎂
 </h2>
 
 <p class="subtitle">
-Close your eyes, make a wish and click the button below.
+Close your eyes.<br>
+Make a beautiful wish.<br>
+Then click the button below.
 </p>
 
-<div class="cake-box">
-
-<img
-id="birthdayCake"
-src="images/candle-on.png"
-alt="Birthday Cake">
-
-</div>
-
 <button id="blowBtn" onclick="blowCandles()">
-
 🕯️ Blow Candles
-
 </button>
+
+
+<!-- ================= AFTER CANDLE ================= -->
 
 <div id="wishText">
 
@@ -175,158 +67,130 @@ alt="Birthday Cake">
 
 <p>
 
-May every dream come true.<br>
-
-May every smile stay forever.<br>
+May every wish come true.<br>
+May every day bring happiness.<br>
+May God always protect you.<br><br>
 
 Happy Birthday Jhili ❤️
 
 </p>
 
 <button onclick="showGallery()">
-
 View Memories 📸
-
 </button>
 
 </div>
 
-</section>
-<!-- ========================= -->
-<!-- Photo Gallery -->
-<!-- ========================= -->
 
-<section id="gallerySection">
-
-    <h2 class="title">
-        📸 Beautiful Memories
-    </h2>
-
-    <p class="subtitle">
-        Every photo tells a beautiful story ❤️
-    </p>
-
-    <div class="gallery-box">
-
-        <button class="nav-btn" onclick="previousPhoto()">
-            ◀
-        </button>
-
-        <img
-            id="galleryImage"
-            src="images/birthday (1).jpg"
-            alt="Birthday Photo">
-
-        <button class="nav-btn" onclick="nextPhoto()">
-            ▶
-        </button>
-
-    </div>
-
-    <div class="gallery-buttons">
-
-        <button onclick="autoSlide()">
-            ▶ Play Slideshow
-        </button>
-
-        <button onclick="stopSlide()">
-            ⏸ Stop
-        </button>
-
-    </div>
-
-    <br>
-
-    <button onclick="showMessage()">
-        Continue ❤️
-    </button>
-
-</section>
-<!-- ========================= -->
-<!-- Final Message Section -->
-<!-- ========================= -->
-
-<section id="messageSection">
-
-<div class="message-card">
+<!-- ================= GALLERY ================= -->
 
 <h2 class="title">
-💖 A Special Message For You 💖
+📸 Beautiful Memories
+</h2>
+
+<p class="subtitle">
+Every picture tells a beautiful story.<br>
+Every memory is priceless. ❤️
+</p>
+
+<div class="gallery-box">
+
+<button class="nav-btn" onclick="previousPhoto()">◀</button>
+
+<img id="galleryImage"
+src="images/birthday (1).jpg"
+alt="Birthday Photo">
+
+<button class="nav-btn" onclick="nextPhoto()">▶</button>
+
+</div>
+
+<div class="gallery-buttons">
+
+<button onclick="autoSlide()">
+▶ Play Slideshow
+</button>
+
+<button onclick="stopSlide()">
+⏸ Stop
+</button>
+
+</div>
+
+<br>
+
+<button onclick="showMessage()">
+Continue ❤️
+</button>
+
+
+<!-- ================= MESSAGE ================= -->
+
+<h2 class="title">
+💖 A Special Message 💖
 </h2>
 
 <p id="typingText" class="typing">
 
 Happy Birthday Jhili ❤️
 
-May your life always be filled with happiness,
-love, peace and endless success.
+On this special day,
+I wish you endless happiness,
+good health,
+success,
+peace,
+and lots of love.
 
-Thank you for being such a wonderful person.
+May your smile never fade.
+May all your dreams come true.
+May your future shine brighter every day.
 
-May every dream come true,
-every smile stay forever,
-and every moment become a beautiful memory.
+Enjoy your beautiful life.
 
-Enjoy your special day! 🎂🎉
+🎂🎉❤️
 
 </p>
 
 <div class="wish-icons">
-
 🎂 🎈 🎉 🎁 ❤️ 🌸 ✨
-
 </div>
 
 <button onclick="showFinal()">
-
 Final Surprise 🎆
-
 </button>
 
-</div>
 
-</section>
-
-
-<!-- ========================= -->
-<!-- Final Celebration -->
-<!-- ========================= -->
-
-<section id="finalSection">
+<!-- ================= FINAL ================= -->
 
 <h1 class="final-title">
-
 🎉 HAPPY BIRTHDAY JHILI 🎉
-
 </h1>
 
 <h2>
-
-Many Many Happy Returns Of The Day ❤️
-
+💖 Many Many Happy Returns Of The Day 💖
 </h2>
 
 <p>
 
-May God bless you with happiness,
-good health,
-success,
-love and lots of smiles.
+May God bless you with<br><br>
 
-Have a Wonderful Birthday.
+❤️ Love<br>
+😊 Happiness<br>
+🌟 Success<br>
+💪 Good Health<br>
+🕊️ Peace<br>
+🌸 Endless Smiles<br><br>
+
+Have a wonderful birthday!<br>
+Stay Happy.<br>
+Keep Smiling Forever. ❤️
 
 </p>
 
 <div class="celebration">
-
-🎆 🎊 🎈 🎂 🎁 ❤️ ✨
-
+🎂 🎈 🎁 🎊 🎆 ❤️ ✨
 </div>
 
 <button onclick="location.reload()">
-
 🔄 Start Again
-
 </button>
-
-</section>
