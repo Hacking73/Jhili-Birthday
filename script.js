@@ -103,3 +103,86 @@ function stopSlide(){
     clearInterval(slide);
 
 }
+/* ==========================
+MESSAGE SECTION
+========================== */
+
+function showMessage(){
+
+stopSlide();
+
+document.getElementById("gallerySection").style.display="none";
+
+document.getElementById("messageSection").style.display="block";
+
+typeMessage();
+
+}
+
+function showFinal(){
+
+document.getElementById("messageSection").style.display="none";
+
+document.getElementById("finalSection").style.display="block";
+
+startConfetti();
+
+}
+
+function typeMessage(){
+
+const text=document.getElementById("typingText");
+
+const msg=text.innerText;
+
+text.innerHTML="";
+
+let i=0;
+
+function typing(){
+
+if(i<msg.length){
+
+text.innerHTML+=msg.charAt(i);
+
+i++;
+
+setTimeout(typing,35);
+
+}
+
+}
+
+typing();
+
+}
+
+function startConfetti(){
+
+setInterval(()=>{
+
+const c=document.createElement("div");
+
+c.innerHTML="🎊";
+
+c.style.position="fixed";
+
+c.style.left=Math.random()*100+"vw";
+
+c.style.top="-20px";
+
+c.style.fontSize=(20+Math.random()*20)+"px";
+
+c.style.animation="fall 4s linear";
+
+document.body.appendChild(c);
+
+setTimeout(()=>{
+
+c.remove();
+
+},4000);
+
+},250);
+
+}
