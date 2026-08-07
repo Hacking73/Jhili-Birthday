@@ -1,129 +1,166 @@
-/* ==========================================
-   BIRTHDAY WEBSITE
-   PART 1C - JAVASCRIPT
-========================================== */
-
-// Elements
-
-const openBtn = document.getElementById("openBtn");
-const musicBtn = document.getElementById("musicBtn");
-const bgMusic = document.getElementById("bgMusic");
-
-// Music State
-
-let isPlaying = false;
-
 /* ==========================
-   Play Music
+   Birthday Website Script
 ========================== */
 
-function playMusic() {
+// Page Navigation
+function nextPage(pageNumber){
 
-    bgMusic.play()
-    .then(() => {
-
-        isPlaying = true;
-        musicBtn.innerHTML = "🔊";
-
-    })
-    .catch(err => {
-
-        console.log("Music blocked:", err);
-
+    document.querySelectorAll(".page").forEach(page=>{
+        page.classList.remove("active");
     });
 
-}
+    const next=document.getElementById("page"+pageNumber);
 
-/* ==========================
-   Pause Music
-========================== */
-
-function pauseMusic() {
-
-    bgMusic.pause();
-
-    isPlaying = false;
-
-    musicBtn.innerHTML = "🔇";
+    if(next){
+        next.classList.add("active");
+    }
 
 }
 
-/* ==========================
-   Music Button
-========================== */
+// ----------------------
+// Auto Photo Slider
+// ----------------------
 
-musicBtn.addEventListener("click", () => {
+const gallery=document.getElementById("gallery");
 
-    if(isPlaying){
+const photos=[
+"images/birthday (9).jpg",
+"images/birthday (10).jpg",
+"images/birthday (11).jpg",
+"images/birthday (12).jpg",
+"images/birthday (13).jpg",
+"images/birthday (14).jpg"
+];
 
-        pauseMusic();
+let index=0;
 
-    }else{
+if(gallery){
 
-        playMusic();
+setInterval(()=>{
 
-    }
+index++;
 
-});
+if(index>=photos.length){
 
-/* ==========================
-   Open Surprise Button
-========================== */
+index=0;
 
-openBtn.addEventListener("click", () => {
+}
 
-    // Start Music
-    if(!isPlaying){
+gallery.src=photos[index];
 
-        playMusic();
+},2500);
 
-    }
+}
 
-    // Button Animation
-    openBtn.style.transform = "scale(.95)";
+// ----------------------
+// Typewriter Effect
+// ----------------------
 
-    setTimeout(() => {
+const typeTarget=document.querySelector(".typewriter");
 
-        openBtn.style.transform = "scale(1)";
+if(typeTarget){
 
-        alert("🎉 Welcome! Page 2 Coming Soon... ❤️");
+const text=typeTarget.innerText;
 
-    },300);
+typeTarget.innerHTML="";
 
-});
+let i=0;
 
-/* ==========================
-   Keyboard Shortcut
-========================== */
+function typing(){
 
-document.addEventListener("keydown",(e)=>{
+if(i<text.length){
 
-    if(e.code==="Space"){
+typeTarget.innerHTML+=text.charAt(i);
 
-        e.preventDefault();
+i++;
 
-        if(isPlaying){
+setTimeout(typing,70);
 
-            pauseMusic();
+}
 
-        }else{
+}
 
-            playMusic();
+typing();
 
-        }
+}
 
-    }
+// ----------------------
+// Floating Hearts
+// ----------------------
 
-});
+setInterval(()=>{
 
-/* ==========================
-   Page Loaded
-========================== */
+const heart=document.createElement("div");
 
-window.addEventListener("load",()=>{
+heart.innerHTML="❤️";
 
-    musicBtn.innerHTML="🔇";
+heart.style.position="fixed";
+heart.style.left=Math.random()*100+"vw";
+heart.style.bottom="-30px";
+heart.style.fontSize=(20+Math.random()*25)+"px";
+heart.style.animation="fly 6s linear forwards";
 
-    console.log("Birthday Website Loaded Successfully ❤️");
+document.body.appendChild(heart);
 
-});
+setTimeout(()=>{
+
+heart.remove();
+
+},6000);
+
+},800);
+
+// ----------------------
+// Confetti
+// ----------------------
+
+setInterval(()=>{
+
+const c=document.createElement("div");
+
+c.innerHTML="🎊";
+
+c.style.position="fixed";
+c.style.left=Math.random()*100+"vw";
+c.style.top="-20px";
+c.style.fontSize=(15+Math.random()*25)+"px";
+c.style.animation="confetti 5s linear forwards";
+
+document.body.appendChild(c);
+
+setTimeout(()=>{
+
+c.remove();
+
+},5000);
+
+},600);
+
+// ----------------------
+// Auto Next Demo
+// (Optional)
+// ----------------------
+
+/*
+
+let current=1;
+
+setInterval(()=>{
+
+if(current<20){
+
+current++;
+
+nextPage(current);
+
+}
+
+},12000);
+
+*/
+
+// ----------------------
+// Console
+// ----------------------
+
+console.log("Happy Birthday Website Loaded Successfully 🎉");
