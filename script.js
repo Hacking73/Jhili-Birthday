@@ -295,7 +295,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function photoPath(number) {
 
-        return "images/birthday (" +
+        return "images/birthday (1)(" +
             number +
             ").png";
 
