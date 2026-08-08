@@ -1,46 +1,77 @@
 /* =========================================================
-   PREMIUM BIRTHDAY WEBSITE
-   SCRIPT.JS
-   ========================================================= */
+   BIRTHDAY WEBSITE - FINAL CORRECTED SCRIPT
+========================================================= */
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    const loading = document.getElementById("loading");
+    const website = document.getElementById("website");
+
+    const hero = document.getElementById("hero");
+    const giftSection = document.getElementById("giftSection");
+    const cakeSection = document.getElementById("cakeSection");
+    const gallerySection = document.getElementById("gallerySection");
+    const messageSection = document.getElementById("messageSection");
+    const finalSection = document.getElementById("finalSection");
+
+    const giftBox = document.getElementById("giftBox");
+    const giftMessage = document.getElementById("giftMessage");
+
+    const birthdayCake = document.getElementById("birthdayCake");
+    const blowBtn = document.getElementById("blowBtn");
+    const wishText = document.getElementById("wishText");
+
+    const galleryImage = document.getElementById("galleryImage");
+    const photoCounter = document.getElementById("photoCounter");
+
+    const photoViewer = document.getElementById("photoViewer");
+    const fullPhoto = document.getElementById("fullPhoto");
+
+    const typingText = document.getElementById("typingText");
+
+    const music = document.getElementById("music");
 
 
-/* =========================================================
-   ELEMENTS
-   ========================================================= */
+    /* =====================================================
+       IMPORTANT:
+       FIRST HIDE ALL SECTIONS
+    ===================================================== */
 
-const loading = document.getElementById("loading");
-const website = document.getElementById("website");
+    function hideAllSections() {
 
-const hero = document.getElementById("hero");
-const giftSection = document.getElementById("giftSection");
-const cakeSection = document.getElementById("cakeSection");
-const gallerySection = document.getElementById("gallerySection");
-const messageSection = document.getElementById("messageSection");
-const finalSection = document.getElementById("finalSection");
+        if (hero) hero.style.display = "none";
+        if (giftSection) giftSection.style.display = "none";
+        if (cakeSection) cakeSection.style.display = "none";
+        if (gallerySection) gallerySection.style.display = "none";
+        if (messageSection) messageSection.style.display = "none";
+        if (finalSection) finalSection.style.display = "none";
 
-const giftBox = document.getElementById("giftBox");
-const giftMessage = document.getElementById("giftMessage");
-
-const birthdayCake = document.getElementById("birthdayCake");
-const blowBtn = document.getElementById("blowBtn");
-const wishText = document.getElementById("wishText");
-
-const galleryImage = document.getElementById("galleryImage");
-const photoCounter = document.getElementById("photoCounter");
-
-const photoViewer = document.getElementById("photoViewer");
-const fullPhoto = document.getElementById("fullPhoto");
-
-const messageTyping = document.getElementById("typingText");
-
-const music = document.getElementById("music");
+    }
 
 
-/* =========================================================
-   LOADING
-   ========================================================= */
+    /* =====================================================
+       FIRST PAGE = HERO ONLY
+    ===================================================== */
 
-window.addEventListener("load", function () {
+    hideAllSections();
+
+    if (hero) {
+        hero.style.display = "flex";
+    }
+
+
+    /* =====================================================
+       LOADING SCREEN
+    ===================================================== */
+
+    if (website) {
+        website.style.display = "none";
+    }
+
+    if (loading) {
+        loading.style.display = "flex";
+    }
+
 
     setTimeout(function () {
 
@@ -52,754 +83,730 @@ window.addEventListener("load", function () {
             website.style.display = "block";
         }
 
-    }, 2500);
+        hideAllSections();
 
-});
-
-
-/* =========================================================
-   MUSIC
-   ========================================================= */
-
-let musicStarted = false;
-
-function startMusic() {
-
-    if (!music || musicStarted) {
-        return;
-    }
-
-    musicStarted = true;
-
-    music.volume = 0.55;
-
-    music.play().catch(function () {
-        musicStarted = false;
-    });
-
-}
-
-
-/* Browser autoplay restriction bypass */
-
-document.addEventListener(
-    "click",
-    function () {
-        startMusic();
-    },
-    { once: true }
-);
-
-
-/* =========================================================
-   PAGE NAVIGATION
-   ========================================================= */
-
-function hideAllSections() {
-
-    const sections = [
-        hero,
-        giftSection,
-        cakeSection,
-        gallerySection,
-        messageSection,
-        finalSection
-    ];
-
-    sections.forEach(function (section) {
-
-        if (section) {
-            section.style.display = "none";
+        if (hero) {
+            hero.style.display = "flex";
         }
 
-    });
-
-}
+    }, 2500);
 
 
-function showSection(section) {
 
-    hideAllSections();
+    /* =====================================================
+       MUSIC
+    ===================================================== */
 
-    if (section) {
+    let musicStarted = false;
 
-        section.style.display = "flex";
+    function startMusic() {
 
-        window.scrollTo({
-            top: 0,
-            behavior: "smooth"
+        if (!music || musicStarted) {
+            return;
+        }
+
+        musicStarted = true;
+
+        music.volume = 0.5;
+
+        music.play().catch(function () {
+            musicStarted = false;
         });
 
     }
 
-}
+
+    document.addEventListener("click", function () {
+        startMusic();
+    }, { once: true });
 
 
-/* =========================================================
-   HERO → GIFT
-   ========================================================= */
 
-function goGift() {
+    /* =====================================================
+       SHOW SECTION
+    ===================================================== */
 
-    startMusic();
+    function showOnly(section) {
 
-    showSection(giftSection);
+        hideAllSections();
 
-}
+        if (section) {
 
+            section.style.display = "flex";
 
-/* =========================================================
-   GIFT
-   ========================================================= */
-
-let giftOpened = false;
-
-function openGift() {
-
-    if (giftOpened) {
-        return;
-    }
-
-    giftOpened = true;
-
-    if (giftBox) {
-
-        giftBox.style.transform =
-            "scale(1.12) rotate(6deg)";
-
-    }
-
-    setTimeout(function () {
-
-        if (giftMessage) {
-            giftMessage.style.display = "block";
-        }
-
-        if (giftBox) {
-
-            giftBox.style.transform =
-                "scale(1) rotate(0deg)";
-
-        }
-
-    }, 700);
-
-}
-
-
-/* =========================================================
-   GIFT → CAKE
-   ========================================================= */
-
-function showCake() {
-
-    showSection(cakeSection);
-
-    if (birthdayCake) {
-
-        birthdayCake.src =
-            "images/candle-on.png";
-
-    }
-
-    if (blowBtn) {
-
-        blowBtn.disabled = false;
-
-        blowBtn.innerHTML =
-            "🕯️ Blow Candles";
-
-    }
-
-    if (wishText) {
-        wishText.style.display = "none";
-    }
-
-}
-
-
-/* =========================================================
-   BLOW CANDLES
-   ========================================================= */
-
-let candlesBlown = false;
-
-function blowCandles() {
-
-    if (candlesBlown) {
-        return;
-    }
-
-    candlesBlown = true;
-
-    if (birthdayCake) {
-
-        birthdayCake.src =
-            "images/candle-off.png";
-
-    }
-
-    if (blowBtn) {
-
-        blowBtn.disabled = true;
-
-        blowBtn.innerHTML =
-            "🎉 Wish Completed";
-
-    }
-
-
-    /* Small delay before wish message */
-
-    setTimeout(function () {
-
-        if (wishText) {
-
-            wishText.style.display =
-                "block";
-
-            wishText.scrollIntoView({
-                behavior: "smooth",
-                block: "center"
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
             });
 
         }
 
-    }, 1000);
-
-}
-
-
-/* =========================================================
-   CAKE → GALLERY
-   ========================================================= */
-
-function showGallery() {
-
-    showSection(gallerySection);
-
-    photo = 1;
-
-    loadPhoto();
-
-}
-
-
-/* =========================================================
-   GALLERY
-   ========================================================= */
-
-let photo = 1;
-
-const totalPhotos = 14;
-
-let slide = null;
-
-
-function getPhotoPath(number) {
-
-    return "images/birthday (" +
-        number +
-        ").jpg";
-
-}
-
-
-/* =========================================================
-   LOAD PHOTO
-   ========================================================= */
-
-function loadPhoto() {
-
-    if (!galleryImage) {
-        return;
     }
 
-    galleryImage.style.opacity = "0";
 
 
-    setTimeout(function () {
+    /* =====================================================
+       HERO → GIFT
+    ===================================================== */
+
+    window.goGift = function () {
+
+        startMusic();
+
+        showOnly(giftSection);
+
+    };
+
+
+
+    /* =====================================================
+       OPEN GIFT
+    ===================================================== */
+
+    let giftOpened = false;
+
+    window.openGift = function () {
+
+        if (giftOpened) {
+            return;
+        }
+
+        giftOpened = true;
+
+        if (giftBox) {
+
+            giftBox.style.transform =
+                "scale(1.1) rotate(6deg)";
+
+        }
+
+        setTimeout(function () {
+
+            if (giftMessage) {
+
+                giftMessage.style.display =
+                    "block";
+
+            }
+
+            if (giftBox) {
+
+                giftBox.style.transform =
+                    "scale(1) rotate(0deg)";
+
+            }
+
+        }, 700);
+
+    };
+
+
+
+    /* =====================================================
+       GIFT → CAKE
+    ===================================================== */
+
+    window.showCake = function () {
+
+        showOnly(cakeSection);
+
+        if (birthdayCake) {
+
+            birthdayCake.src =
+                "images/candle-on.png";
+
+        }
+
+        if (blowBtn) {
+
+            blowBtn.disabled = false;
+
+            blowBtn.innerHTML =
+                "🕯️ Blow Candles";
+
+        }
+
+        if (wishText) {
+
+            wishText.style.display =
+                "none";
+
+        }
+
+    };
+
+
+
+    /* =====================================================
+       BLOW CANDLE
+    ===================================================== */
+
+    let candleBlown = false;
+
+    window.blowCandles = function () {
+
+        if (candleBlown) {
+            return;
+        }
+
+        candleBlown = true;
+
+        if (birthdayCake) {
+
+            birthdayCake.src =
+                "images/candle-off.png";
+
+        }
+
+        if (blowBtn) {
+
+            blowBtn.disabled = true;
+
+            blowBtn.innerHTML =
+                "🎉 Wish Completed";
+
+        }
+
+        setTimeout(function () {
+
+            if (wishText) {
+
+                wishText.style.display =
+                    "block";
+
+            }
+
+        }, 1000);
+
+    };
+
+
+
+    /* =====================================================
+       GALLERY
+    ===================================================== */
+
+    let photo = 1;
+
+    const totalPhotos = 14;
+
+    let slide = null;
+
+
+    function photoPath(number) {
+
+        return "images/birthday (" +
+            number +
+            ").jpg";
+
+    }
+
+
+    function loadPhoto() {
+
+        if (!galleryImage) {
+            return;
+        }
+
+        galleryImage.style.opacity = "0";
 
         galleryImage.src =
-            getPhotoPath(photo);
+            photoPath(photo);
 
-        galleryImage.onload =
-            function () {
+        galleryImage.onload = function () {
 
-                galleryImage.style.opacity =
-                    "1";
+            galleryImage.style.opacity = "1";
 
-            };
-
-    }, 150);
+        };
 
 
-    if (photoCounter) {
+        if (photoCounter) {
 
-        photoCounter.innerHTML =
-            "Photo " +
-            photo +
-            " / " +
-            totalPhotos;
+            photoCounter.innerHTML =
+                "Photo " +
+                photo +
+                " / " +
+                totalPhotos;
+
+        }
 
     }
 
-}
 
 
-/* =========================================================
-   NEXT PHOTO
-   ========================================================= */
+    /* =====================================================
+       CAKE → GALLERY
+    ===================================================== */
 
-function nextPhoto() {
+    window.showGallery = function () {
 
-    photo++;
+        stopSlide();
 
-    if (photo > totalPhotos) {
+        showOnly(gallerySection);
+
         photo = 1;
-    }
 
-    loadPhoto();
+        loadPhoto();
 
-}
-
-
-/* =========================================================
-   PREVIOUS PHOTO
-   ========================================================= */
-
-function previousPhoto() {
-
-    photo--;
-
-    if (photo < 1) {
-        photo = totalPhotos;
-    }
-
-    loadPhoto();
-
-}
+    };
 
 
-/* =========================================================
-   AUTO SLIDESHOW
-   ========================================================= */
 
-function autoSlide() {
+    /* =====================================================
+       NEXT
+    ===================================================== */
 
-    stopSlide();
+    window.nextPhoto = function () {
 
-    slide = setInterval(
-        nextPhoto,
-        2500
-    );
+        photo++;
 
-}
+        if (photo > totalPhotos) {
+            photo = 1;
+        }
 
-
-/* =========================================================
-   STOP SLIDESHOW
-   ========================================================= */
-
-function stopSlide() {
-
-    if (slide !== null) {
-
-        clearInterval(slide);
-
-        slide = null;
-
-    }
-
-}
-
-
-/* =========================================================
-   FULL SCREEN PHOTO
-   ========================================================= */
-
-function openFullPhoto() {
-
-    if (!photoViewer || !fullPhoto) {
-        return;
-    }
-
-    stopSlide();
-
-    fullPhoto.src =
-        getPhotoPath(photo);
-
-    photoViewer.style.display =
-        "flex";
-
-    document.body.style.overflow =
-        "hidden";
-
-}
-
-
-/* =========================================================
-   CLOSE FULL SCREEN PHOTO
-   ========================================================= */
-
-function closeFullPhoto() {
-
-    if (!photoViewer) {
-        return;
-    }
-
-    photoViewer.style.display =
-        "none";
-
-    document.body.style.overflow =
-        "";
-
-}
-
-
-/* =========================================================
-   FULL SCREEN KEYBOARD CONTROL
-   ========================================================= */
-
-document.addEventListener(
-    "keydown",
-    function (event) {
+        loadPhoto();
 
         if (
             photoViewer &&
             photoViewer.style.display === "flex"
         ) {
 
+            fullPhoto.src =
+                photoPath(photo);
+
+        }
+
+    };
+
+
+
+    /* =====================================================
+       PREVIOUS
+    ===================================================== */
+
+    window.previousPhoto = function () {
+
+        photo--;
+
+        if (photo < 1) {
+            photo = totalPhotos;
+        }
+
+        loadPhoto();
+
+        if (
+            photoViewer &&
+            photoViewer.style.display === "flex"
+        ) {
+
+            fullPhoto.src =
+                photoPath(photo);
+
+        }
+
+    };
+
+
+
+    /* =====================================================
+       SLIDESHOW
+    ===================================================== */
+
+    window.autoSlide = function () {
+
+        stopSlide();
+
+        slide = setInterval(function () {
+
+            window.nextPhoto();
+
+        }, 2500);
+
+    };
+
+
+    window.stopSlide = function () {
+
+        if (slide !== null) {
+
+            clearInterval(slide);
+
+            slide = null;
+
+        }
+
+    };
+
+
+
+    /* =====================================================
+       FULL SCREEN PHOTO
+    ===================================================== */
+
+    window.openFullPhoto = function () {
+
+        if (!photoViewer || !fullPhoto) {
+            return;
+        }
+
+        stopSlide();
+
+        fullPhoto.src =
+            photoPath(photo);
+
+        photoViewer.style.display =
+            "flex";
+
+        document.body.style.overflow =
+            "hidden";
+
+    };
+
+
+
+    /* =====================================================
+       CLOSE FULL SCREEN
+    ===================================================== */
+
+    window.closeFullPhoto = function () {
+
+        if (!photoViewer) {
+            return;
+        }
+
+        photoViewer.style.display =
+            "none";
+
+        document.body.style.overflow =
+            "";
+
+    };
+
+
+
+    /* =====================================================
+       KEYBOARD PHOTO CONTROL
+    ===================================================== */
+
+    document.addEventListener(
+        "keydown",
+        function (event) {
+
+            if (
+                !photoViewer ||
+                photoViewer.style.display !== "flex"
+            ) {
+                return;
+            }
+
+
             if (event.key === "Escape") {
 
-                closeFullPhoto();
+                window.closeFullPhoto();
 
             }
+
 
             if (event.key === "ArrowRight") {
 
-                nextPhoto();
-
-                if (fullPhoto) {
-                    fullPhoto.src =
-                        getPhotoPath(photo);
-                }
+                window.nextPhoto();
 
             }
+
 
             if (event.key === "ArrowLeft") {
 
-                previousPhoto();
+                window.previousPhoto();
 
-                if (fullPhoto) {
-                    fullPhoto.src =
-                        getPhotoPath(photo);
-                }
+            }
+
+        }
+    );
+
+
+
+    /* =====================================================
+       MESSAGE
+    ===================================================== */
+
+    window.showMessage = function () {
+
+        stopSlide();
+
+        showOnly(messageSection);
+
+        typeWriter();
+
+    };
+
+
+    let typingDone = false;
+
+
+    function typeWriter() {
+
+        if (!typingText) {
+            return;
+        }
+
+        if (typingDone) {
+            return;
+        }
+
+        typingDone = true;
+
+        const text =
+            typingText.innerText.trim();
+
+        typingText.innerHTML = "";
+
+        let i = 0;
+
+
+        function write() {
+
+            if (i < text.length) {
+
+                typingText.innerHTML +=
+                    text.charAt(i);
+
+                i++;
+
+                setTimeout(
+                    write,
+                    35
+                );
 
             }
 
         }
 
-    }
-);
+        write();
 
-
-/* =========================================================
-   UPDATE FULL PHOTO AFTER NEXT/PREVIOUS
-   ========================================================= */
-
-const originalNextPhoto = nextPhoto;
-const originalPreviousPhoto = previousPhoto;
-
-
-/* =========================================================
-   MESSAGE SECTION
-   ========================================================= */
-
-function showMessage() {
-
-    stopSlide();
-
-    showSection(messageSection);
-
-    typeWriter();
-
-}
-
-
-/* =========================================================
-   TYPEWRITER
-   ========================================================= */
-
-let typingStarted = false;
-
-
-function typeWriter() {
-
-    if (!messageTyping) {
-        return;
     }
 
-    if (typingStarted) {
-        return;
-    }
-
-    typingStarted = true;
-
-    const text =
-        messageTyping.innerText.trim();
-
-    messageTyping.innerHTML = "";
-
-    let index = 0;
 
 
-    function writeText() {
+    /* =====================================================
+       FINAL
+    ===================================================== */
 
-        if (index < text.length) {
+    window.showFinal = function () {
 
-            messageTyping.innerHTML +=
-                text.charAt(index);
+        stopSlide();
 
-            index++;
+        showOnly(finalSection);
 
-            setTimeout(
-                writeText,
-                35
-            );
+        startHearts();
 
+        startConfetti();
+
+    };
+
+
+
+    /* =====================================================
+       HEARTS
+    ===================================================== */
+
+    let heartsRunning = false;
+
+    function startHearts() {
+
+        if (heartsRunning) {
+            return;
         }
 
+        heartsRunning = true;
+
+        setInterval(function () {
+
+            const heart =
+                document.createElement("div");
+
+            heart.innerHTML = "❤️";
+
+            heart.style.position = "fixed";
+
+            heart.style.left =
+                Math.random() * 100 + "vw";
+
+            heart.style.bottom =
+                "-50px";
+
+            heart.style.fontSize =
+                (20 + Math.random() * 25) + "px";
+
+            heart.style.zIndex = "9999";
+
+            heart.style.pointerEvents =
+                "none";
+
+            heart.style.animation =
+                "floatHeart 5s linear forwards";
+
+            document.body.appendChild(heart);
+
+
+            setTimeout(function () {
+
+                heart.remove();
+
+            }, 5000);
+
+        }, 600);
+
     }
 
-    writeText();
-
-}
 
 
-/* =========================================================
-   MESSAGE → FINAL
-   ========================================================= */
+    /* =====================================================
+       CONFETTI
+    ===================================================== */
 
-function showFinal() {
+    let confettiRunning = false;
 
-    stopSlide();
+    function startConfetti() {
 
-    showSection(finalSection);
+        if (confettiRunning) {
+            return;
+        }
 
-    startConfetti();
+        confettiRunning = true;
 
-    startHearts();
+        setInterval(function () {
 
-}
+            const item =
+                document.createElement("div");
+
+            item.innerHTML = "🎊";
+
+            item.style.position = "fixed";
+
+            item.style.left =
+                Math.random() * 100 + "vw";
+
+            item.style.top = "-30px";
+
+            item.style.fontSize =
+                (18 + Math.random() * 20) + "px";
+
+            item.style.zIndex = "9998";
+
+            item.style.pointerEvents =
+                "none";
+
+            item.style.animation =
+                "fall 4s linear forwards";
+
+            document.body.appendChild(item);
 
 
-/* =========================================================
-   FLOATING HEARTS
-   ========================================================= */
+            setTimeout(function () {
 
-let heartsStarted = false;
+                item.remove();
 
-function startHearts() {
+            }, 4000);
 
-    if (heartsStarted) {
-        return;
+        }, 300);
+
     }
 
-    heartsStarted = true;
+
+
+    /* =====================================================
+       SPARKLES
+    ===================================================== */
 
     setInterval(function () {
 
-        const heart =
+        const sparkle =
             document.createElement("div");
 
-        heart.innerHTML = "❤️";
+        sparkle.className =
+            "spark";
 
-        heart.style.position =
-            "fixed";
+        sparkle.innerHTML =
+            "✨";
 
-        heart.style.left =
+        sparkle.style.left =
             Math.random() * 100 + "vw";
 
-        heart.style.bottom =
-            "-50px";
+        sparkle.style.top =
+            Math.random() * 100 + "vh";
 
-        heart.style.fontSize =
-            (20 + Math.random() * 25) + "px";
+        sparkle.style.fontSize =
+            (15 + Math.random() * 20) + "px";
 
-        heart.style.zIndex =
-            "9999";
-
-        heart.style.pointerEvents =
+        sparkle.style.pointerEvents =
             "none";
 
-        heart.style.animation =
-            "floatHeart 5s linear forwards";
-
         document.body.appendChild(
-            heart
+            sparkle
         );
 
 
         setTimeout(function () {
 
-            heart.remove();
+            sparkle.remove();
 
-        }, 5000);
+        }, 2000);
 
-    }, 600);
-
-}
+    }, 500);
 
 
-/* =========================================================
-   CONFETTI
-   ========================================================= */
 
-let confettiStarted = false;
-
-function startConfetti() {
-
-    if (confettiStarted) {
-        return;
-    }
-
-    confettiStarted = true;
+    /* =====================================================
+       FLOWERS
+    ===================================================== */
 
     setInterval(function () {
 
-        const confetti =
+        const flower =
             document.createElement("div");
 
-        confetti.innerHTML = "🎊";
+        flower.innerHTML =
+            "🌸";
 
-        confetti.style.position =
+        flower.style.position =
             "fixed";
 
-        confetti.style.left =
+        flower.style.left =
             Math.random() * 100 + "vw";
 
-        confetti.style.top =
+        flower.style.top =
             "-30px";
 
-        confetti.style.fontSize =
-            (18 + Math.random() * 20) + "px";
+        flower.style.fontSize =
+            (18 + Math.random() * 18) + "px";
 
-        confetti.style.zIndex =
-            "9998";
+        flower.style.zIndex =
+            "9997";
 
-        confetti.style.pointerEvents =
+        flower.style.pointerEvents =
             "none";
 
-        confetti.style.animation =
-            "fall 4s linear forwards";
+        flower.style.animation =
+            "fall 6s linear forwards";
 
         document.body.appendChild(
-            confetti
+            flower
         );
 
 
         setTimeout(function () {
 
-            confetti.remove();
+            flower.remove();
 
-        }, 4000);
+        }, 6000);
 
-    }, 300);
-
-}
+    }, 1000);
 
 
-/* =========================================================
-   SPARKLES
-   ========================================================= */
 
-setInterval(function () {
-
-    const sparkle =
-        document.createElement("div");
-
-    sparkle.className =
-        "spark";
-
-    sparkle.innerHTML =
-        "✨";
-
-    sparkle.style.left =
-        Math.random() * 100 + "vw";
-
-    sparkle.style.top =
-        Math.random() * 100 + "vh";
-
-    sparkle.style.fontSize =
-        (15 + Math.random() * 20) + "px";
-
-    document.body.appendChild(
-        sparkle
-    );
-
-
-    setTimeout(function () {
-
-        sparkle.remove();
-
-    }, 2000);
-
-}, 400);
-
-
-/* =========================================================
-   FALLING FLOWERS
-   ========================================================= */
-
-setInterval(function () {
-
-    const flower =
-        document.createElement("div");
-
-    flower.innerHTML =
-        "🌸";
-
-    flower.style.position =
-        "fixed";
-
-    flower.style.left =
-        Math.random() * 100 + "vw";
-
-    flower.style.top =
-        "-30px";
-
-    flower.style.fontSize =
-        (18 + Math.random() * 18) + "px";
-
-    flower.style.zIndex =
-        "9997";
-
-    flower.style.pointerEvents =
-        "none";
-
-    flower.style.animation =
-        "fall 6s linear forwards";
-
-    document.body.appendChild(
-        flower
-    );
-
-
-    setTimeout(function () {
-
-        flower.remove();
-
-    }, 6000);
-
-}, 900);
-
-
-/* =========================================================
-   PRELOAD ALL BIRTHDAY PHOTOS
-   ========================================================= */
-
-function preloadPhotos() {
+    /* =====================================================
+       PRELOAD PHOTOS
+    ===================================================== */
 
     for (
         let i = 1;
@@ -811,19 +818,13 @@ function preloadPhotos() {
             new Image();
 
         img.src =
-            getPhotoPath(i);
+            photoPath(i);
 
     }
 
-}
 
+    console.log(
+        "🎂 Birthday Website Ready ❤️"
+    );
 
-/* =========================================================
-   START
-   ========================================================= */
-
-preloadPhotos();
-
-console.log(
-    "🎂 Birthday Website Loaded Successfully ❤️"
-);
+});
