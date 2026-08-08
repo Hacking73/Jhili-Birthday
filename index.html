@@ -1,316 +1,638 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- ==============================
+         BASIC SETTINGS
+    =============================== -->
 
-<title>Happy Birthday Jhili </title>
+    <meta charset="UTF-8">
 
-<link rel="stylesheet" href="style.css">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <meta
+        name="description"
+        content="A special birthday surprise"
+    >
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Great+Vibes&display=swap" rel="stylesheet">
+    <title>Happy Birthday ❤️</title>
+
+
+    <!-- ==============================
+         GOOGLE FONTS
+    =============================== -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+
+    <!-- ==============================
+         CSS
+    ============================== -->
+
+    <link rel="stylesheet" href="style.css">
 
 </head>
 
+
 <body>
 
-<!-- Loading -->
 
-<div id="loading">
+    <!-- =================================================
+         BACKGROUND
+    ================================================= -->
 
-<div class="loader"></div>
+    <div class="background">
 
-<h2>Loading Surprise...</h2>
+        <div class="glow glow-1"></div>
 
-</div>
+        <div class="glow glow-2"></div>
 
-<!-- Background Music -->
+        <div class="glow glow-3"></div>
 
-<audio id="music" loop>
-<source src="music/birthday.mp3" type="audio/mpeg">
-</audio>
+        <div class="stars"></div>
 
-<!-- Main Website -->
+    </div>
 
-<div id="website">
 
-<!-- ================= HERO ================= -->
 
-<section id="hero">
+    <!-- =================================================
+         FLOATING HEARTS
+    ================================================= -->
 
-<h3>✨ Happy Birthday ✨</h3>
+    <div class="floating-hearts">
 
-<h1>Jhili </h1>
+        <span>❤</span>
+        <span>♡</span>
+        <span>❤</span>
+        <span>♡</span>
+        <span>❤</span>
+        <span>♡</span>
+        <span>❤</span>
+        <span>♡</span>
 
-<p>
+    </div>
 
-Today is all about you.<br><br>
 
-May your smile shine brighter than the stars.<br>
 
-May all your dreams come true.<br>
+    <!-- =================================================
+         MUSIC
+    ================================================= -->
 
-May your life always be filled with happiness,
-love and success.<br><br>
+    <audio
+        id="bgMusic"
+        loop
+        preload="auto"
+    >
 
-Happy Birthday! 🎂🎉
+        <source
+            src="music/birthday.mp3"
+            type="audio/mpeg"
+        >
 
-</p>
+    </audio>
 
-<button id="startBtn" onclick="goGift()">
 
-Start the Surprise 🎁
 
-</button>
+    <!-- =================================================
+         MUSIC BUTTON
+    ================================================= -->
 
-</section>
+    <button
+        id="musicBtn"
+        class="music-btn"
+        aria-label="Music control"
+    >
 
-<!-- ================= GIFT ================= -->
+        🔇
 
-<section id="giftSection">
+    </button>
 
-<h2 class="title">
 
-🎁 A Special Surprise
 
-</h2>
+    <!-- =================================================
+         PAGE 1 — WELCOME
+    ================================================= -->
 
-<p>
+    <main
+        id="page1"
+        class="page active"
+    >
 
-Dear Jhili <br><br>
+        <div class="welcome-container">
 
-Today is your special day.<br>
 
-May every smile stay forever.<br>
+            <!-- Small Top Text -->
 
-May all your dreams come true.<br>
+            <p class="small-title">
 
-Have a wonderful birthday!
+                ✨ A Special Day ✨
 
-</p>
+            </p>
 
-<img
-id="giftBox"
-src="images/gift.png"
-alt="Gift Box"
-onclick="openGift()">
 
-<div id="giftMessage">
 
-<h2>🎉 Surprise 🎉</h2>
+            <!-- Main Heading -->
 
-<p>
+            <h1 class="main-title">
 
-Happy Birthday Jhili 
+                Happy Birthday
 
-</p>
+            </h1>
 
-<button onclick="showCake()">
 
-Continue ➜
 
-</button>
+            <!-- Name -->
 
-</div>
+            <h2 class="birthday-name">
 
-</section>
+                My Dear ❤️
 
-<!-- ================= CAKE ================= -->
+            </h2>
 
-<section id="cakeSection">
 
-<h2 class="title">
 
-🎂 Make A Wish 🎂
+            <!-- Divider -->
 
-</h2>
+            <div class="title-divider">
 
-<p>
+                <span></span>
 
-Close your eyes...<br>
+                <i>♥</i>
 
-Make a beautiful wish...<br>
+                <span></span>
 
-Then click the button.
+            </div>
 
-</p>
 
-<img
-id="birthdayCake"
-src="images/candle-on.png"
-alt="Cake">
 
-<button
-id="blowBtn"
-onclick="blowCandles()">
+            <!-- Description -->
 
-  Blow Candles
+            <p class="welcome-text">
 
-</button>
+                Today is a beautiful day because
+                someone very special was born.
 
-<div id="wishText">
+                <br>
 
-<h2>
+                I have prepared a little surprise
+                especially for you. ❤️
 
-✨ Wish Complete ✨
+            </p>
 
-</h2>
 
-<p>
 
-May every dream come true.<br>
+            <!-- Date -->
 
-May every smile stay forever.<br>
+            <div class="birthday-date">
 
-Happy Birthday Jhili ❤️
+                <span>05</span>
 
-</p>
+                <div>
 
-<button onclick="showGallery()">
+                    <small>SEPTEMBER</small>
 
-View Memories 📸
+                    <strong>2026</strong>
 
-</button>
+                </div>
 
-</div>
+            </div>
 
-</section>
-<!-- ================= GALLERY ================= -->
 
-<section id="gallerySection">
 
-<h2 class="title">
-📸 Beautiful Memories
-</h2>
+            <!-- Open Button -->
 
-<p class="subtitle">
-Every picture tells a beautiful story ❤️
-</p>
+            <button
+                id="openBtn"
+                class="open-btn"
+            >
 
-<div class="gallery-box">
+                <span class="gift-icon">🎁</span>
 
-<button class="nav-btn" onclick="previousPhoto()">
-◀
-</button>
+                <span>Open Your Surprise</span>
 
-<img
-id="galleryImage"
-src="images/birthday (1).jpg"
-alt="Birthday Photo">
+                <span class="arrow">→</span>
 
-<button class="nav-btn" onclick="nextPhoto()">
-▶
-</button>
+            </button>
 
-</div>
 
-<div class="gallery-buttons">
 
-<button onclick="autoSlide()">
-▶ Play Slideshow
-</button>
+            <!-- Bottom Message -->
 
-<button onclick="stopSlide()">
-⏸ Stop
-</button>
+            <p class="bottom-message">
 
-</div>
+                Made with ❤️ just for you
 
-<button onclick="showMessage()">
-Continue 
-</button>
+            </p>
 
-</section>
 
-<!-- ================= MESSAGE ================= -->
+        </div>
 
-<section id="messageSection">
+    </main>
 
-<div class="message-card">
 
-<h2 class="title">
-💖 A Special Message 💖
-</h2>
 
-<p id="typingText" class="typing">
+    <!-- =================================================
+         PAGE 2 — GIFT BOX
+         Hidden initially
+    ================================================= -->
 
-Happy Birthday Jhili ❤️
+    <section
+        id="page2"
+        class="page"
+    >
 
-On this special day,
-I wish you endless happiness,
-good health,
-success,
-peace,
-and lots of love.
+        <div class="gift-page">
 
-May your smile never fade.
-May all your dreams come true.
-May your future shine brighter every day.
 
-Enjoy every beautiful moment of your life.
+            <p class="small-title">
 
-🎂🎉❤️
+                ✨ Your Surprise Is Here ✨
 
-</p>
+            </p>
 
-<div class="wish-icons">
 
-</div>
+            <h2 class="gift-title">
 
-<button onclick="showFinal()">
-Final Surprise
-</button>
+                I Have Something For You 🎁
 
-</div>
+            </h2>
 
-</section>
 
-<!-- ================= FINAL ================= -->
+            <p class="gift-description">
 
-<section id="finalSection">
+                There is a little surprise waiting
+                inside this box.
 
-<h1 class="final-title">
-🎉 HAPPY BIRTHDAY JHILI 🎉
-</h1>
+            </p>
 
-<h2>
-💖 Many Many Happy Returns Of The Day 💖
-</h2>
 
-<p>
+            <!-- Gift Box -->
 
-May God bless you with<br><br>
+            <div
+                id="giftBox"
+                class="gift-box"
+            >
 
-❤️ Love<br>
-😊 Happiness<br>
-🌟 Success<br>
-💪 Good Health<br>
-🕊️ Peace<br>
-🌸 Endless Smiles<br><br>
+                <div class="gift-lid">
 
-Have a wonderful birthday!<br>
-Stay Happy.<br>
-Keep Smiling Forever. ❤️
+                    <div class="gift-bow">
 
-</p>
+                        <span></span>
+                        <span></span>
 
-<div class="celebration">
+                    </div>
 
-</div>
+                </div>
 
-<button onclick="location.reload()">
-🔄 Start Again
-</button>
 
-</section>
+                <div class="gift-body">
 
-</div>
+                    <div class="gift-ribbon vertical"></div>
 
-<script src="script.js"></script>
+                    <div class="gift-ribbon horizontal"></div>
+
+                </div>
+
+            </div>
+
+
+            <p class="tap-message">
+
+                👆 Tap the gift box
+
+            </p>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =================================================
+         PAGE 3 — PHOTO MEMORY
+         Hidden initially
+    ================================================= -->
+
+    <section
+        id="page3"
+        class="page"
+    >
+
+        <div class="photo-page">
+
+
+            <p class="small-title">
+
+                📸 Beautiful Memories
+
+            </p>
+
+
+            <h2 class="photo-title">
+
+                Every Picture Has A Story ❤️
+
+            </h2>
+
+
+            <!-- Photo Slider -->
+
+            <div class="photo-slider">
+
+                <img
+                    id="memoryPhoto"
+                    src="images/birthday (1).jpg"
+                    alt="Birthday Memory"
+                >
+
+                <div class="photo-overlay">
+
+                    <span id="photoNumber">
+
+                        1 / 14
+
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <!-- Caption -->
+
+            <p
+                id="photoCaption"
+                class="photo-caption"
+            >
+
+                A beautiful memory ❤️
+
+            </p>
+
+
+            <!-- Continue -->
+
+            <button
+                id="photoNextBtn"
+                class="open-btn"
+            >
+
+                Continue →
+
+            </button>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =================================================
+         PAGE 4 — BIRTHDAY LETTER
+         Hidden initially
+    ================================================= -->
+
+    <section
+        id="page4"
+        class="page"
+    >
+
+        <div class="letter-page">
+
+
+            <p class="small-title">
+
+                💌 A Little Message
+
+            </p>
+
+
+            <div class="letter-card">
+
+                <div class="letter-icon">
+
+                    💗
+
+                </div>
+
+
+                <h2>
+
+                    For You
+
+                </h2>
+
+
+                <div
+                    id="letterText"
+                    class="letter-text"
+                >
+
+                    You are one of the most
+                    beautiful parts of my life.
+
+                    <br><br>
+
+                    On your special day,
+                    I wish you happiness,
+                    success, beautiful memories
+                    and countless reasons to smile.
+
+                    <br><br>
+
+                    May this new year of your life
+                    bring you everything your heart
+                    wishes for.
+
+                    <br><br>
+
+                    Happy Birthday ❤️
+
+                </div>
+
+
+                <button
+                    id="letterNextBtn"
+                    class="open-btn"
+                >
+
+                    One More Surprise →
+
+                </button>
+
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =================================================
+         PAGE 5 — CAKE
+         Hidden initially
+    ================================================= -->
+
+    <section
+        id="page5"
+        class="page"
+    >
+
+        <div class="cake-page">
+
+
+            <p class="small-title">
+
+                🎂 Make A Wish
+
+            </p>
+
+
+            <h2 class="cake-title">
+
+                Your Birthday Cake
+
+            </h2>
+
+
+            <!-- Cake -->
+
+            <div
+                id="cake"
+                class="cake"
+            >
+
+                <div class="candle">
+
+                    <div class="flame"></div>
+
+                </div>
+
+
+                <div class="cake-top"></div>
+
+                <div class="cake-middle"></div>
+
+                <div class="cake-bottom"></div>
+
+            </div>
+
+
+            <p
+                id="wishText"
+                class="wish-text"
+            >
+
+                Make a beautiful wish... ✨
+
+            </p>
+
+
+            <button
+                id="blowBtn"
+                class="open-btn"
+            >
+
+                🕯️ Blow The Candle
+
+            </button>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =================================================
+         PAGE 6 — FINAL
+         Hidden initially
+    ================================================= -->
+
+    <section
+        id="page6"
+        class="page"
+    >
+
+        <div class="final-page">
+
+
+            <!-- Fireworks Container -->
+
+            <div
+                id="fireworks"
+                class="fireworks"
+            ></div>
+
+
+            <p class="small-title">
+
+                ✨ One Last Thing ✨
+
+            </p>
+
+
+            <h1 class="final-title">
+
+                Happy Birthday ❤️
+
+            </h1>
+
+
+            <p class="final-message">
+
+                May your life always be filled
+                with happiness, love and beautiful
+                moments.
+
+            </p>
+
+
+            <div class="final-heart">
+
+                ❤️
+
+            </div>
+
+
+            <p class="made-with">
+
+                Made with love
+
+                <br>
+
+                Just for you ❤️
+
+            </p>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =================================================
+         JAVASCRIPT
+    ================================================= -->
+
+    <script src="script.js"></script>
+
 
 </body>
+
 </html>
