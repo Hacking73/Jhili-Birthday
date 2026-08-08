@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
 
     <meta
@@ -15,17 +16,24 @@
         rel="stylesheet"
         href="style.css"
     >
+
 </head>
+
 
 <body>
 
-    <!-- ================= LOADING ================= -->
+
+    <!-- =====================================================
+         LOADING
+    ====================================================== -->
 
     <div id="loading">
 
         <div class="loading-content">
 
-            <div class="loading-heart">♥</div>
+            <div class="loading-heart">
+                ♥
+            </div>
 
             <h2>
                 Preparing Something Special
@@ -40,12 +48,17 @@
     </div>
 
 
-    <!-- ================= WEBSITE ================= -->
+
+    <!-- =====================================================
+         WEBSITE
+    ====================================================== -->
 
     <div id="website">
 
 
-        <!-- ================= HERO / OPENING ================= -->
+        <!-- =================================================
+             HERO
+        ================================================== -->
 
         <section
             id="hero"
@@ -55,7 +68,7 @@
             <div class="content-box">
 
                 <p class="subtitle">
-                    A little surprise for you
+                    A Little Surprise For You
                 </p>
 
                 <h1>
@@ -69,10 +82,11 @@
                 <p class="description">
 
                     Today is your special day.
+
                     <br><br>
 
-                    May your smile shine brighter than
-                    the stars.
+                    May your smile shine brighter
+                    than the stars.
 
                     <br>
 
@@ -80,13 +94,19 @@
 
                     <br>
 
-                    May your life always be filled with
-                    love, happiness and success.
+                    May your life always be filled
+                    with love, happiness and success.
+
+                    <br><br>
+
+                    Happy Birthday!
 
                 </p>
 
+
                 <button
                     id="startBtn"
+                    type="button"
                     onclick="goGift()"
                 >
                     Start the Surprise
@@ -97,7 +117,10 @@
         </section>
 
 
-        <!-- ================= GIFT ================= -->
+
+        <!-- =================================================
+             GIFT
+        ================================================== -->
 
         <section
             id="giftSection"
@@ -107,7 +130,7 @@
             <div class="content-box">
 
                 <p class="subtitle">
-                    Something special is waiting
+                    Something Special Is Waiting
                 </p>
 
                 <h1>
@@ -115,9 +138,9 @@
                 </h1>
 
 
-                <!-- IMPORTANT:
-                     Gift PNG only.
-                     No duplicate photo here.
+                <!--
+                    ONLY GIFT PNG HERE.
+                    NO PHOTO IS USED IN THIS SECTION.
                 -->
 
                 <div class="gift-box">
@@ -137,11 +160,12 @@
                 </p>
 
 
-                <!-- Gift message appears after opening -->
+
+                <!-- Gift message -->
 
                 <div
                     id="giftMessage"
-                    style="display:none;"
+                    style="display: none;"
                 >
 
                     <h2>
@@ -158,12 +182,13 @@
 
                         <br>
 
-                        May every moment bring you
+                        May every moment bring
                         happiness.
 
                         <br>
 
-                        May every dream become reality.
+                        May every dream become
+                        reality.
 
                         <br>
 
@@ -171,11 +196,13 @@
 
                         <br><br>
 
-                        Happy Birthday.
+                        Happy Birthday!
 
                     </p>
 
+
                     <button
+                        type="button"
                         onclick="showPhoto()"
                     >
                         Continue
@@ -188,44 +215,16 @@
         </section>
 
 
-        <!--
-            PART 2 WILL CONTINUE HERE
 
-            PHOTO SECTION
-            4:3 PNG PHOTO
-            ↓
-            CAKE SECTION
-            ↓
-            CANDLE SECTION
-            ↓
-            MEMORIES
-            ↓
-            MESSAGE
-            ↓
-            FINAL
-        -->
-
-
-    </div>
-
-
-    <!-- ================= MUSIC ================= -->
-
-    <audio
-        id="music"
-        src="music/birthday.mp3"
-        loop
-    ></audio>
-
-
-    <!-- ================= JAVASCRIPT ================= -->
-
-    <script src="script.js"></script>
-
-</body>
-
-</html>
-        <!-- ================= PHOTO ================= -->
+        <!-- =================================================
+             PHOTO
+             
+             PHOTO COMES AFTER GIFT.
+             
+             4:3 RATIO.
+             
+             ONLY ONE PHOTO HERE.
+        ================================================== -->
 
         <section
             id="photoSection"
@@ -235,7 +234,7 @@
             <div class="content-box">
 
                 <p class="subtitle">
-                    A beautiful moment
+                    A Beautiful Moment
                 </p>
 
                 <h1>
@@ -243,12 +242,12 @@
                 </h1>
 
                 <p class="description">
+
                     Before we continue,
-                    here is a little memory for you.
+                    here is a beautiful memory.
+
                 </p>
 
-
-                <!-- ================= MAIN PHOTO ================= -->
 
                 <div class="main-photo-box">
 
@@ -267,6 +266,7 @@
 
 
                 <button
+                    type="button"
                     onclick="showCake()"
                 >
                     Continue
@@ -277,7 +277,12 @@
         </section>
 
 
-        <!-- ================= CAKE ================= -->
+
+        <!-- =================================================
+             CAKE
+             
+             PART 2 WILL CONTINUE FROM HERE.
+        ================================================== -->
 
         <section
             id="cakeSection"
@@ -287,7 +292,7 @@
             <div class="content-box">
 
                 <p class="subtitle">
-                    Your special moment
+                    Your Special Moment
                 </p>
 
                 <h1>
@@ -306,13 +311,11 @@
                 </p>
 
 
-                <!-- Cake image -->
-
                 <div class="cake-box">
 
                     <img
                         id="birthdayCake"
-                        src="images/candle-on.png"
+                        src="images/cake.png"
                         alt="Birthday Cake"
                     >
 
@@ -321,17 +324,16 @@
 
                 <button
                     id="cutCakeBtn"
+                    type="button"
                     onclick="cutCake()"
                 >
                     Cut the Cake
                 </button>
 
 
-                <!-- After cake cut -->
-
                 <div
                     id="cakeMessage"
-                    style="display:none;"
+                    style="display: none;"
                 >
 
                     <h2>
@@ -345,12 +347,14 @@
 
                         <br>
 
-                        Now it's time to
+                        Now it is time to
                         make your wish.
 
                     </p>
 
+
                     <button
+                        type="button"
                         onclick="showCandles()"
                     >
                         Continue
@@ -361,7 +365,9 @@
             </div>
 
         </section>
-                <!-- ================= BLOW CANDLES ================= -->
+                <!-- =================================================
+             BLOW CANDLES
+        ================================================== -->
 
         <section
             id="candleSection"
@@ -371,7 +377,7 @@
             <div class="content-box">
 
                 <p class="subtitle">
-                    Make a Wish
+                    Make A Wish
                 </p>
 
                 <h1>
@@ -393,7 +399,7 @@
                 </p>
 
 
-                <!-- ================= CANDLE CAKE ================= -->
+                <!-- Cake with candles -->
 
                 <div class="cake-box">
 
@@ -408,17 +414,18 @@
 
                 <button
                     id="blowBtn"
+                    type="button"
                     onclick="blowCandles()"
                 >
                     Blow Candles
                 </button>
 
 
-                <!-- ================= WISH COMPLETE ================= -->
+                <!-- Wish completed -->
 
                 <div
                     id="wishText"
-                    style="display:none;"
+                    style="display: none;"
                 >
 
                     <h2>
@@ -440,7 +447,9 @@
 
                     </p>
 
+
                     <button
+                        type="button"
                         onclick="showGallery()"
                     >
                         View Memories
@@ -454,7 +463,9 @@
 
 
 
-        <!-- ================= MEMORIES ================= -->
+        <!-- =================================================
+             MEMORIES / GALLERY
+        ================================================== -->
 
         <section
             id="gallerySection"
@@ -476,14 +487,16 @@
                 </p>
 
 
-                <!-- ================= GALLERY ================= -->
+                <!-- Gallery -->
 
                 <div class="gallery-box">
 
 
                     <button
                         class="nav-btn"
+                        type="button"
                         onclick="previousPhoto()"
+                        aria-label="Previous Photo"
                     >
                         ‹
                     </button>
@@ -503,7 +516,9 @@
 
                     <button
                         class="nav-btn"
+                        type="button"
                         onclick="nextPhoto()"
+                        aria-label="Next Photo"
                     >
                         ›
                     </button>
@@ -512,7 +527,7 @@
                 </div>
 
 
-                <!-- Photo counter -->
+                <!-- Photo number -->
 
                 <p
                     id="photoCounter"
@@ -527,12 +542,15 @@
                 <div class="gallery-buttons">
 
                     <button
+                        type="button"
                         onclick="autoSlide()"
                     >
                         Play Slideshow
                     </button>
 
+
                     <button
+                        type="button"
                         onclick="stopSlide()"
                     >
                         Stop
@@ -542,6 +560,7 @@
 
 
                 <button
+                    type="button"
                     onclick="showMessage()"
                 >
                     Continue
@@ -553,7 +572,9 @@
 
 
 
-        <!-- ================= FULL PHOTO VIEW ================= -->
+        <!-- =================================================
+             FULL SCREEN PHOTO VIEWER
+        ================================================== -->
 
         <div
             id="photoViewer"
@@ -562,7 +583,9 @@
 
             <button
                 class="close-photo"
+                type="button"
                 onclick="closeFullPhoto()"
+                aria-label="Close Photo"
             >
                 ×
             </button>
@@ -570,7 +593,9 @@
 
             <button
                 class="viewer-nav"
+                type="button"
                 onclick="previousPhoto()"
+                aria-label="Previous Photo"
             >
                 ‹
             </button>
@@ -585,9 +610,188 @@
 
             <button
                 class="viewer-nav"
+                type="button"
                 onclick="nextPhoto()"
+                aria-label="Next Photo"
             >
                 ›
             </button>
 
         </div>
+
+
+
+        <!-- =================================================
+             SPECIAL MESSAGE
+        ================================================== -->
+
+        <section
+            id="messageSection"
+            class="page-section"
+        >
+
+            <div class="content-box">
+
+                <p class="subtitle">
+                    A Special Message
+                </p>
+
+                <h1>
+                    For Jhili
+                </h1>
+
+
+                <div class="message-box">
+
+                    <p id="typingText">
+
+Happy Birthday Jhili.
+
+On this special day,
+I wish you endless happiness,
+good health,
+success,
+peace,
+and lots of love.
+
+May your smile never fade.
+May all your dreams come true.
+May your future shine brighter every day.
+
+Enjoy your beautiful life.
+
+                    </p>
+
+                </div>
+
+
+                <div class="wish-icons">
+                    Birthday Wishes
+                </div>
+
+
+                <button
+                    type="button"
+                    onclick="showFinal()"
+                >
+                    Final Surprise
+                </button>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             FINAL
+        ================================================== -->
+
+        <section
+            id="finalSection"
+            class="page-section"
+        >
+
+            <div class="content-box final-card">
+
+                <p class="subtitle">
+                    A Final Surprise
+                </p>
+
+
+                <h1 class="final-title">
+                    Happy Birthday Jhili
+                </h1>
+
+
+                <h2>
+                    Many Many Happy Returns Of The Day
+                </h2>
+
+
+                <p class="description">
+
+                    May your life always be filled
+                    with happiness.
+
+                    <br><br>
+
+                    Love
+
+                    <br>
+
+                    Happiness
+
+                    <br>
+
+                    Success
+
+                    <br>
+
+                    Good Health
+
+                    <br>
+
+                    Peace
+
+                    <br>
+
+                    Endless Smiles
+
+                    <br><br>
+
+                    Have a wonderful birthday.
+
+                    <br>
+
+                    Stay Happy.
+
+                    <br>
+
+                    Keep Smiling Forever.
+
+                </p>
+
+
+                <div class="final-decoration">
+                    Birthday Wishes
+                </div>
+
+
+                <button
+                    type="button"
+                    onclick="restartWebsite()"
+                >
+                    Start Again
+                </button>
+
+            </div>
+
+        </section>
+
+    </div>
+
+
+
+    <!-- =====================================================
+         MUSIC
+    ====================================================== -->
+
+    <audio
+        id="music"
+        src="music/birthday.mp3"
+        loop
+        preload="auto"
+    ></audio>
+
+
+
+    <!-- =====================================================
+         JAVASCRIPT
+    ====================================================== -->
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
