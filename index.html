@@ -2,42 +2,45 @@
 <html lang="en">
 
 <head>
-
     <meta charset="UTF-8">
 
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
     <title>Happy Birthday Jhili ❤️</title>
 
-    <link rel="stylesheet" href="style.css">
-
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
 </head>
+
 
 <body>
 
+
 <!-- ==================================================
-     LOADING
+     LOADING SCREEN
 ================================================== -->
 
 <div id="loading">
 
-    <div class="loader"></div>
+    <div class="loader-heart">
+        ❤️
+    </div>
 
-    <h2>Loading Your Surprise... ❤️</h2>
+    <h1>
+        Loading Your Surprise...
+    </h1>
+
+    <p>
+        ✨ Something Special Is Waiting For You ✨
+    </p>
 
 </div>
 
-
-<!-- ==================================================
-     MUSIC
-================================================== -->
-
-<audio id="music" loop>
-
-    <source src="music/birthday.mp3" type="audio/mpeg">
-
-</audio>
 
 
 <!-- ==================================================
@@ -47,308 +50,382 @@
 <div id="website">
 
 
-<!-- ==================================================
-     HERO
-================================================== -->
+    <!-- ==================================================
+         HERO SECTION
+    ================================================== -->
 
-<section id="hero">
+    <section
+        id="hero"
+        class="page-section active-section"
+    >
 
-    <h3>✨ Happy Birthday ✨</h3>
+        <div class="hero-content">
 
-    <h1>Jhili ❤️</h1>
+            <h3>
+                ✨ Happy Birthday ✨
+            </h3>
 
-    <p>
+            <h1>
+                Jhili ❤️
+            </h1>
 
-        Today is all about you.<br><br>
+            <p>
+                Today is all about you.
+                <br><br>
 
-        May your smile shine brighter than the stars.<br>
+                May your smile shine brighter
+                than the stars.
+                <br>
 
-        May all your dreams come true.<br>
+                May all your dreams come true.
+                <br>
 
-        May your life always be filled with
-        happiness, love and success.<br><br>
+                May your life always be filled
+                with love, happiness and success.
+                <br><br>
 
-        Happy Birthday! 🎂🎉
+                Happy Birthday! 🎂🎉
+            </p>
 
-    </p>
+            <button
+                class="main-btn"
+                onclick="goGift()"
+            >
+                Start the Surprise 🎁
+            </button>
 
-    <button onclick="goGift()">
+        </div>
 
-        Start the Surprise 🎁
+    </section>
 
-    </button>
 
-</section>
 
+    <!-- ==================================================
+         GIFT SECTION
+    ================================================== -->
 
-<!-- ==================================================
-     GIFT
-================================================== -->
+    <section
+        id="giftSection"
+        class="page-section"
+    >
 
-<section id="giftSection">
+        <div class="section-content">
 
-    <h2 class="title">
+            <h2>
+                🎁 A Special Surprise 🎁
+            </h2>
 
-        🎁 A Special Surprise 🎁
+            <p>
+                Dear Jhili ❤️
+                <br><br>
 
-    </h2>
+                Today is your special day.
+                <br>
 
-    <p>
+                May every moment bring you happiness.
+                <br>
 
-        Dear Jhili ❤️<br><br>
+                May every dream become reality.
+                <br>
 
-        Today is your special day.<br>
+                May your smile stay forever.
+                <br><br>
 
-        May every moment bring you happiness.<br>
+                Happy Birthday! 🎂💖
+            </p>
 
-        May every dream become reality.<br>
 
-        May your smile stay forever.<br><br>
+            <!-- GIFT IMAGE -->
 
-        Happy Birthday! 🎂💖
+            <img
+                id="giftBox"
+                class="gift-image"
+                src="images/gift.png"
+                alt="Birthday Gift"
+                onclick="openGift()"
+            >
 
-    </p>
 
+            <p class="gift-hint">
+                🎁 Click the gift to open it
+            </p>
 
-    <img
-        id="giftBox"
-        src="images/gift.png"
-        alt="Birthday Gift"
-        onclick="openGift()">
 
+            <!-- GIFT MESSAGE -->
 
-    <div id="giftMessage">
+            <div id="giftMessage">
 
-        <h2>🎉 Surprise Opened 🎉</h2>
+                <h2>
+                    💝 Your Special Gift 💝
+                </h2>
 
-        <p>
+                <p>
+                    A beautiful surprise
+                    is waiting for you ❤️
+                </p>
 
-            A beautiful surprise is waiting for you ❤️
+                <button
+                    class="main-btn"
+                    onclick="showCake()"
+                >
+                    Continue ➜
+                </button>
 
-        </p>
+            </div>
 
-        <button onclick="showCake()">
+        </div>
 
-            Continue ➜
+    </section>
 
-        </button>
 
-    </div>
 
-</section>
+    <!-- ==================================================
+         CAKE SECTION
+    ================================================== -->
 
+    <section
+        id="cakeSection"
+        class="page-section"
+    >
 
-<!-- ==================================================
-     CAKE
-================================================== -->
+        <div class="section-content">
 
-<section id="cakeSection">
+            <h2>
+                🎂 Make a Wish 🎂
+            </h2>
 
-    <h2 class="title">
+            <p>
+                Close your eyes.
+                <br>
 
-        🎂 Make A Wish 🎂
+                Make a beautiful wish.
+                <br>
 
-    </h2>
+                Then blow the candles. 🕯️
+            </p>
 
-    <p class="subtitle">
 
-        Close your eyes.<br>
+            <!-- CANDLE ON -->
 
-        Make a beautiful wish.<br>
+            <img
+                id="birthdayCake"
+                class="cake-image"
+                src="images/candle-on.png"
+                alt="Birthday Cake"
+            >
 
-        Then blow the candles. ❤️
 
-    </p>
+            <button
+                id="blowBtn"
+                class="main-btn"
+                onclick="blowCandles()"
+            >
+                🕯️ Blow Candles
+            </button>
 
 
-    <img
-        id="birthdayCake"
-        src="images/candle-on.png"
-        alt="Birthday Cake">
+            <!-- WISH COMPLETE -->
 
+            <div id="wishText">
 
-    <button
-        id="blowBtn"
-        onclick="blowCandles()">
+                <h2>
+                    ✨ Wish Complete ✨
+                </h2>
 
-        🕯️ Blow Candles
+                <p>
 
-    </button>
+                    May every wish come true.
+                    <br>
 
+                    May every day bring happiness.
+                    <br>
 
-    <div id="wishText">
+                    May God always protect you.
+                    <br><br>
 
-        <h2>
+                    Happy Birthday Jhili ❤️
 
-            ✨ Wish Complete ✨
+                </p>
 
-        </h2>
+                <button
+                    class="main-btn"
+                    onclick="showGallery()"
+                >
+                    View Memories 📸
+                </button>
 
-        <p>
+            </div>
 
-            May every dream come true.<br>
+        </div>
 
-            May every smile stay forever.<br>
+    </section>
 
-            May happiness always follow you.<br><br>
 
-            Happy Birthday Jhili ❤️
 
-        </p>
+    <!-- ==================================================
+         GALLERY SECTION
+    ================================================== -->
 
-        <button onclick="showGallery()">
+    <section
+        id="gallerySection"
+        class="page-section"
+    >
 
-            View Memories 📸
+        <div class="section-content">
 
-        </button>
+            <h2 class="title">
+                📸 Beautiful Memories
+            </h2>
 
-    </div>
+            <p class="subtitle">
+                Every picture tells a beautiful story.
+                <br>
+                Every memory is priceless. ❤️
+            </p>
 
-</section>
 
+            <!-- GALLERY -->
 
-<!-- ==================================================
-     GALLERY
-================================================== -->
+            <div class="gallery-box">
 
-<section id="gallerySection">
+                <button
+                    class="nav-btn"
+                    onclick="previousPhoto()"
+                >
+                    ◀
+                </button>
 
-    <h2 class="title">
 
-        📸 Beautiful Memories
+                <div class="photo-container">
 
-    </h2>
+                    <img
+                        id="galleryImage"
+                        src="images/birthday (1).jpg"
+                        alt="Birthday Photo"
+                        onclick="openFullPhoto()"
+                    >
 
-    <p class="subtitle">
+                </div>
 
-        Every picture tells a beautiful story ❤️
 
-    </p>
+                <button
+                    class="nav-btn"
+                    onclick="nextPhoto()"
+                >
+                    ▶
+                </button>
 
+            </div>
 
-    <!-- FULL SIZE PHOTO AREA -->
 
-    <div class="full-photo-box">
+            <!-- PHOTO COUNTER -->
+
+            <div
+                id="photoCounter"
+                class="photo-counter"
+            >
+                Photo 1 / 14
+            </div>
+
+
+            <!-- SLIDESHOW -->
+
+            <div class="gallery-buttons">
+
+                <button
+                    onclick="autoSlide()"
+                >
+                    ▶ Play Slideshow
+                </button>
+
+                <button
+                    onclick="stopSlide()"
+                >
+                    ⏸ Stop
+                </button>
+
+            </div>
+
+
+            <br>
+
+
+            <button
+                class="main-btn"
+                onclick="showMessage()"
+            >
+                Continue ❤️
+            </button>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ==================================================
+         FULL SCREEN PHOTO VIEWER
+    ================================================== -->
+
+    <div
+        id="photoViewer"
+        onclick="closeFullPhoto()"
+    >
 
         <button
-            class="photo-arrow left"
-            onclick="previousPhoto()">
+            class="close-photo"
+            onclick="event.stopPropagation(); closeFullPhoto()"
+        >
+            ✕
+        </button>
 
+
+        <button
+            class="fullscreen-prev"
+            onclick="event.stopPropagation(); previousPhoto()"
+        >
             ◀
-
         </button>
 
 
         <img
-            id="galleryImage"
-            src="images/birthday (1).jpg"
-            alt="Birthday Memory"
-            onclick="openFullPhoto()">
+            id="fullPhoto"
+            src=""
+            alt="Full Birthday Photo"
+        >
 
 
         <button
-            class="photo-arrow right"
-            onclick="nextPhoto()">
-
+            class="fullscreen-next"
+            onclick="event.stopPropagation(); nextPhoto()"
+        >
             ▶
-
         </button>
 
     </div>
 
 
-    <p id="photoCounter">
 
-        Photo 1 / 14
+    <!-- ==================================================
+         MESSAGE SECTION
+    ================================================== -->
 
-    </p>
+    <section
+        id="messageSection"
+        class="page-section"
+    >
 
+        <div class="section-content">
 
-    <div class="gallery-buttons">
-
-        <button onclick="autoSlide()">
-
-            ▶ Play Slideshow
-
-        </button>
-
-
-        <button onclick="stopSlide()">
-
-            ⏸ Stop
-
-        </button>
-
-    </div>
+            <h2 class="title">
+                💖 A Special Message 💖
+            </h2>
 
 
-    <button onclick="showMessage()">
-
-        Continue ❤️
-
-    </button>
-
-</section>
-
-
-<!-- ==================================================
-     FULLSCREEN PHOTO
-================================================== -->
-
-<div id="photoViewer">
-
-    <button
-        class="close-photo"
-        onclick="closeFullPhoto()">
-
-        ✕
-
-    </button>
-
-
-    <button
-        class="viewer-arrow viewer-left"
-        onclick="previousPhoto()">
-
-        ◀
-
-    </button>
-
-
-    <img
-        id="fullPhoto"
-        src=""
-        alt="Full Size Birthday Photo">
-
-
-    <button
-        class="viewer-arrow viewer-right"
-        onclick="nextPhoto()">
-
-        ▶
-
-    </button>
-
-</div>
-
-
-<!-- ==================================================
-     SPECIAL MESSAGE
-================================================== -->
-
-<section id="messageSection">
-
-    <div class="message-card">
-
-        <h2 class="title">
-
-            💖 A Special Message 💖
-
-        </h2>
-
-
-        <p id="typingText" class="typing">
-
+            <p
+                id="typingText"
+                class="typing"
+            >
 Happy Birthday Jhili ❤️
 
 On this special day,
@@ -362,97 +439,119 @@ May your smile never fade.
 
 May all your dreams come true.
 
-May your future shine brighter
-every single day.
+May your future shine
+brighter every day.
 
-May every moment of your life
-become a beautiful memory.
+Enjoy your beautiful life.
 
-Enjoy your special day! 🎂🎉❤️
-
-        </p>
+🎂 🎉 ❤️
+            </p>
 
 
-        <div class="wish-icons">
+            <div class="wish-icons">
+                🎂 🎈 🎉 🎁 ❤️ 🌸 ✨
+            </div>
 
-            🎂 🎈 🎉 🎁 ❤️ 🌸 ✨
+
+            <button
+                class="main-btn"
+                onclick="showFinal()"
+            >
+                Final Surprise 🎆
+            </button>
 
         </div>
 
-
-        <button onclick="showFinal()">
-
-            Final Surprise 🎆
-
-        </button>
-
-    </div>
-
-</section>
+    </section>
 
 
-<!-- ==================================================
-     FINAL
-================================================== -->
 
-<section id="finalSection">
+    <!-- ==================================================
+         FINAL SECTION
+    ================================================== -->
 
-    <h1 class="final-title">
+    <section
+        id="finalSection"
+        class="page-section"
+    >
 
-        🎉 HAPPY BIRTHDAY JHILI 🎉
+        <div class="section-content final-content">
 
-    </h1>
-
-
-    <h2>
-
-        💖 Many Many Happy Returns Of The Day 💖
-
-    </h2>
+            <h1 class="final-title">
+                🎉 HAPPY BIRTHDAY JHILI 🎉
+            </h1>
 
 
-    <p>
-
-        May God bless you with<br><br>
-
-        ❤️ Love<br>
-
-        😊 Happiness<br>
-
-        🌟 Success<br>
-
-        💪 Good Health<br>
-
-        🕊️ Peace<br>
-
-        🌸 Endless Smiles<br><br>
-
-        Have a wonderful birthday!<br>
-
-        Stay Happy.<br>
-
-        Keep Smiling Forever. ❤️
-
-    </p>
+            <h2>
+                💖 Many Many Happy Returns Of The Day 💖
+            </h2>
 
 
-    <div class="celebration">
+            <p>
 
-        🎂 🎈 🎁 🎊 🎆 ❤️ ✨
+                May God bless you with
+                <br><br>
 
-    </div>
+                ❤️ Love
+                <br>
+
+                😊 Happiness
+                <br>
+
+                🌟 Success
+                <br>
+
+                💪 Good Health
+                <br>
+
+                🕊️ Peace
+                <br>
+
+                🌸 Endless Smiles
+                <br><br>
+
+                Have a wonderful birthday!
+                <br>
+
+                Stay Happy.
+                <br>
+
+                Keep Smiling Forever. ❤️
+
+            </p>
 
 
-    <button onclick="location.reload()">
+            <div class="celebration">
+                🎂 🎈 🎁 🎊 🎆 ❤️ ✨
+            </div>
 
-        🔄 Start Again
 
-    </button>
+            <button
+                class="main-btn"
+                onclick="location.reload()"
+            >
+                🔄 Start Again
+            </button>
 
-</section>
+        </div>
+
+    </section>
 
 
 </div>
+
+
+
+<!-- ==================================================
+     MUSIC
+================================================== -->
+
+<audio
+    id="music"
+    src="music/birthday.mp3"
+    loop
+></audio>
+
 
 
 <!-- ==================================================
@@ -460,7 +559,6 @@ Enjoy your special day! 🎂🎉❤️
 ================================================== -->
 
 <script src="script.js"></script>
-
 
 </body>
 
