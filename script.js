@@ -416,7 +416,7 @@ document.addEventListener("DOMContentLoaded", function () {
     function getPhotoPath(number) {
 
         return (
-            "images/birthday (" +
+            "images/birthday (1)(" +
             number +
             ").png"
         );
