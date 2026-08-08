@@ -1,905 +1,978 @@
-/* =========================================================
-   BIRTHDAY SURPRISE WEBSITE
-   PART 1C — COMPLETE JAVASCRIPT
-========================================================= */
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;500;600;700&display=swap');
 
 
-/* =========================================================
-   1. ELEMENTS
-========================================================= */
+/* ==================================================
+   RESET
+================================================== */
 
-const pages = document.querySelectorAll(".page");
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
 
-const openBtn = document.getElementById("openBtn");
+html{
+    scroll-behavior:smooth;
+}
 
-const musicBtn = document.getElementById("musicBtn");
-
-const bgMusic = document.getElementById("bgMusic");
-
-const giftBox = document.getElementById("giftBox");
-
-const photoNextBtn =
-    document.getElementById("photoNextBtn");
-
-const letterNextBtn =
-    document.getElementById("letterNextBtn");
-
-const blowBtn =
-    document.getElementById("blowBtn");
-
-const memoryPhoto =
-    document.getElementById("memoryPhoto");
-
-const photoNumber =
-    document.getElementById("photoNumber");
-
-const photoCaption =
-    document.getElementById("photoCaption");
-
-const wishText =
-    document.getElementById("wishText");
-
-const fireworks =
-    document.getElementById("fireworks");
-
-
-/* =========================================================
-   2. PAGE SYSTEM
-========================================================= */
-
-let currentPage = 1;
-
-
-/*
-    Show selected page
-*/
-
-function showPage(pageNumber) {
-
-    pages.forEach((page) => {
-
-        page.classList.remove("active");
-
-    });
-
-
-    const targetPage =
-        document.getElementById(
-            `page${pageNumber}`
-        );
-
-
-    if (!targetPage) {
-
-        console.warn(
-            `Page ${pageNumber} not found`
-        );
-
-        return;
-
-    }
-
-
-    targetPage.classList.add("active");
-
-    currentPage = pageNumber;
-
+body{
+    min-height:100vh;
+    font-family:'Poppins',sans-serif;
+    color:#fff;
+    background:
+        radial-gradient(circle at top left,rgba(255,255,255,.25),transparent 30%),
+        radial-gradient(circle at bottom right,rgba(255,255,255,.18),transparent 30%),
+        linear-gradient(135deg,#ff4f91,#ff72b0,#ff9dcc);
+    overflow-x:hidden;
 }
 
 
-/* =========================================================
-   3. MUSIC SYSTEM
-========================================================= */
+/* ==================================================
+   LOADING
+================================================== */
 
-let musicPlaying = false;
+#loading{
+    position:fixed;
+    inset:0;
+    z-index:99999;
 
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
 
-/*
-    Play Birthday Music
-*/
+    background:
+        radial-gradient(circle,#ff91c3,#ff4f91);
 
-async function playMusic() {
+    text-align:center;
+}
 
-    try {
+#loading h2{
+    margin-top:25px;
+    font-size:20px;
+}
 
-        await bgMusic.play();
+.loader{
+    width:75px;
+    height:75px;
 
-        musicPlaying = true;
+    border:7px solid rgba(255,255,255,.35);
+    border-top:7px solid #fff;
 
-        musicBtn.textContent = "🔊";
+    border-radius:50%;
 
-        musicBtn.classList.add("playing");
+    animation:spin 1s linear infinite;
+}
 
-    }
+@keyframes spin{
 
-    catch (error) {
-
-        console.log(
-            "Music could not start automatically.",
-            error
-        );
-
-        musicPlaying = false;
-
-        musicBtn.textContent = "🔇";
-
-        musicBtn.classList.remove("playing");
-
+    to{
+        transform:rotate(360deg);
     }
 
 }
 
 
-/*
-    Pause Music
-*/
+/* ==================================================
+   MAIN WEBSITE
+================================================== */
 
-function pauseMusic() {
-
-    bgMusic.pause();
-
-    musicPlaying = false;
-
-    musicBtn.textContent = "🔇";
-
-    musicBtn.classList.remove("playing");
-
+#website{
+    display:none;
+    min-height:100vh;
 }
 
 
-/*
-    Music Button
-*/
+/* ==================================================
+   SECTIONS
+================================================== */
 
-musicBtn.addEventListener(
-    "click",
-    function () {
+section{
+    min-height:100vh;
 
-        if (musicPlaying) {
+    display:none;
 
-            pauseMusic();
+    justify-content:center;
+    align-items:center;
 
-        }
+    flex-direction:column;
 
-        else {
+    text-align:center;
 
-            playMusic();
+    padding:50px 20px;
 
-        }
+    position:relative;
+}
 
+#hero{
+    display:flex;
+}
+
+
+/* ==================================================
+   HERO
+================================================== */
+
+#hero h3{
+    font-size:30px;
+    font-weight:500;
+
+    animation:fadeDown 1.2s ease;
+}
+
+#hero h1{
+    font-family:'Great Vibes',cursive;
+
+    font-size:90px;
+
+    margin:15px 0;
+
+    text-shadow:
+        0 5px 20px rgba(0,0,0,.2);
+
+    animation:heartBeat 2s infinite;
+}
+
+#hero p{
+    max-width:750px;
+
+    font-size:18px;
+    line-height:2;
+
+    margin:10px auto;
+}
+
+
+/* ==================================================
+   TITLES
+================================================== */
+
+.title{
+    font-family:'Great Vibes',cursive;
+
+    font-size:55px;
+
+    margin-bottom:20px;
+
+    text-shadow:
+        0 5px 20px rgba(0,0,0,.2);
+}
+
+.subtitle{
+    font-size:18px;
+    line-height:1.8;
+}
+
+
+/* ==================================================
+   BUTTON
+================================================== */
+
+button{
+    border:none;
+    outline:none;
+
+    padding:14px 30px;
+
+    margin-top:25px;
+
+    border-radius:50px;
+
+    background:#fff;
+
+    color:#ff2d75;
+
+    font-family:'Poppins',sans-serif;
+
+    font-size:17px;
+    font-weight:600;
+
+    cursor:pointer;
+
+    box-shadow:
+        0 8px 25px rgba(0,0,0,.18);
+
+    transition:
+        transform .3s ease,
+        box-shadow .3s ease;
+}
+
+button:hover{
+    transform:translateY(-4px) scale(1.04);
+
+    box-shadow:
+        0 12px 30px rgba(0,0,0,.25);
+}
+
+button:active{
+    transform:scale(.96);
+}
+
+button:disabled{
+    opacity:.7;
+    cursor:not-allowed;
+}
+
+
+/* ==================================================
+   GIFT
+================================================== */
+
+#giftSection p{
+    max-width:650px;
+
+    font-size:18px;
+    line-height:2;
+}
+
+#giftBox{
+    width:250px;
+    max-width:75vw;
+
+    margin:30px 0;
+
+    cursor:pointer;
+
+    filter:
+        drop-shadow(0 15px 20px rgba(0,0,0,.25));
+
+    transition:
+        transform .5s ease;
+}
+
+#giftBox:hover{
+    transform:
+        scale(1.08)
+        rotate(-3deg);
+}
+
+#giftMessage{
+    display:none;
+
+    animation:
+        fadeUp .8s ease;
+}
+
+
+/* ==================================================
+   CAKE
+================================================== */
+
+#cakeSection p{
+    font-size:18px;
+    line-height:1.8;
+}
+
+#birthdayCake{
+    width:380px;
+
+    max-width:85vw;
+
+    max-height:55vh;
+
+    object-fit:contain;
+
+    margin:25px 0;
+
+    filter:
+        drop-shadow(0 15px 25px rgba(0,0,0,.25));
+
+    transition:
+        transform .5s ease;
+}
+
+#birthdayCake:hover{
+    transform:scale(1.04);
+}
+
+#wishText{
+    display:none;
+
+    max-width:700px;
+
+    animation:
+        fadeUp 1s ease;
+}
+
+#wishText h2{
+    font-size:30px;
+    margin-bottom:15px;
+}
+
+
+/* ==================================================
+   GALLERY
+================================================== */
+
+#gallerySection{
+    padding-left:10px;
+    padding-right:10px;
+}
+
+#gallerySection .subtitle{
+    margin-bottom:20px;
+}
+
+
+/* Full Photo Area */
+
+.full-photo-box{
+    width:100%;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    gap:20px;
+
+    position:relative;
+
+    margin:20px 0;
+}
+
+
+/* Main Gallery Photo */
+
+#galleryImage{
+    display:block;
+
+    width:auto;
+
+    max-width:calc(100vw - 180px);
+
+    max-height:70vh;
+
+    object-fit:contain;
+
+    border-radius:18px;
+
+    border:4px solid rgba(255,255,255,.9);
+
+    background:rgba(255,255,255,.08);
+
+    box-shadow:
+        0 15px 45px rgba(0,0,0,.35);
+
+    cursor:zoom-in;
+
+    transition:
+        transform .4s ease,
+        opacity .3s ease;
+}
+
+#galleryImage:hover{
+    transform:scale(1.015);
+}
+
+
+/* Gallery Arrows */
+
+.photo-arrow{
+    flex-shrink:0;
+
+    width:58px;
+    height:58px;
+
+    padding:0;
+    margin:0;
+
+    border-radius:50%;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    font-size:22px;
+
+    z-index:5;
+}
+
+
+/* Counter */
+
+#photoCounter{
+    margin-top:5px;
+
+    font-size:16px;
+
+    font-weight:500;
+
+    background:rgba(255,255,255,.15);
+
+    padding:6px 18px;
+
+    border-radius:30px;
+}
+
+
+/* Gallery Buttons */
+
+.gallery-buttons{
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:12px;
+
+    flex-wrap:wrap;
+}
+
+.gallery-buttons button{
+    margin-top:15px;
+}
+
+
+/* ==================================================
+   FULLSCREEN PHOTO VIEWER
+================================================== */
+
+#photoViewer{
+    position:fixed;
+
+    inset:0;
+
+    z-index:100000;
+
+    display:none;
+
+    justify-content:center;
+    align-items:center;
+
+    background:
+        rgba(0,0,0,.94);
+
+    padding:30px;
+}
+
+
+/* Fullscreen Image */
+
+#fullPhoto{
+    display:block;
+
+    max-width:94vw;
+    max-height:92vh;
+
+    width:auto;
+    height:auto;
+
+    object-fit:contain;
+
+    border-radius:10px;
+
+    box-shadow:
+        0 10px 50px rgba(0,0,0,.7);
+}
+
+
+/* Close */
+
+.close-photo{
+    position:absolute;
+
+    top:20px;
+    right:25px;
+
+    width:55px;
+    height:55px;
+
+    padding:0;
+    margin:0;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    border-radius:50%;
+
+    background:rgba(255,255,255,.15);
+
+    color:#fff;
+
+    font-size:28px;
+
+    z-index:10;
+}
+
+.close-photo:hover{
+    background:rgba(255,255,255,.3);
+}
+
+
+/* Viewer Arrows */
+
+.viewer-arrow{
+    position:absolute;
+
+    top:50%;
+
+    transform:translateY(-50%);
+
+    width:60px;
+    height:60px;
+
+    padding:0;
+    margin:0;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    border-radius:50%;
+
+    background:rgba(255,255,255,.15);
+
+    color:#fff;
+
+    font-size:25px;
+
+    z-index:10;
+}
+
+.viewer-arrow:hover{
+    background:rgba(255,255,255,.3);
+}
+
+.viewer-left{
+    left:25px;
+}
+
+.viewer-right{
+    right:25px;
+}
+
+
+/* ==================================================
+   MESSAGE
+================================================== */
+
+#messageSection{
+    padding:30px 20px;
+}
+
+.message-card{
+    width:min(850px,95%);
+
+    padding:45px 35px;
+
+    border-radius:30px;
+
+    background:
+        rgba(255,255,255,.13);
+
+    border:
+        1px solid rgba(255,255,255,.25);
+
+    backdrop-filter:blur(15px);
+
+    -webkit-backdrop-filter:blur(15px);
+
+    box-shadow:
+        0 20px 60px rgba(0,0,0,.2);
+}
+
+.typing{
+    white-space:pre-line;
+
+    font-size:18px;
+
+    line-height:2;
+
+    min-height:300px;
+}
+
+.wish-icons{
+    margin-top:20px;
+
+    font-size:30px;
+
+    letter-spacing:8px;
+}
+
+
+/* ==================================================
+   FINAL
+================================================== */
+
+#finalSection{
+    overflow:hidden;
+}
+
+.final-title{
+    font-family:'Great Vibes',cursive;
+
+    font-size:80px;
+
+    margin-bottom:20px;
+
+    text-shadow:
+        0 5px 25px rgba(0,0,0,.25);
+
+    animation:
+        heartBeat 1.8s infinite;
+}
+
+#finalSection h2{
+    font-size:25px;
+
+    margin-bottom:25px;
+}
+
+#finalSection p{
+    font-size:18px;
+
+    line-height:2;
+
+    max-width:650px;
+}
+
+.celebration{
+    font-size:55px;
+
+    margin:30px 0;
+
+    animation:
+        bounce 1.5s infinite;
+}
+
+
+/* ==================================================
+   FLOATING HEART
+================================================== */
+
+@keyframes floatHeart{
+
+    0%{
+        transform:
+            translateY(0)
+            scale(.8);
+
+        opacity:1;
     }
-);
 
+    100%{
+        transform:
+            translateY(-120vh)
+            scale(1.5);
 
-/* =========================================================
-   4. PAGE 1 → PAGE 2
-========================================================= */
-
-openBtn.addEventListener(
-    "click",
-    function () {
-
-        /*
-            Browser allows music after
-            user interaction.
-        */
-
-        playMusic();
-
-
-        /*
-            Small button effect
-        */
-
-        openBtn.style.transform =
-            "scale(0.94)";
-
-
-        setTimeout(
-            function () {
-
-                openBtn.style.transform =
-                    "";
-
-                showPage(2);
-
-            },
-            180
-        );
-
-    }
-);
-
-
-/* =========================================================
-   5. GIFT BOX
-========================================================= */
-
-if (giftBox) {
-
-    giftBox.addEventListener(
-        "click",
-        function () {
-
-            /*
-                Prevent multiple clicks
-            */
-
-            if (
-                giftBox.classList.contains(
-                    "opened"
-                )
-            ) {
-
-                return;
-
-            }
-
-
-            /*
-                Open gift
-            */
-
-            giftBox.classList.add(
-                "opened"
-            );
-
-
-            /*
-                Move lid
-            */
-
-            const lid =
-                giftBox.querySelector(
-                    ".gift-lid"
-                );
-
-
-            if (lid) {
-
-                lid.style.transform =
-                    "translateY(-80px) rotate(-8deg)";
-
-            }
-
-
-            /*
-                Wait for animation
-                then show photo page
-            */
-
-            setTimeout(
-                function () {
-
-                    showPage(3);
-
-                    startPhotoSlider();
-
-                },
-                1100
-            );
-
-        }
-    );
-
-}
-
-
-/* =========================================================
-   6. PHOTO SYSTEM
-========================================================= */
-
-
-/*
-    14 Birthday Photos
-*/
-
-const photos = [
-
-    "images/birthday (1).png",
-
-    "images/birthday (2).png",
-
-    "images/birthday (3).png",
-
-    "images/birthday (4).png",
-
-    "images/birthday (5).png",
-
-    "images/birthday (6).png",
-
-    "images/birthday (7).png",
-
-    "images/birthday (8).png",
-
-    "images/birthday (9).png",
-
-    "images/birthday (10).png",
-
-    "images/birthday (11).png",
-
-    "images/birthday (12).png",
-
-    "images/birthday (13).png",
-
-    "images/birthday (14).png"
-
-];
-
-
-/*
-    Photo captions
-*/
-
-const captions = [
-
-    "A beautiful memory ❤️",
-
-    "A moment worth remembering ✨",
-
-    "Beautiful smile ❤️",
-
-    "One special memory 🌸",
-
-    "A day to remember 💕",
-
-    "Happiness looks beautiful on you ✨",
-
-    "Another beautiful moment ❤️",
-
-    "A memory full of smiles 🌷",
-
-    "Simply wonderful 💖",
-
-    "A special moment ✨",
-
-    "Beautiful memories forever ❤️",
-
-    "Keep smiling always 🌸",
-
-    "Another chapter of memories 💕",
-
-    "The sweetest memory ❤️"
-
-];
-
-
-let currentPhoto = 0;
-
-let photoTimer = null;
-
-
-/*
-    Change Photo
-*/
-
-function changePhoto(index) {
-
-    if (!memoryPhoto) {
-
-        return;
-
-    }
-
-
-    /*
-        Fade out
-    */
-
-    memoryPhoto.style.opacity = "0";
-
-    memoryPhoto.style.transform =
-        "scale(0.96)";
-
-
-    setTimeout(
-        function () {
-
-            memoryPhoto.src =
-                photos[index];
-
-
-            if (photoNumber) {
-
-                photoNumber.textContent =
-                    `${index + 1} / ${photos.length}`;
-
-            }
-
-
-            if (photoCaption) {
-
-                photoCaption.textContent =
-                    captions[index];
-
-            }
-
-
-            /*
-                Fade in
-            */
-
-            memoryPhoto.style.opacity = "1";
-
-            memoryPhoto.style.transform =
-                "scale(1)";
-
-        },
-        350
-    );
-
-}
-
-
-/*
-    Start Automatic Slider
-*/
-
-function startPhotoSlider() {
-
-    /*
-        Clear previous timer
-    */
-
-    if (photoTimer) {
-
-        clearInterval(photoTimer);
-
-    }
-
-
-    /*
-        Start from first photo
-    */
-
-    currentPhoto = 0;
-
-    changePhoto(currentPhoto);
-
-
-    /*
-        Change every 4 seconds
-    */
-
-    photoTimer = setInterval(
-        function () {
-
-            currentPhoto++;
-
-            /*
-                Loop back to first photo
-            */
-
-            if (
-                currentPhoto >= photos.length
-            ) {
-
-                currentPhoto = 0;
-
-            }
-
-
-            changePhoto(currentPhoto);
-
-        },
-        4000
-    );
-
-}
-
-
-/* =========================================================
-   7. PHOTO → LETTER
-========================================================= */
-
-if (photoNextBtn) {
-
-    photoNextBtn.addEventListener(
-        "click",
-        function () {
-
-            /*
-                Stop photo slider
-            */
-
-            if (photoTimer) {
-
-                clearInterval(photoTimer);
-
-                photoTimer = null;
-
-            }
-
-
-            showPage(4);
-
-        }
-    );
-
-}
-
-
-/* =========================================================
-   8. LETTER → CAKE
-========================================================= */
-
-if (letterNextBtn) {
-
-    letterNextBtn.addEventListener(
-        "click",
-        function () {
-
-            showPage(5);
-
-        }
-    );
-
-}
-
-
-/* =========================================================
-   9. CAKE / CANDLE
-========================================================= */
-
-let candleBlown = false;
-
-
-if (blowBtn) {
-
-    blowBtn.addEventListener(
-        "click",
-        function () {
-
-            /*
-                Prevent second click
-            */
-
-            if (candleBlown) {
-
-                return;
-
-            }
-
-
-            candleBlown = true;
-
-
-            /*
-                Hide flame
-            */
-
-            const flame =
-                document.querySelector(
-                    ".flame"
-                );
-
-
-            if (flame) {
-
-                flame.style.opacity = "0";
-
-                flame.style.transform =
-                    "translateX(-50%) scale(0)";
-
-            }
-
-
-            /*
-                Change message
-            */
-
-            if (wishText) {
-
-                wishText.textContent =
-                    "✨ Your wish has been sent to the stars! ✨";
-
-            }
-
-
-            /*
-                Button
-            */
-
-            blowBtn.textContent =
-                "✨ Wish Made!";
-
-
-            /*
-                Fireworks
-            */
-
-            createFireworks();
-
-
-            /*
-                Go to final page
-            */
-
-            setTimeout(
-                function () {
-
-                    showPage(6);
-
-                    createFireworks();
-
-                },
-                1800
-            );
-
-        }
-    );
-
-}
-
-
-/* =========================================================
-   10. FIREWORKS
-========================================================= */
-
-function createFireworks() {
-
-    if (!fireworks) {
-
-        return;
-
-    }
-
-
-    /*
-        Create multiple fireworks
-    */
-
-    for (
-        let i = 0;
-        i < 8;
-        i++
-    ) {
-
-        setTimeout(
-            function () {
-
-                createSingleFirework();
-
-            },
-            i * 300
-        );
-
-    }
-
-}
-
-
-/*
-    Single Firework
-*/
-
-function createSingleFirework() {
-
-    const centerX =
-        Math.random() * 80 + 10;
-
-    const centerY =
-        Math.random() * 60 + 10;
-
-
-    /*
-        Create particles
-    */
-
-    for (
-        let i = 0;
-        i < 24;
-        i++
-    ) {
-
-        const particle =
-            document.createElement(
-                "span"
-            );
-
-
-        particle.className =
-            "firework";
-
-
-        particle.style.left =
-            `${centerX}%`;
-
-
-        particle.style.top =
-            `${centerY}%`;
-
-
-        /*
-            Random direction
-        */
-
-        const angle =
-            Math.random() * Math.PI * 2;
-
-
-        const distance =
-            Math.random() * 180 + 80;
-
-
-        const x =
-            Math.cos(angle) * distance;
-
-
-        const y =
-            Math.sin(angle) * distance;
-
-
-        particle.style.setProperty(
-            "--x",
-            `${x}px`
-        );
-
-
-        particle.style.setProperty(
-            "--y",
-            `${y}px`
-        );
-
-
-        fireworks.appendChild(
-            particle
-        );
-
-
-        /*
-            Remove after animation
-        */
-
-        setTimeout(
-            function () {
-
-                particle.remove();
-
-            },
-            1600
-        );
-
+        opacity:0;
     }
 
 }
 
 
-/* =========================================================
-   11. KEYBOARD CONTROL
-========================================================= */
+/* ==================================================
+   CONFETTI / FALLING
+================================================== */
 
-document.addEventListener(
-    "keydown",
-    function (event) {
+@keyframes fall{
 
-        /*
-            Space = Music
-        */
+    0%{
+        transform:
+            translateY(-50px)
+            rotate(0deg);
 
-        if (
-            event.code === "Space"
-        ) {
-
-            event.preventDefault();
-
-            if (musicPlaying) {
-
-                pauseMusic();
-
-            }
-
-            else {
-
-                playMusic();
-
-            }
-
-        }
-
-
-        /*
-            Arrow Right = Next Page
-        */
-
-        if (
-            event.code === "ArrowRight"
-        ) {
-
-            if (
-                currentPage < 6
-            ) {
-
-                showPage(
-                    currentPage + 1
-                );
-
-            }
-
-        }
-
-
-        /*
-            Arrow Left = Previous Page
-        */
-
-        if (
-            event.code === "ArrowLeft"
-        ) {
-
-            if (
-                currentPage > 1
-            ) {
-
-                showPage(
-                    currentPage - 1
-                );
-
-            }
-
-        }
-
+        opacity:1;
     }
-);
 
+    100%{
+        transform:
+            translateY(110vh)
+            rotate(720deg);
 
-/* =========================================================
-   12. PRELOAD PHOTOS
-========================================================= */
-
-function preloadPhotos() {
-
-    photos.forEach(
-        function (photo) {
-
-            const image =
-                new Image();
-
-            image.src = photo;
-
-        }
-    );
+        opacity:0;
+    }
 
 }
 
 
-/* =========================================================
-   13. PAGE LOAD
-========================================================= */
+/* ==================================================
+   SPARKLES
+================================================== */
 
-window.addEventListener(
-    "load",
-    function () {
+.spark{
+    position:fixed;
 
-        /*
-            Start on Page 1
-        */
+    z-index:2;
 
-        showPage(1);
+    pointer-events:none;
 
+    animation:
+        sparkle 2s linear forwards;
+}
 
-        /*
-            Preload all photos
-        */
+@keyframes sparkle{
 
-        preloadPhotos();
-
-
-        /*
-            Initial music state
-        */
-
-        musicBtn.textContent =
-            "🔇";
-
-
-        /*
-            Console message
-        */
-
-        console.log(
-            "🎂 Birthday Surprise Website Loaded Successfully ❤️"
-        );
-
+    0%{
+        opacity:0;
+        transform:scale(0);
     }
-);
+
+    50%{
+        opacity:1;
+        transform:scale(1.2);
+    }
+
+    100%{
+        opacity:0;
+        transform:scale(0);
+    }
+
+}
+
+
+/* ==================================================
+   GENERAL ANIMATIONS
+================================================== */
+
+@keyframes fadeDown{
+
+    from{
+        opacity:0;
+        transform:translateY(-30px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+
+}
+
+@keyframes fadeUp{
+
+    from{
+        opacity:0;
+        transform:translateY(30px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+
+}
+
+@keyframes heartBeat{
+
+    0%,100%{
+        transform:scale(1);
+    }
+
+    50%{
+        transform:scale(1.04);
+    }
+
+}
+
+@keyframes bounce{
+
+    0%,100%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-15px);
+    }
+
+}
+
+
+/* ==================================================
+   MOBILE
+================================================== */
+
+@media(max-width:768px){
+
+    section{
+        padding:35px 15px;
+    }
+
+
+    #hero h3{
+        font-size:23px;
+    }
+
+
+    #hero h1{
+        font-size:60px;
+    }
+
+
+    #hero p{
+        font-size:15px;
+        line-height:1.8;
+    }
+
+
+    .title{
+        font-size:42px;
+    }
+
+
+    #giftBox{
+        width:200px;
+    }
+
+
+    #birthdayCake{
+        width:300px;
+        max-height:45vh;
+    }
+
+
+    /* Mobile Gallery */
+
+    .full-photo-box{
+        gap:8px;
+    }
+
+
+    #galleryImage{
+        max-width:calc(100vw - 100px);
+        max-height:65vh;
+
+        border-width:3px;
+
+        border-radius:12px;
+    }
+
+
+    .photo-arrow{
+        width:42px;
+        height:42px;
+
+        font-size:17px;
+    }
+
+
+    .gallery-buttons{
+        gap:5px;
+    }
+
+
+    .gallery-buttons button{
+        padding:11px 18px;
+
+        font-size:14px;
+    }
+
+
+    /* Fullscreen Mobile */
+
+    #photoViewer{
+        padding:10px;
+    }
+
+
+    #fullPhoto{
+        max-width:98vw;
+        max-height:90vh;
+
+        border-radius:5px;
+    }
+
+
+    .close-photo{
+        top:10px;
+        right:10px;
+
+        width:45px;
+        height:45px;
+
+        font-size:23px;
+    }
+
+
+    .viewer-arrow{
+        width:45px;
+        height:45px;
+
+        font-size:18px;
+    }
+
+
+    .viewer-left{
+        left:8px;
+    }
+
+
+    .viewer-right{
+        right:8px;
+    }
+
+
+    .message-card{
+        padding:30px 20px;
+    }
+
+
+    .typing{
+        font-size:15px;
+        line-height:1.8;
+        min-height:350px;
+    }
+
+
+    .final-title{
+        font-size:55px;
+    }
+
+
+    #finalSection h2{
+        font-size:20px;
+    }
+
+
+    #finalSection p{
+        font-size:15px;
+    }
+
+
+    .celebration{
+        font-size:38px;
+    }
+
+}
+
+
+/* ==================================================
+   SMALL MOBILE
+================================================== */
+
+@media(max-width:420px){
+
+    #hero h1{
+        font-size:52px;
+    }
+
+
+    .title{
+        font-size:36px;
+    }
+
+
+    #galleryImage{
+        max-width:calc(100vw - 85px);
+        max-height:60vh;
+    }
+
+
+    .photo-arrow{
+        width:35px;
+        height:35px;
+
+        font-size:14px;
+    }
+
+
+    button{
+        font-size:15px;
+        padding:12px 22px;
+    }
+
+}
