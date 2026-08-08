@@ -297,7 +297,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         return "images/birthday (" +
             number +
-            ").jpg";
+            ").png";
 
     }
 
