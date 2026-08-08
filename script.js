@@ -1,11 +1,11 @@
 /* =========================================================
-   BIRTHDAY WEBSITE SCRIPT
-   PART 1
+   BIRTHDAY WEBSITE
+   script.js — PART 1
 ========================================================= */
 
 
 /* =========================================================
-   ELEMENTS
+   PAGE ELEMENTS
 ========================================================= */
 
 const loading =
@@ -40,7 +40,7 @@ const finalSection =
 
 
 /* =========================================================
-   GIFT ELEMENTS
+   GIFT
 ========================================================= */
 
 const giftBox =
@@ -54,7 +54,7 @@ const giftHint =
 
 
 /* =========================================================
-   CAKE ELEMENTS
+   CAKE
 ========================================================= */
 
 const birthdayCake =
@@ -81,7 +81,7 @@ let musicStarted = false;
    ALL SECTIONS
 ========================================================= */
 
-const allSections = [
+const sections = [
     hero,
     giftSection,
     photoSection,
@@ -99,7 +99,7 @@ const allSections = [
 
 function hideAllSections() {
 
-    allSections.forEach(function(section) {
+    sections.forEach(function(section) {
 
         if (section) {
             section.style.display = "none";
@@ -133,7 +133,7 @@ function showSection(section) {
 
 
 /* =========================================================
-   LOADING SCREEN
+   PAGE START
 ========================================================= */
 
 document.addEventListener(
@@ -149,6 +149,7 @@ document.addEventListener(
         if (website) {
             website.style.display = "none";
         }
+
 
         setTimeout(function() {
 
@@ -169,7 +170,7 @@ document.addEventListener(
 
 
 /* =========================================================
-   START MUSIC
+   MUSIC
 ========================================================= */
 
 function startMusic() {
@@ -180,26 +181,34 @@ function startMusic() {
 
     music.volume = 0.45;
 
-    music.play()
-        .then(function() {
+    const playPromise =
+        music.play();
 
-            musicStarted = true;
 
-        })
-        .catch(function() {
+    if (playPromise !== undefined) {
 
-            /*
-                Browser may block autoplay.
-                Music will start after another click.
-            */
+        playPromise
+            .then(function() {
 
-        });
+                musicStarted = true;
+
+            })
+            .catch(function() {
+
+                /*
+                    Browser autoplay block hele
+                    next user click re retry heba.
+                */
+
+            });
+
+    }
 
 }
 
 
 /* =========================================================
-   OPENING → GIFT
+   HERO → GIFT
 ========================================================= */
 
 function goGift() {
@@ -221,6 +230,7 @@ let giftOpened = false;
 function openGift() {
 
     startMusic();
+
 
     if (giftOpened) {
         return;
@@ -251,13 +261,6 @@ function openGift() {
 
     setTimeout(function() {
 
-        if (giftMessage) {
-
-            giftMessage.style.display =
-                "block";
-
-        }
-
         if (giftBox) {
 
             giftBox.style.transform =
@@ -265,7 +268,15 @@ function openGift() {
 
         }
 
-    }, 700);
+
+        if (giftMessage) {
+
+            giftMessage.style.display =
+                "block";
+
+        }
+
+    }, 650);
 
 }
 
@@ -291,14 +302,13 @@ function showCake() {
 
 
     /*
-        Reset cake every time
-        section is opened.
+        Cake section reset.
     */
 
     if (birthdayCake) {
 
         birthdayCake.src =
-            "images/candle-on.png";
+            "images/cake.png";
 
         birthdayCake.classList.remove(
             "cake-cut-animation"
@@ -327,6 +337,9 @@ function showCake() {
             "none";
 
     }
+
+
+    cakeAlreadyCut = false;
 
 }
 
@@ -393,7 +406,7 @@ function showCandles() {
 
 
 /* =========================================================
-   EXPORT FUNCTIONS FOR HTML ONCLICK
+   EXPORT FUNCTIONS
 ========================================================= */
 
 window.goGift =
@@ -429,13 +442,12 @@ const blowBtn =
 const wishText =
     document.getElementById("wishText");
 
+let candlesBlown = false;
+
 
 /* =========================================================
    BLOW CANDLES
 ========================================================= */
-
-let candlesBlown = false;
-
 
 function blowCandles() {
 
@@ -446,23 +458,16 @@ function blowCandles() {
     candlesBlown = true;
 
 
-    /*
-        Candle ON → Candle OFF
-
-        Important:
-        candle-off.png re smoke thiba darkar nahi.
-    */
-
     if (candleCake) {
 
-        candleCake.classList.add(
-            "candle-blown"
-        );
+        candleCake.style.opacity = "0.5";
 
         setTimeout(function() {
 
             candleCake.src =
                 "images/candle-off.png";
+
+            candleCake.style.opacity = "1";
 
         }, 300);
 
@@ -471,8 +476,7 @@ function blowCandles() {
 
     if (blowBtn) {
 
-        blowBtn.disabled =
-            true;
+        blowBtn.disabled = true;
 
         blowBtn.innerHTML =
             "Wish Completed";
@@ -505,25 +509,6 @@ const totalPhotos = 14;
 let slide = null;
 
 
-/* =========================================================
-   PHOTO PATH
-========================================================= */
-
-function getPhotoPath(number) {
-
-    return (
-        "images/birthday (" +
-        number +
-        ").png"
-    );
-
-}
-
-
-/* =========================================================
-   GALLERY ELEMENTS
-========================================================= */
-
 const galleryImage =
     document.getElementById("galleryImage");
 
@@ -538,6 +523,19 @@ const fullPhoto =
 
 
 /* =========================================================
+   PHOTO PATH
+========================================================= */
+
+function getPhotoPath(number) {
+
+    return "images/birthday (" +
+        number +
+        ").png";
+
+}
+
+
+/* =========================================================
    LOAD PHOTO
 ========================================================= */
 
@@ -548,8 +546,7 @@ function loadPhoto() {
     }
 
 
-    galleryImage.style.opacity =
-        "0";
+    galleryImage.style.opacity = "0";
 
 
     const imagePath =
@@ -559,8 +556,7 @@ function loadPhoto() {
     galleryImage.onload =
         function() {
 
-            galleryImage.style.opacity =
-                "1";
+            galleryImage.style.opacity = "1";
 
         };
 
@@ -568,13 +564,12 @@ function loadPhoto() {
     galleryImage.onerror =
         function() {
 
+            galleryImage.style.opacity = "1";
+
             console.log(
                 "Photo not found:",
                 imagePath
             );
-
-            galleryImage.style.opacity =
-                "1";
 
         };
 
@@ -597,7 +592,7 @@ function loadPhoto() {
 
 
 /* =========================================================
-   CANDLE → GALLERY
+   CANDLES → GALLERY
 ========================================================= */
 
 function showGallery() {
@@ -622,18 +617,11 @@ function nextPhoto() {
     photo++;
 
     if (photo > totalPhotos) {
-
         photo = 1;
-
     }
 
     loadPhoto();
 
-
-    /*
-        If full-screen viewer is open,
-        update that photo too.
-    */
 
     if (
         photoViewer &&
@@ -657,9 +645,7 @@ function previousPhoto() {
     photo--;
 
     if (photo < 1) {
-
         photo = totalPhotos;
-
     }
 
     loadPhoto();
@@ -679,7 +665,7 @@ function previousPhoto() {
 
 
 /* =========================================================
-   PLAY SLIDESHOW
+   SLIDESHOW
 ========================================================= */
 
 function autoSlide() {
@@ -777,9 +763,7 @@ document.addEventListener(
             !photoViewer ||
             photoViewer.style.display !== "flex"
         ) {
-
             return;
-
         }
 
 
@@ -891,7 +875,7 @@ function typeWriter() {
 
 
 /* =========================================================
-   FINAL
+   FINAL SURPRISE
 ========================================================= */
 
 function showFinal() {
@@ -908,7 +892,7 @@ function showFinal() {
 
 
 /* =========================================================
-   FLOATING HEARTS
+   HEARTS
 ========================================================= */
 
 let heartsStarted = false;
@@ -1038,7 +1022,7 @@ function startConfetti() {
 
 
 /* =========================================================
-   PRELOAD ALL MEMORY PHOTOS
+   PRELOAD PHOTOS
 ========================================================= */
 
 for (
@@ -1050,7 +1034,6 @@ for (
     const image =
         new Image();
 
-
     image.src =
         getPhotoPath(i);
 
@@ -1058,7 +1041,7 @@ for (
 
 
 /* =========================================================
-   RESTART
+   START AGAIN
 ========================================================= */
 
 function restartWebsite() {
@@ -1071,7 +1054,7 @@ function restartWebsite() {
 
 
 /* =========================================================
-   EXPORT FUNCTIONS
+   EXPORT
 ========================================================= */
 
 window.blowCandles =
@@ -1109,7 +1092,7 @@ window.restartWebsite =
 
 
 /* =========================================================
-   COMPLETE
+   DONE
 ========================================================= */
 
 console.log(
