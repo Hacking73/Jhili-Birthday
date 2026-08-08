@@ -14,16 +14,18 @@ html {
 
 body {
     min-height: 100vh;
-    font-family: "Segoe UI", Arial, sans-serif;
-    color: #5b2947;
     overflow-x: hidden;
+
+    font-family: "Segoe UI", Arial, sans-serif;
+
+    color: #5b2947;
 
     background:
         linear-gradient(
             135deg,
-            #ffdce9 0%,
-            #f5d5e8 45%,
-            #e8d5f2 100%
+            #ffe1ec 0%,
+            #f6d9ea 50%,
+            #eadcf5 100%
         );
 }
 
@@ -38,10 +40,12 @@ body {
     z-index: 9999;
 
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
 
     text-align: center;
+
+    color: #ffffff;
 
     background:
         linear-gradient(
@@ -49,8 +53,6 @@ body {
             #d96a9f,
             #a86ac2
         );
-
-    color: white;
 }
 
 .loading-content {
@@ -58,15 +60,17 @@ body {
 }
 
 .loading-heart {
+    margin-bottom: 18px;
+
     font-size: 60px;
-    margin-bottom: 15px;
 
     animation: heartbeat 1.2s infinite;
 }
 
 .loading-content h2 {
-    font-size: 28px;
     margin-bottom: 8px;
+
+    font-size: 27px;
 }
 
 .loading-content p {
@@ -80,13 +84,14 @@ body {
 
 #website {
     display: none;
+
     width: 100%;
     min-height: 100vh;
 }
 
 
 /* =========================================================
-   PAGE SECTION
+   PAGE SECTIONS
 ========================================================= */
 
 .page-section {
@@ -95,8 +100,8 @@ body {
 
     display: none;
 
-    justify-content: center;
     align-items: center;
+    justify-content: center;
 
     padding: 40px 20px;
 
@@ -104,15 +109,8 @@ body {
 }
 
 
-/* Opening page first */
-
-#hero {
-    display: flex;
-}
-
-
 /* =========================================================
-   CONTENT BOX
+   CONTENT
 ========================================================= */
 
 .content-box {
@@ -122,17 +120,19 @@ body {
 
     border-radius: 28px;
 
-    background: rgba(255, 255, 255, 0.42);
+    background:
+        rgba(255, 255, 255, 0.48);
 
-    border: 1px solid rgba(255, 255, 255, 0.65);
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.7);
 
     box-shadow:
-        0 18px 55px rgba(94, 36, 75, 0.16);
+        0 18px 55px
+        rgba(94, 36, 75, 0.16);
 
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
-
-    animation: pageEnter 0.6s ease;
 }
 
 
@@ -141,6 +141,8 @@ body {
 ========================================================= */
 
 .subtitle {
+    margin-bottom: 14px;
+
     font-size: 15px;
 
     letter-spacing: 2px;
@@ -148,26 +150,26 @@ body {
     text-transform: uppercase;
 
     color: #a14a76;
-
-    margin-bottom: 14px;
 }
 
 .content-box h1 {
-    font-size: clamp(40px, 7vw, 70px);
-
-    line-height: 1.1;
+    margin-bottom: 12px;
 
     color: #963565;
 
-    margin-bottom: 12px;
+    font-size:
+        clamp(40px, 7vw, 70px);
+
+    line-height: 1.1;
 }
 
 .content-box h2 {
-    font-size: clamp(28px, 5vw, 45px);
+    margin-bottom: 18px;
 
     color: #963565;
 
-    margin-bottom: 18px;
+    font-size:
+        clamp(28px, 5vw, 45px);
 }
 
 .description {
@@ -175,7 +177,8 @@ body {
 
     margin: 15px auto 25px;
 
-    font-size: clamp(16px, 2vw, 19px);
+    font-size:
+        clamp(16px, 2vw, 19px);
 
     line-height: 1.8;
 }
@@ -186,18 +189,17 @@ body {
 ========================================================= */
 
 button {
-    border: none;
-    outline: none;
+    border: 0;
+    outline: 0;
 
     cursor: pointer;
 
-    padding: 13px 28px;
-
     margin: 7px 4px;
+    padding: 13px 28px;
 
     border-radius: 40px;
 
-    color: white;
+    color: #ffffff;
 
     background:
         linear-gradient(
@@ -207,22 +209,24 @@ button {
         );
 
     font-size: 16px;
-
     font-weight: 600;
 
     box-shadow:
-        0 8px 20px rgba(145, 55, 120, 0.22);
+        0 8px 20px
+        rgba(145, 55, 120, 0.22);
 
     transition:
         transform 0.25s ease,
-        box-shadow 0.25s ease;
+        box-shadow 0.25s ease,
+        opacity 0.25s ease;
 }
 
 button:hover {
     transform: translateY(-2px);
 
     box-shadow:
-        0 12px 25px rgba(145, 55, 120, 0.30);
+        0 12px 25px
+        rgba(145, 55, 120, 0.30);
 }
 
 button:active {
@@ -231,6 +235,7 @@ button:active {
 
 button:disabled {
     opacity: 0.6;
+
     cursor: not-allowed;
 }
 
@@ -240,14 +245,14 @@ button:disabled {
 ========================================================= */
 
 .gift-box {
-    width: min(360px, 75vw);
+    width: min(360px, 78vw);
 
     margin: 25px auto 10px;
 
     display: flex;
 
-    justify-content: center;
     align-items: center;
+    justify-content: center;
 }
 
 #giftBox {
@@ -269,16 +274,22 @@ button:disabled {
 }
 
 #giftHint {
-    font-size: 15px;
-
     margin-top: 10px;
 
     color: #8d466c;
+
+    font-size: 15px;
+}
+
+#giftMessage {
+    margin-top: 20px;
+
+    animation: popIn 0.5s ease;
 }
 
 
 /* =========================================================
-   PHOTO
+   MAIN PHOTO — 4:3
 ========================================================= */
 
 .main-photo-box {
@@ -292,17 +303,19 @@ button:disabled {
 
     display: flex;
 
-    justify-content: center;
     align-items: center;
+    justify-content: center;
 
     overflow: hidden;
 
     border-radius: 22px;
 
-    background: rgba(255, 255, 255, 0.4);
+    background:
+        rgba(255, 255, 255, 0.4);
 
     box-shadow:
-        0 15px 40px rgba(75, 25, 65, 0.18);
+        0 15px 40px
+        rgba(75, 25, 65, 0.18);
 }
 
 #mainPhoto {
@@ -317,11 +330,11 @@ button:disabled {
 }
 
 .photo-caption {
-    font-size: 16px;
-
     margin: 10px auto 20px;
 
     color: #75405e;
+
+    font-size: 16px;
 }
 
 
@@ -336,16 +349,15 @@ button:disabled {
 
     display: flex;
 
-    justify-content: center;
     align-items: center;
+    justify-content: center;
 }
 
 .cake-box img {
     width: 100%;
+    height: auto;
 
     max-height: 55vh;
-
-    height: auto;
 
     display: block;
 
@@ -363,11 +375,10 @@ button:disabled {
 
 
 /* =========================================================
-   CAKE MESSAGE / WISH
+   CAKE MESSAGE
 ========================================================= */
 
-#cakeMessage,
-#wishText {
+#cakeMessage {
     margin-top: 25px;
 
     padding: 22px;
@@ -385,32 +396,6 @@ button:disabled {
    ANIMATIONS
 ========================================================= */
 
-@keyframes pageEnter {
-
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@keyframes popIn {
-
-    from {
-        opacity: 0;
-        transform: scale(0.92);
-    }
-
-    to {
-        opacity: 1;
-        transform: scale(1);
-    }
-}
-
 @keyframes heartbeat {
 
     0%,
@@ -422,6 +407,72 @@ button:disabled {
         transform: scale(1.18);
     }
 }
+
+@keyframes popIn {
+
+    from {
+        opacity: 0;
+
+        transform:
+            scale(0.92);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            scale(1);
+    }
+}
+
+@keyframes pageEnter {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0);
+    }
+}
+/* =========================================================
+   CANDLE SECTION
+========================================================= */
+
+#candleSection .cake-box {
+    width: min(500px, 85vw);
+}
+
+#candleCake {
+    transition:
+        opacity 0.3s ease,
+        transform 0.3s ease;
+}
+
+#blowBtn {
+    min-width: 170px;
+}
+
+#wishText {
+    margin-top: 25px;
+
+    padding: 22px;
+
+    border-radius: 22px;
+
+    background:
+        rgba(255, 255, 255, 0.32);
+
+    animation: popIn 0.5s ease;
+}
+
+
 /* =========================================================
    GALLERY
 ========================================================= */
@@ -435,12 +486,12 @@ button:disabled {
 
     display: flex;
 
-    justify-content: center;
     align-items: center;
+    justify-content: center;
 
     gap: 12px;
 
-    margin: 25px auto 10px;
+    margin: 25px auto 8px;
 }
 
 .gallery-photo-box {
@@ -452,14 +503,15 @@ button:disabled {
 
     display: flex;
 
-    justify-content: center;
     align-items: center;
+    justify-content: center;
 
     overflow: hidden;
 
     border-radius: 22px;
 
-    background: rgba(255, 255, 255, 0.4);
+    background:
+        rgba(255, 255, 255, 0.42);
 
     box-shadow:
         0 15px 40px
@@ -478,41 +530,49 @@ button:disabled {
 
     cursor: pointer;
 
-    transition: opacity 0.25s ease;
+    opacity: 1;
+
+    transition:
+        opacity 0.25s ease,
+        transform 0.3s ease;
+}
+
+#galleryImage:hover {
+    transform: scale(1.01);
 }
 
 .nav-btn {
     width: 48px;
     height: 48px;
 
-    padding: 0;
-
     flex-shrink: 0;
+
+    margin: 0;
+    padding: 0;
 
     border-radius: 50%;
 
-    font-size: 30px;
-
+    font-size: 32px;
     line-height: 48px;
 }
 
 .photo-counter {
-    margin: 10px 0;
-
-    font-size: 15px;
+    margin: 10px 0 15px;
 
     color: #814260;
+
+    font-size: 15px;
 
     font-weight: 600;
 }
 
 .gallery-buttons {
-    margin: 5px 0 15px;
+    margin-bottom: 12px;
 }
 
 
 /* =========================================================
-   FULL PHOTO VIEWER
+   FULL SCREEN PHOTO VIEWER
 ========================================================= */
 
 .photo-viewer {
@@ -524,15 +584,15 @@ button:disabled {
 
     display: none;
 
-    justify-content: center;
     align-items: center;
+    justify-content: center;
 
     gap: 18px;
 
     padding: 25px;
 
     background:
-        rgba(25, 8, 25, 0.94);
+        rgba(20, 7, 20, 0.95);
 
     backdrop-filter: blur(8px);
 }
@@ -543,6 +603,8 @@ button:disabled {
 
     width: auto;
     height: auto;
+
+    display: block;
 
     object-fit: contain;
 
@@ -562,30 +624,38 @@ button:disabled {
     width: 45px;
     height: 45px;
 
+    margin: 0;
     padding: 0;
 
     border-radius: 50%;
 
-    font-size: 28px;
+    color: white;
 
     background:
         rgba(255, 255, 255, 0.18);
+
+    font-size: 29px;
+
+    line-height: 45px;
 }
 
 .viewer-nav {
     width: 48px;
     height: 48px;
 
+    margin: 0;
     padding: 0;
 
     flex-shrink: 0;
 
     border-radius: 50%;
 
-    font-size: 30px;
-
     background:
         rgba(255, 255, 255, 0.18);
+
+    font-size: 32px;
+
+    line-height: 48px;
 }
 
 
@@ -594,26 +664,32 @@ button:disabled {
 ========================================================= */
 
 .message-box {
-    width: min(760px, 90vw);
+    width: min(760px, 92vw);
 
     min-height: 280px;
 
     margin: 25px auto;
 
-    padding: 28px;
+    padding: 30px;
 
     display: flex;
 
-    justify-content: center;
     align-items: center;
+    justify-content: center;
 
-    border-radius: 22px;
+    border-radius: 24px;
 
     background:
-        rgba(255, 255, 255, 0.30);
+        rgba(255, 255, 255, 0.32);
+
+    box-shadow:
+        inset 0 0 25px
+        rgba(255, 255, 255, 0.18);
 }
 
 .message-box p {
+    margin: 0;
+
     white-space: pre-line;
 
     font-size:
@@ -622,9 +698,19 @@ button:disabled {
     line-height: 1.9;
 }
 
+.wish-icons {
+    margin: 20px 0;
+
+    color: #9b4772;
+
+    font-size: 17px;
+
+    font-weight: 600;
+}
+
 
 /* =========================================================
-   FINAL
+   FINAL SECTION
 ========================================================= */
 
 .final-card {
@@ -638,9 +724,26 @@ button:disabled {
 }
 
 .final-decoration {
-    font-size: 42px;
+    margin: 25px 0;
 
-    margin: 22px 0;
+    font-size: 18px;
+
+    color: #9b4772;
+}
+
+@keyframes softGlow {
+
+    from {
+        text-shadow:
+            0 0 3px
+            rgba(210, 70, 145, 0.15);
+    }
+
+    to {
+        text-shadow:
+            0 0 18px
+            rgba(210, 70, 145, 0.5);
+    }
 }
 
 
@@ -720,33 +823,42 @@ button:disabled {
         opacity: 0;
     }
 }
+/* =========================================================
+   RESPONSIVE — TABLET
+========================================================= */
 
+@media (max-width: 900px) {
 
-@keyframes softGlow {
-
-    from {
-        text-shadow:
-            0 0 3px
-            rgba(210, 70, 145, 0.15);
+    .content-box {
+        width: 94vw;
     }
 
-    to {
-        text-shadow:
-            0 0 20px
-            rgba(210, 70, 145, 0.55);
+    .gallery-content {
+        width: 94vw;
     }
+
+    .main-photo-box {
+        width: 88vw;
+    }
+
+    .gallery-photo-box {
+        width: 76vw;
+    }
+
 }
 
 
 /* =========================================================
-   MOBILE
+   RESPONSIVE — MOBILE
 ========================================================= */
 
 @media (max-width: 700px) {
 
     .page-section {
+        min-height: 100vh;
+
         padding:
-            25px 12px;
+            25px 10px;
     }
 
     .content-box {
@@ -755,17 +867,17 @@ button:disabled {
         padding:
             32px 15px;
 
-        border-radius: 24px;
+        border-radius: 23px;
     }
 
     .content-box h1 {
         font-size:
-            clamp(34px, 11vw, 55px);
+            clamp(34px, 10vw, 52px);
     }
 
     .content-box h2 {
         font-size:
-            clamp(27px, 8vw, 40px);
+            clamp(27px, 8vw, 38px);
     }
 
     .description {
@@ -775,30 +887,41 @@ button:disabled {
     }
 
 
-    /* Photo */
+    /* -------------------------
+       Gift
+    ------------------------- */
+
+    .gift-box {
+        width: 78vw;
+        max-width: 330px;
+    }
+
+
+    /* -------------------------
+       Main Photo
+    ------------------------- */
 
     .main-photo-box {
         width: 92vw;
 
         aspect-ratio: 4 / 3;
+
+        border-radius: 18px;
     }
 
 
-    /* Gift */
-
-    .gift-box {
-        width: min(300px, 78vw);
-    }
-
-
-    /* Cake */
+    /* -------------------------
+       Cake
+    ------------------------- */
 
     .cake-box {
         width: 90vw;
     }
 
 
-    /* Gallery */
+    /* -------------------------
+       Gallery
+    ------------------------- */
 
     .gallery-box {
         gap: 4px;
@@ -808,29 +931,33 @@ button:disabled {
         width: 78vw;
 
         aspect-ratio: 4 / 3;
+
+        border-radius: 18px;
     }
 
     .nav-btn {
         width: 40px;
         height: 40px;
 
-        line-height: 40px;
+        font-size: 27px;
 
-        font-size: 25px;
+        line-height: 40px;
     }
 
 
-    /* Full photo */
+    /* -------------------------
+       Full Photo
+    ------------------------- */
 
     .photo-viewer {
         padding:
-            15px 5px;
+            15px 4px;
 
         gap: 4px;
     }
 
     #fullPhoto {
-        max-width: 88vw;
+        max-width: 86vw;
         max-height: 82vh;
     }
 
@@ -838,7 +965,9 @@ button:disabled {
         width: 38px;
         height: 38px;
 
-        font-size: 24px;
+        font-size: 25px;
+
+        line-height: 38px;
     }
 
     .close-photo {
@@ -849,10 +978,14 @@ button:disabled {
         height: 40px;
 
         font-size: 25px;
+
+        line-height: 40px;
     }
 
 
-    /* Message */
+    /* -------------------------
+       Message
+    ------------------------- */
 
     .message-box {
         width: 92vw;
@@ -863,7 +996,9 @@ button:disabled {
     }
 
 
-    /* Buttons */
+    /* -------------------------
+       Buttons
+    ------------------------- */
 
     button {
         padding:
@@ -871,213 +1006,126 @@ button:disabled {
 
         font-size: 15px;
     }
+
 }
 
 
 /* =========================================================
-   SMALL MOBILE
+   RESPONSIVE — SMALL PHONE
 ========================================================= */
 
 @media (max-width: 420px) {
 
-    .content-box {
+    .page-section {
         padding:
-            28px 12px;
+            18px 7px;
     }
 
-    .gallery-photo-box {
+    .content-box {
+        width: 97vw;
+
+        padding:
+            27px 11px;
+
+        border-radius: 20px;
+    }
+
+    .content-box h1 {
+        font-size: 35px;
+    }
+
+    .content-box h2 {
+        font-size: 28px;
+    }
+
+    .description {
+        font-size: 14px;
+
+        line-height: 1.65;
+    }
+
+
+    .gift-box {
         width: 74vw;
     }
 
-    .nav-btn {
-        width: 36px;
-        height: 36px;
 
-        line-height: 36px;
+    .main-photo-box {
+        width: 93vw;
 
-        font-size: 22px;
+        padding: 5px;
+
+        border-radius: 16px;
     }
+
 
     .cake-box {
         width: 92vw;
     }
 
+
+    .gallery-photo-box {
+        width: 74vw;
+
+        padding: 5px;
+
+        border-radius: 16px;
+    }
+
+    .nav-btn {
+        width: 35px;
+        height: 35px;
+
+        font-size: 22px;
+
+        line-height: 35px;
+    }
+
+
+    .message-box {
+        width: 93vw;
+
+        padding: 17px;
+    }
+
+
+    .final-card {
+        padding:
+            40px 15px;
+    }
+
+}
+
+
+/* =========================================================
+   VERY SMALL PHONE
+========================================================= */
+
+@media (max-width: 350px) {
+
+    .content-box h1 {
+        font-size: 31px;
+    }
+
+    .content-box h2 {
+        font-size: 25px;
+    }
+
     .gift-box {
-        width: 75vw;
-    }
-
-}
-/* =========================================================
-   FINAL RESPONSIVE POLISH
-========================================================= */
-
-@media (max-width: 900px) {
-
-    .content-box {
-        max-width: 94vw;
-    }
-
-    .gallery-content {
-        max-width: 94vw;
-    }
-
-}
-
-
-/* =========================================================
-   TABLET
-========================================================= */
-
-@media (min-width: 701px) and (max-width: 1000px) {
-
-    .main-photo-box {
-        width: 78vw;
-        max-width: 680px;
+        width: 70vw;
     }
 
     .gallery-photo-box {
-        width: 68vw;
-        max-width: 680px;
+        width: 70vw;
     }
 
-    .cake-box {
-        width: 55vw;
-        max-width: 500px;
+    button {
+        padding:
+            10px 17px;
+
+        font-size: 14px;
     }
 
-}
-
-
-/* =========================================================
-   PHOTO HOVER
-========================================================= */
-
-#mainPhoto,
-#galleryImage {
-    transition:
-        transform 0.35s ease,
-        opacity 0.25s ease;
-}
-
-#mainPhoto:hover {
-    transform: scale(1.01);
-}
-
-#galleryImage:hover {
-    transform: scale(1.015);
-}
-
-
-/* =========================================================
-   GIFT ANIMATION
-========================================================= */
-
-#giftBox.gift-open {
-    animation:
-        giftOpen 0.7s ease;
-}
-
-@keyframes giftOpen {
-
-    0% {
-        transform:
-            scale(1)
-            rotate(0deg);
-    }
-
-    35% {
-        transform:
-            scale(1.08)
-            rotate(-5deg);
-    }
-
-    65% {
-        transform:
-            scale(1.1)
-            rotate(5deg);
-    }
-
-    100% {
-        transform:
-            scale(1)
-            rotate(0deg);
-    }
-
-}
-
-
-/* =========================================================
-   CAKE CUT ANIMATION
-========================================================= */
-
-.cake-cut-animation {
-    animation:
-        cakeCut 0.8s ease;
-}
-
-@keyframes cakeCut {
-
-    0% {
-        transform:
-            scale(1);
-    }
-
-    40% {
-        transform:
-            scale(1.08)
-            rotate(-2deg);
-    }
-
-    70% {
-        transform:
-            scale(1.05)
-            rotate(2deg);
-    }
-
-    100% {
-        transform:
-            scale(1);
-            rotate(0deg);
-    }
-
-}
-
-
-/* =========================================================
-   CANDLE BLOW ANIMATION
-========================================================= */
-
-.candle-blown {
-    animation:
-        candleBlown 0.7s ease;
-}
-
-@keyframes candleBlown {
-
-    0% {
-        opacity: 1;
-        transform: scale(1);
-    }
-
-    50% {
-        opacity: 0.75;
-        transform: scale(0.97);
-    }
-
-    100% {
-        opacity: 1;
-        transform: scale(1);
-    }
-
-}
-
-
-/* =========================================================
-   SECTION HIDDEN STATE
-========================================================= */
-
-.page-section.hidden {
-    display: none !important;
 }
 
 
@@ -1088,7 +1136,7 @@ button:disabled {
 button:focus-visible {
     outline:
         3px solid
-        rgba(150, 70, 150, 0.35);
+        rgba(150, 70, 150, 0.4);
 
     outline-offset: 3px;
 }
@@ -1107,58 +1155,14 @@ button:focus-visible {
 
         animation-iteration-count: 1 !important;
 
-        scroll-behavior: auto !important;
-
         transition-duration: 0.01ms !important;
+
+        scroll-behavior: auto !important;
     }
 
 }
 
 
 /* =========================================================
-   VERY SMALL SCREEN
-========================================================= */
-
-@media (max-width: 350px) {
-
-    .page-section {
-        padding:
-            18px 8px;
-    }
-
-    .content-box {
-        padding:
-            24px 10px;
-
-        border-radius: 20px;
-    }
-
-    .content-box h1 {
-        font-size: 34px;
-    }
-
-    .content-box h2 {
-        font-size: 27px;
-    }
-
-    .description {
-        font-size: 14px;
-    }
-
-    button {
-        padding:
-            10px 18px;
-
-        font-size: 14px;
-    }
-
-    .gallery-photo-box {
-        width: 70vw;
-    }
-
-}
-
-
-/* =========================================================
-   END OF STYLE
+   END OF STYLE.CSS
 ========================================================= */
