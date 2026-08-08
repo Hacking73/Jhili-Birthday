@@ -296,33 +296,33 @@ if (giftBox) {
 
 const photos = [
 
-    "images/birthday (1).jpg",
+    "images/birthday (1).png",
 
-    "images/birthday (2).jpg",
+    "images/birthday (2).png",
 
-    "images/birthday (3).jpg",
+    "images/birthday (3).png",
 
-    "images/birthday (4).jpg",
+    "images/birthday (4).png",
 
-    "images/birthday (5).jpg",
+    "images/birthday (5).png",
 
-    "images/birthday (6).jpg",
+    "images/birthday (6).png",
 
-    "images/birthday (7).jpg",
+    "images/birthday (7).png",
 
-    "images/birthday (8).jpg",
+    "images/birthday (8).png",
 
-    "images/birthday (9).jpg",
+    "images/birthday (9).png",
 
-    "images/birthday (10).jpg",
+    "images/birthday (10).png",
 
-    "images/birthday (11).jpg",
+    "images/birthday (11).png",
 
-    "images/birthday (12).jpg",
+    "images/birthday (12).png",
 
-    "images/birthday (13).jpg",
+    "images/birthday (13).png",
 
-    "images/birthday (14).jpg"
+    "images/birthday (14).png"
 
 ];
 
