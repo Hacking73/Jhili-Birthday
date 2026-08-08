@@ -1,72 +1,147 @@
 /* =========================================================
-   BIRTHDAY WEBSITE - FINAL CORRECTED SCRIPT
+   BIRTHDAY WEBSITE
+   COMPLETE SCRIPT
 ========================================================= */
 
 document.addEventListener("DOMContentLoaded", function () {
 
-    const loading = document.getElementById("loading");
-    const website = document.getElementById("website");
 
-    const hero = document.getElementById("hero");
-    const giftSection = document.getElementById("giftSection");
-    const cakeSection = document.getElementById("cakeSection");
-    const gallerySection = document.getElementById("gallerySection");
-    const messageSection = document.getElementById("messageSection");
-    const finalSection = document.getElementById("finalSection");
+    /* =====================================================
+       ELEMENTS
+    ===================================================== */
 
-    const giftBox = document.getElementById("giftBox");
-    const giftMessage = document.getElementById("giftMessage");
+    const loading =
+        document.getElementById("loading");
 
-    const birthdayCake = document.getElementById("birthdayCake");
-    const blowBtn = document.getElementById("blowBtn");
-    const wishText = document.getElementById("wishText");
+    const website =
+        document.getElementById("website");
 
-    const galleryImage = document.getElementById("galleryImage");
-    const photoCounter = document.getElementById("photoCounter");
+    const hero =
+        document.getElementById("hero");
 
-    const photoViewer = document.getElementById("photoViewer");
-    const fullPhoto = document.getElementById("fullPhoto");
+    const photoSection =
+        document.getElementById("photoSection");
 
-    const typingText = document.getElementById("typingText");
+    const cakeSection =
+        document.getElementById("cakeSection");
 
-    const music = document.getElementById("music");
+    const candleSection =
+        document.getElementById("candleSection");
+
+    const gallerySection =
+        document.getElementById("gallerySection");
+
+    const messageSection =
+        document.getElementById("messageSection");
+
+    const finalSection =
+        document.getElementById("finalSection");
+
+
+    const mainPhoto =
+        document.getElementById("mainPhoto");
+
+    const birthdayCake =
+        document.getElementById("birthdayCake");
+
+    const candleCake =
+        document.getElementById("candleCake");
+
+    const cutCakeBtn =
+        document.getElementById("cutCakeBtn");
+
+    const cakeMessage =
+        document.getElementById("cakeMessage");
+
+    const blowBtn =
+        document.getElementById("blowBtn");
+
+    const wishText =
+        document.getElementById("wishText");
+
+
+    const galleryImage =
+        document.getElementById("galleryImage");
+
+    const photoCounter =
+        document.getElementById("photoCounter");
+
+
+    const photoViewer =
+        document.getElementById("photoViewer");
+
+    const fullPhoto =
+        document.getElementById("fullPhoto");
+
+
+    const typingText =
+        document.getElementById("typingText");
+
+
+    const music =
+        document.getElementById("music");
 
 
     /* =====================================================
-       IMPORTANT:
-       FIRST HIDE ALL SECTIONS
+       ALL SECTIONS
     ===================================================== */
+
+    const sections = [
+        hero,
+        photoSection,
+        cakeSection,
+        candleSection,
+        gallerySection,
+        messageSection,
+        finalSection
+    ];
+
 
     function hideAllSections() {
 
-        if (hero) hero.style.display = "none";
-        if (giftSection) giftSection.style.display = "none";
-        if (cakeSection) cakeSection.style.display = "none";
-        if (gallerySection) gallerySection.style.display = "none";
-        if (messageSection) messageSection.style.display = "none";
-        if (finalSection) finalSection.style.display = "none";
+        sections.forEach(function (section) {
+
+            if (section) {
+
+                section.style.display =
+                    "none";
+
+            }
+
+        });
+
+    }
+
+
+    function showSection(section) {
+
+        hideAllSections();
+
+        if (section) {
+
+            section.style.display =
+                "flex";
+
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+
+        }
 
     }
 
 
     /* =====================================================
-       FIRST PAGE = HERO ONLY
-    ===================================================== */
-
-    hideAllSections();
-
-    if (hero) {
-        hero.style.display = "flex";
-    }
-
-
-    /* =====================================================
-       LOADING SCREEN
+       INITIAL STATE
     ===================================================== */
 
     if (website) {
         website.style.display = "none";
     }
+
+    hideAllSections();
+
 
     if (loading) {
         loading.style.display = "flex";
@@ -83,11 +158,7 @@ document.addEventListener("DOMContentLoaded", function () {
             website.style.display = "block";
         }
 
-        hideAllSections();
-
-        if (hero) {
-            hero.style.display = "flex";
-        }
+        showSection(hero);
 
     }, 2500);
 
@@ -99,100 +170,140 @@ document.addEventListener("DOMContentLoaded", function () {
 
     let musicStarted = false;
 
+
     function startMusic() {
 
         if (!music || musicStarted) {
             return;
         }
 
-        musicStarted = true;
-
         music.volume = 0.5;
 
-        music.play().catch(function () {
-            musicStarted = false;
-        });
+        music.play()
+            .then(function () {
 
-    }
+                musicStarted = true;
 
+            })
+            .catch(function () {
 
-    document.addEventListener("click", function () {
-        startMusic();
-    }, { once: true });
+                musicStarted = false;
 
-
-
-    /* =====================================================
-       SHOW SECTION
-    ===================================================== */
-
-    function showOnly(section) {
-
-        hideAllSections();
-
-        if (section) {
-
-            section.style.display = "flex";
-
-            window.scrollTo({
-                top: 0,
-                behavior: "smooth"
             });
 
-        }
-
     }
+
+
+    document.addEventListener(
+        "click",
+        function () {
+
+            startMusic();
+
+        },
+        { once: true }
+    );
 
 
 
     /* =====================================================
-       HERO → GIFT
+       1. OPENING → PHOTO
     ===================================================== */
 
-    window.goGift = function () {
+    window.goPhoto = function () {
 
         startMusic();
 
-        showOnly(giftSection);
+        showSection(photoSection);
 
     };
 
 
 
     /* =====================================================
-       OPEN GIFT
+       2. PHOTO → CAKE
     ===================================================== */
 
-    let giftOpened = false;
+    window.showCake = function () {
 
-    window.openGift = function () {
+        showSection(cakeSection);
 
-        if (giftOpened) {
+
+        if (birthdayCake) {
+
+            birthdayCake.src =
+                "images/candle-on.png";
+
+        }
+
+
+        if (cakeMessage) {
+
+            cakeMessage.style.display =
+                "none";
+
+        }
+
+
+        if (cutCakeBtn) {
+
+            cutCakeBtn.style.display =
+                "inline-block";
+
+        }
+
+    };
+
+
+
+    /* =====================================================
+       3. CUT CAKE
+    ===================================================== */
+
+    let cakeCut = false;
+
+
+    window.cutCake = function () {
+
+        if (cakeCut) {
             return;
         }
 
-        giftOpened = true;
+        cakeCut = true;
 
-        if (giftBox) {
 
-            giftBox.style.transform =
-                "scale(1.1) rotate(6deg)";
+        if (cutCakeBtn) {
+
+            cutCakeBtn.innerHTML =
+                "Cake Cut";
+
+            cutCakeBtn.disabled =
+                true;
 
         }
 
+
+        if (birthdayCake) {
+
+            birthdayCake.style.transform =
+                "scale(1.05)";
+
+            setTimeout(function () {
+
+                birthdayCake.style.transform =
+                    "scale(1)";
+
+            }, 400);
+
+        }
+
+
         setTimeout(function () {
 
-            if (giftMessage) {
+            if (cakeMessage) {
 
-                giftMessage.style.display =
+                cakeMessage.style.display =
                     "block";
-
-            }
-
-            if (giftBox) {
-
-                giftBox.style.transform =
-                    "scale(1) rotate(0deg)";
 
             }
 
@@ -203,28 +314,32 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     /* =====================================================
-       GIFT → CAKE
+       4. CAKE → CANDLE
     ===================================================== */
 
-    window.showCake = function () {
+    window.goCandles = function () {
 
-        showOnly(cakeSection);
+        showSection(candleSection);
 
-        if (birthdayCake) {
 
-            birthdayCake.src =
+        if (candleCake) {
+
+            candleCake.src =
                 "images/candle-on.png";
 
         }
 
+
         if (blowBtn) {
 
-            blowBtn.disabled = false;
+            blowBtn.disabled =
+                false;
 
             blowBtn.innerHTML =
-                "🕯️ Blow Candles";
+                "Blow Candles";
 
         }
+
 
         if (wishText) {
 
@@ -238,34 +353,39 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     /* =====================================================
-       BLOW CANDLE
+       5. BLOW CANDLES
     ===================================================== */
 
-    let candleBlown = false;
+    let candlesBlown = false;
+
 
     window.blowCandles = function () {
 
-        if (candleBlown) {
+        if (candlesBlown) {
             return;
         }
 
-        candleBlown = true;
+        candlesBlown = true;
 
-        if (birthdayCake) {
 
-            birthdayCake.src =
+        if (candleCake) {
+
+            candleCake.src =
                 "images/candle-off.png";
 
         }
 
+
         if (blowBtn) {
 
-            blowBtn.disabled = true;
+            blowBtn.disabled =
+                true;
 
             blowBtn.innerHTML =
-                "🎉 Wish Completed";
+                "Wish Completed";
 
         }
+
 
         setTimeout(function () {
 
@@ -276,14 +396,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
             }
 
-        }, 1000);
+        }, 900);
 
     };
 
 
 
     /* =====================================================
-       GALLERY
+       6. GALLERY
     ===================================================== */
 
     let photo = 1;
@@ -293,11 +413,13 @@ document.addEventListener("DOMContentLoaded", function () {
     let slide = null;
 
 
-    function photoPath(number) {
+    function getPhotoPath(number) {
 
-        return "images/birthday (1)(" +
+        return (
+            "images/birthday (" +
             number +
-            ").png";
+            ").png"
+        );
 
     }
 
@@ -308,16 +430,26 @@ document.addEventListener("DOMContentLoaded", function () {
             return;
         }
 
-        galleryImage.style.opacity = "0";
+
+        galleryImage.style.opacity =
+            "0";
+
+
+        const newImage =
+            getPhotoPath(photo);
+
+
+        galleryImage.onload =
+            function () {
+
+                galleryImage.style.opacity =
+                    "1";
+
+            };
+
 
         galleryImage.src =
-            photoPath(photo);
-
-        galleryImage.onload = function () {
-
-            galleryImage.style.opacity = "1";
-
-        };
+            newImage;
 
 
         if (photoCounter) {
@@ -335,14 +467,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     /* =====================================================
-       CAKE → GALLERY
+       CANDLE → GALLERY
     ===================================================== */
 
     window.showGallery = function () {
 
         stopSlide();
 
-        showOnly(gallerySection);
+        showSection(gallerySection);
 
         photo = 1;
 
@@ -353,7 +485,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     /* =====================================================
-       NEXT
+       NEXT PHOTO
     ===================================================== */
 
     window.nextPhoto = function () {
@@ -361,10 +493,13 @@ document.addEventListener("DOMContentLoaded", function () {
         photo++;
 
         if (photo > totalPhotos) {
+
             photo = 1;
+
         }
 
         loadPhoto();
+
 
         if (
             photoViewer &&
@@ -372,7 +507,7 @@ document.addEventListener("DOMContentLoaded", function () {
         ) {
 
             fullPhoto.src =
-                photoPath(photo);
+                getPhotoPath(photo);
 
         }
 
@@ -381,7 +516,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     /* =====================================================
-       PREVIOUS
+       PREVIOUS PHOTO
     ===================================================== */
 
     window.previousPhoto = function () {
@@ -389,10 +524,14 @@ document.addEventListener("DOMContentLoaded", function () {
         photo--;
 
         if (photo < 1) {
-            photo = totalPhotos;
+
+            photo =
+                totalPhotos;
+
         }
 
         loadPhoto();
+
 
         if (
             photoViewer &&
@@ -400,7 +539,7 @@ document.addEventListener("DOMContentLoaded", function () {
         ) {
 
             fullPhoto.src =
-                photoPath(photo);
+                getPhotoPath(photo);
 
         }
 
@@ -416,11 +555,15 @@ document.addEventListener("DOMContentLoaded", function () {
 
         stopSlide();
 
-        slide = setInterval(function () {
 
-            window.nextPhoto();
+        slide = setInterval(
+            function () {
 
-        }, 2500);
+                window.nextPhoto();
+
+            },
+            2500
+        );
 
     };
 
@@ -445,17 +588,24 @@ document.addEventListener("DOMContentLoaded", function () {
 
     window.openFullPhoto = function () {
 
-        if (!photoViewer || !fullPhoto) {
+        if (!photoViewer ||
+            !fullPhoto) {
+
             return;
+
         }
+
 
         stopSlide();
 
+
         fullPhoto.src =
-            photoPath(photo);
+            getPhotoPath(photo);
+
 
         photoViewer.style.display =
             "flex";
+
 
         document.body.style.overflow =
             "hidden";
@@ -474,8 +624,10 @@ document.addEventListener("DOMContentLoaded", function () {
             return;
         }
 
+
         photoViewer.style.display =
             "none";
+
 
         document.body.style.overflow =
             "";
@@ -485,7 +637,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     /* =====================================================
-       KEYBOARD PHOTO CONTROL
+       KEYBOARD
     ===================================================== */
 
     document.addEventListener(
@@ -496,7 +648,9 @@ document.addEventListener("DOMContentLoaded", function () {
                 !photoViewer ||
                 photoViewer.style.display !== "flex"
             ) {
+
                 return;
+
             }
 
 
@@ -526,21 +680,21 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     /* =====================================================
-       MESSAGE
+       7. GALLERY → MESSAGE
     ===================================================== */
 
     window.showMessage = function () {
 
         stopSlide();
 
-        showOnly(messageSection);
+        showSection(messageSection);
 
         typeWriter();
 
     };
 
 
-    let typingDone = false;
+    let typingStarted = false;
 
 
     function typeWriter() {
@@ -549,31 +703,38 @@ document.addEventListener("DOMContentLoaded", function () {
             return;
         }
 
-        if (typingDone) {
+
+        if (typingStarted) {
             return;
         }
 
-        typingDone = true;
+
+        typingStarted = true;
+
 
         const text =
             typingText.innerText.trim();
 
-        typingText.innerHTML = "";
 
-        let i = 0;
+        typingText.innerHTML =
+            "";
 
 
-        function write() {
+        let index = 0;
 
-            if (i < text.length) {
+
+        function writeCharacter() {
+
+            if (index < text.length) {
 
                 typingText.innerHTML +=
-                    text.charAt(i);
+                    text.charAt(index);
 
-                i++;
+                index++;
+
 
                 setTimeout(
-                    write,
+                    writeCharacter,
                     35
                 );
 
@@ -581,21 +742,22 @@ document.addEventListener("DOMContentLoaded", function () {
 
         }
 
-        write();
+
+        writeCharacter();
 
     }
 
 
 
     /* =====================================================
-       FINAL
+       8. MESSAGE → FINAL
     ===================================================== */
 
     window.showFinal = function () {
 
         stopSlide();
 
-        showOnly(finalSection);
+        showSection(finalSection);
 
         startHearts();
 
@@ -606,55 +768,66 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     /* =====================================================
-       HEARTS
+       FLOATING HEARTS
     ===================================================== */
 
-    let heartsRunning = false;
+    let heartsStarted = false;
+
 
     function startHearts() {
 
-        if (heartsRunning) {
+        if (heartsStarted) {
             return;
         }
 
-        heartsRunning = true;
-
-        setInterval(function () {
-
-            const heart =
-                document.createElement("div");
-
-            heart.innerHTML = "❤️";
-
-            heart.style.position = "fixed";
-
-            heart.style.left =
-                Math.random() * 100 + "vw";
-
-            heart.style.bottom =
-                "-50px";
-
-            heart.style.fontSize =
-                (20 + Math.random() * 25) + "px";
-
-            heart.style.zIndex = "9999";
-
-            heart.style.pointerEvents =
-                "none";
-
-            heart.style.animation =
-                "floatHeart 5s linear forwards";
-
-            document.body.appendChild(heart);
+        heartsStarted = true;
 
 
-            setTimeout(function () {
+        setInterval(
+            function () {
 
-                heart.remove();
+                const heart =
+                    document.createElement("div");
 
-            }, 5000);
 
-        }, 600);
+                heart.className =
+                    "float-heart";
+
+
+                heart.innerHTML =
+                    "♥";
+
+
+                heart.style.left =
+                    Math.random() * 100 +
+                    "vw";
+
+
+                heart.style.fontSize =
+                    (
+                        18 +
+                        Math.random() * 20
+                    ) +
+                    "px";
+
+
+                document.body.appendChild(
+                    heart
+                );
+
+
+                setTimeout(
+                    function () {
+
+                        heart.remove();
+
+                    },
+                    5000
+                );
+
+            },
+            700
+        );
 
     }
 
@@ -664,143 +837,65 @@ document.addEventListener("DOMContentLoaded", function () {
        CONFETTI
     ===================================================== */
 
-    let confettiRunning = false;
+    let confettiStarted = false;
+
 
     function startConfetti() {
 
-        if (confettiRunning) {
+        if (confettiStarted) {
             return;
         }
 
-        confettiRunning = true;
-
-        setInterval(function () {
-
-            const item =
-                document.createElement("div");
-
-            item.innerHTML = "🎊";
-
-            item.style.position = "fixed";
-
-            item.style.left =
-                Math.random() * 100 + "vw";
-
-            item.style.top = "-30px";
-
-            item.style.fontSize =
-                (18 + Math.random() * 20) + "px";
-
-            item.style.zIndex = "9998";
-
-            item.style.pointerEvents =
-                "none";
-
-            item.style.animation =
-                "fall 4s linear forwards";
-
-            document.body.appendChild(item);
+        confettiStarted = true;
 
 
-            setTimeout(function () {
+        setInterval(
+            function () {
 
-                item.remove();
+                const item =
+                    document.createElement("div");
 
-            }, 4000);
 
-        }, 300);
+                item.className =
+                    "confetti";
+
+
+                item.innerHTML =
+                    "•";
+
+
+                item.style.left =
+                    Math.random() * 100 +
+                    "vw";
+
+
+                item.style.fontSize =
+                    (
+                        18 +
+                        Math.random() * 15
+                    ) +
+                    "px";
+
+
+                document.body.appendChild(
+                    item
+                );
+
+
+                setTimeout(
+                    function () {
+
+                        item.remove();
+
+                    },
+                    4000
+                );
+
+            },
+            350
+        );
 
     }
-
-
-
-    /* =====================================================
-       SPARKLES
-    ===================================================== */
-
-    setInterval(function () {
-
-        const sparkle =
-            document.createElement("div");
-
-        sparkle.className =
-            "spark";
-
-        sparkle.innerHTML =
-            "✨";
-
-        sparkle.style.left =
-            Math.random() * 100 + "vw";
-
-        sparkle.style.top =
-            Math.random() * 100 + "vh";
-
-        sparkle.style.fontSize =
-            (15 + Math.random() * 20) + "px";
-
-        sparkle.style.pointerEvents =
-            "none";
-
-        document.body.appendChild(
-            sparkle
-        );
-
-
-        setTimeout(function () {
-
-            sparkle.remove();
-
-        }, 2000);
-
-    }, 500);
-
-
-
-    /* =====================================================
-       FLOWERS
-    ===================================================== */
-
-    setInterval(function () {
-
-        const flower =
-            document.createElement("div");
-
-        flower.innerHTML =
-            "🌸";
-
-        flower.style.position =
-            "fixed";
-
-        flower.style.left =
-            Math.random() * 100 + "vw";
-
-        flower.style.top =
-            "-30px";
-
-        flower.style.fontSize =
-            (18 + Math.random() * 18) + "px";
-
-        flower.style.zIndex =
-            "9997";
-
-        flower.style.pointerEvents =
-            "none";
-
-        flower.style.animation =
-            "fall 6s linear forwards";
-
-        document.body.appendChild(
-            flower
-        );
-
-
-        setTimeout(function () {
-
-            flower.remove();
-
-        }, 6000);
-
-    }, 1000);
 
 
 
@@ -814,17 +909,32 @@ document.addEventListener("DOMContentLoaded", function () {
         i++
     ) {
 
-        const img =
+        const image =
             new Image();
 
-        img.src =
-            photoPath(i);
+
+        image.src =
+            getPhotoPath(i);
 
     }
 
 
+
+    /* =====================================================
+       RESTART
+    ===================================================== */
+
+    window.restartWebsite = function () {
+
+        stopSlide();
+
+        location.reload();
+
+    };
+
+
     console.log(
-        "🎂 Birthday Website Ready ❤️"
+        "Birthday Website Loaded Successfully"
     );
 
 });
