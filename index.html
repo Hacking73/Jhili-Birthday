@@ -1,251 +1,203 @@
-<!-- =========================================
-     PAGE 2 — GIFT SURPRISE
-========================================= -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Jhili ❤️</title>
 
-<section id="page2" class="page">
+<style>
+body{
+    margin:0;
+    font-family:Arial,sans-serif;
+    background:linear-gradient(135deg,#ff758c,#ff7eb3);
+    color:white;
+    text-align:center;
+}
 
-    <div class="gift-page">
+section{
+    min-height:100vh;
+    padding:40px 20px;
+}
 
-        <p class="small-title">
-            ✨ A Little Surprise ✨
-        </p>
+h1{
+    font-size:3rem;
+}
 
-        <h2 class="gift-title">
-            I Have Something For You
-        </h2>
+button{
+    padding:12px 25px;
+    border:none;
+    border-radius:30px;
+    background:white;
+    color:#ff4d6d;
+    font-size:1rem;
+    cursor:pointer;
+}
 
-        <p class="gift-description">
-            There is a special surprise waiting
-            inside this gift. ❤️
-        </p>
+.hero img{
+    width:250px;
+    border-radius:20px;
+    box-shadow:0 0 20px rgba(255,255,255,0.5);
+}
 
+.gallery{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+    gap:15px;
+}
 
-        <!-- GIFT AREA -->
+.gallery img{
+    width:100%;
+    border-radius:15px;
+}
 
-        <div
-            id="giftBox"
-            class="gift-box"
-        >
+#giftMessage{
+    display:none;
+    margin-top:20px;
+    font-size:1.2rem;
+}
 
-            <div class="gift-glow"></div>
+#candle{
+    width:220px;
+}
 
-            <img
-                src="images/gift.png"
-                alt="Birthday Gift"
-                class="gift-image"
-                id="giftImage"
-            >
+.letter{
+    max-width:700px;
+    margin:auto;
+    font-size:1.2rem;
+    line-height:1.8;
+}
 
-            <div class="gift-sparkles">
+footer{
+    padding:50px;
+    font-size:2rem;
+}
+</style>
+</head>
 
-                <span>✦</span>
-                <span>✧</span>
-                <span>✦</span>
-                <span>✧</span>
-                <span>✦</span>
-                <span>✧</span>
+<body>
 
-            </div>
+<!-- Music -->
+<audio id="music" loop>
+    music/birthday.mp3
+</audio>
 
-        </div>
+<!-- Welcome -->
+<section>
+    <h1>🎂 Happy Birthday Jhili ❤️</h1>
+    <p>A Special Surprise Is Waiting For You ✨</p>
 
+    <button onclick="startMusic()">
+        Open Gift 🎁
+    </button>
+</section>
 
-        <p
-            id="giftMessage"
-            class="tap-message"
-        >
-            👆 Tap the gift
-        </p>
+<!-- Hero -->
+<section class="hero">
+    <h1>My Princess ❤️</h1>
 
+    png">
 
-        <button
-            id="giftContinueBtn"
-            class="open-btn gift-continue"
-            type="button"
-        >
+    <h2>Happy Birthday My Love 💖</h2>
+</section>
 
-            Open Surprise →
+<!-- Gallery -->
+<section>
+    <h1>📸 Our Beautiful Memories</h1>
 
-        </button>
+    <div class="gallery">
 
+        png">
+        png">
+        png">
+        png">
+        png">
+        png">
+        png">
+        png">
+        <img src="images/">
+        <img src="images/birthdaymages/birthday (12ng">
+
+    </div>
+</section>
+
+<!-- Love Letter -->
+<section>
+    <h1>💌 A Letter For You</h1>
+
+    <div class="letter">
+        Happy Birthday My Love ❤️<br><br>
+
+        Thank you for coming into my life.
+        Every moment with you is beautiful.
+        Your smile is my favorite thing in the world.
+        I wish you endless happiness, success and love.
+
+        Today is your special day and I want
+        you to know that you are the most precious
+        person in my life. ❤️
+    </div>
+</section>
+
+<!-- Gift -->
+<section>
+    <h1>🎁 Your Surprise Gift</h1>
+
+    images/gift.png
+
+    <br><br>
+
+    <button onclick="openGift()">
+        Open Gift
+    </button>
+
+    <div id="giftMessage">
+        ❤️ You Are My Favorite Person Forever ❤️
     </div>
 
 </section>
-<!-- =========================================
-     PAGE 3 — PHOTO MEMORIES
-========================================= -->
 
-<section id="page3" class="page">
+<!-- Cake -->
+<section>
+    <h1>🎂 Make A Wish</h1>
 
-    <div class="photo-page">
+    images/candle-on.png
 
-        <p class="small-title">
-            📸 Our Beautiful Memories
-        </p>
+    <br><br>
 
-        <h2 class="photo-title">
-            Every Picture Has A Story ❤️
-        </h2>
-
-
-        <!-- PHOTO VIEWER -->
-
-        <div class="photo-viewer">
-
-            <!-- Previous -->
-
-            <button
-                id="prevPhotoBtn"
-                class="photo-arrow photo-prev"
-                type="button"
-            >
-                ‹
-            </button>
-
-
-            <!-- Main Photo -->
-
-            <div class="photo-slider">
-
-                <img
-                    id="memoryPhoto"
-                    src="images/birthday (1).jpg"
-                    alt="Birthday Memory"
-                >
-
-                <div class="photo-overlay">
-
-                    <span id="photoNumber">
-                        1 / 14
-                    </span>
-
-                </div>
-
-            </div>
-
-
-            <!-- Next -->
-
-            <button
-                id="nextPhotoBtn"
-                class="photo-arrow photo-next"
-                type="button"
-            >
-                ›
-            </button>
-
-        </div>
-
-
-        <!-- Caption -->
-
-        <p
-            id="photoCaption"
-            class="photo-caption"
-        >
-            A beautiful memory ❤️
-        </p>
-
-
-        <!-- Progress -->
-
-        <div
-            id="photoProgress"
-            class="photo-progress"
-        >
-
-            <span></span>
-
-        </div>
-
-
-        <!-- Continue -->
-
-        <button
-            id="photoNextBtn"
-            class="open-btn"
-            type="button"
-        >
-
-            Continue →
-
-        </button>
-
-    </div>
+    <button onclick="blowCandle()">
+        Blow The Candle 🕯️
+    </button>
 
 </section>
-<!-- =========================================
-     PAGE 5 — MAKE A WISH
-========================================= -->
 
-<section id="page5" class="page">
+<!-- Final -->
+<section>
+    <h1>🎆 Happy Birthday Jhili ❤️</h1>
 
-    <div class="cake-page">
+    <h2>I Love You Forever ♾️</h2>
 
-        <p class="small-title">
-            🎂 Make A Wish
-        </p>
-
-        <h2 class="cake-title">
-            Make Your Birthday Wish
-        </h2>
-
-
-        <!-- CANDLE DISPLAY -->
-
-        <div
-            id="candleArea"
-            class="candle-area"
-        >
-
-            <!-- Candle ON -->
-
-            <img
-                id="candleOn"
-                class="candle-image candle-on"
-                src="images/candle-on.png"
-                alt="Candle On"
-            >
-
-
-            <!-- Candle OFF -->
-
-            <img
-                id="candleOff"
-                class="candle-image candle-off"
-                src="images/candle-off.png"
-                alt="Candle Off"
-            >
-
-
-            <!-- Glow -->
-
-            <div
-                id="candleGlow"
-                class="candle-glow"
-            ></div>
-
-        </div>
-
-
-        <p
-            id="wishText"
-            class="wish-text"
-        >
-            Close your eyes and make a wish... ✨
-        </p>
-
-
-        <button
-            id="blowBtn"
-            class="open-btn"
-            type="button"
-        >
-
-            🕯️ Blow The Candle
-
-        </button>
-
-    </div>
-
+    <p>May all your dreams come true 🌹</p>
 </section>
+
+<script>
+
+function startMusic(){
+    document.getElementById("music").play();
+}
+
+function openGift(){
+    document.getElementById("giftMessage").style.display="block";
+}
+
+function blowCandle(){
+    document.getElementById("candle").src="images/candle-off.png";
+
+    setTimeout(()=>{
+        alert("🎉 Happy Birthday My Love ❤️");
+    },500);
+}
+
+</script>
+
+</body>
+</html>
