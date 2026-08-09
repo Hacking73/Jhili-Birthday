@@ -1,11 +1,12 @@
 /* =========================================================
    BIRTHDAY WEBSITE
-   script.js — PART 1
+   SCRIPT.JS — PART 1
+   Clean • Stable • Minimal
 ========================================================= */
 
 
 /* =========================================================
-   PAGE ELEMENTS
+   ELEMENTS
 ========================================================= */
 
 const loading =
@@ -19,9 +20,6 @@ const hero =
 
 const giftSection =
     document.getElementById("giftSection");
-
-const photoSection =
-    document.getElementById("photoSection");
 
 const cakeSection =
     document.getElementById("cakeSection");
@@ -38,6 +36,171 @@ const messageSection =
 const finalSection =
     document.getElementById("finalSection");
 
+const music =
+    document.getElementById("music");
+
+
+/* =========================================================
+   INITIAL STATE
+========================================================= */
+
+const allSections = [
+    hero,
+    giftSection,
+    cakeSection,
+    candleSection,
+    gallerySection,
+    messageSection,
+    finalSection
+];
+
+
+/* =========================================================
+   PAGE LOAD
+========================================================= */
+
+window.addEventListener(
+    "load",
+    function () {
+
+        setTimeout(
+            function () {
+
+                if (loading) {
+                    loading.style.display = "none";
+                }
+
+                if (website) {
+                    website.style.display = "block";
+                }
+
+                showSection(hero);
+
+            },
+            1600
+        );
+
+    }
+);
+
+
+/* =========================================================
+   SHOW SECTION
+========================================================= */
+
+function showSection(section) {
+
+    if (!section) {
+        return;
+    }
+
+
+    allSections.forEach(
+        function (item) {
+
+            if (!item) {
+                return;
+            }
+
+            item.classList.remove("active");
+
+            item.style.display = "none";
+
+        }
+    );
+
+
+    section.style.display = "flex";
+
+
+    /* Force browser to restart animation */
+
+    void section.offsetWidth;
+
+
+    section.classList.add("active");
+
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+
+}
+
+
+/* =========================================================
+   MUSIC
+========================================================= */
+
+let musicStarted = false;
+
+
+function startMusic() {
+
+    if (!music || musicStarted) {
+        return;
+    }
+
+
+    const playPromise =
+        music.play();
+
+
+    if (playPromise !== undefined) {
+
+        playPromise
+            .then(
+                function () {
+
+                    musicStarted = true;
+
+                }
+            )
+            .catch(
+                function () {
+
+                    /*
+                       Browser may block autoplay.
+                       Music will start after
+                       another user interaction.
+                    */
+
+                }
+            );
+
+    }
+
+}
+
+
+/* Start music after first user interaction */
+
+document.addEventListener(
+    "click",
+    function () {
+
+        startMusic();
+
+    },
+    {
+        once: true
+    }
+);
+
+
+/* =========================================================
+   INTRO → GIFT
+========================================================= */
+
+function goGift() {
+
+    startMusic();
+
+    showSection(giftSection);
+
+}
+
 
 /* =========================================================
    GIFT
@@ -52,185 +215,14 @@ const giftMessage =
 const giftHint =
     document.getElementById("giftHint");
 
-
-/* =========================================================
-   CAKE
-========================================================= */
-
-const birthdayCake =
-    document.getElementById("birthdayCake");
-
-const cutCakeBtn =
-    document.getElementById("cutCakeBtn");
-
-const cakeMessage =
-    document.getElementById("cakeMessage");
-
-
-/* =========================================================
-   MUSIC
-========================================================= */
-
-const music =
-    document.getElementById("music");
-
-let musicStarted = false;
-
-
-/* =========================================================
-   ALL SECTIONS
-========================================================= */
-
-const sections = [
-    hero,
-    giftSection,
-    photoSection,
-    cakeSection,
-    candleSection,
-    gallerySection,
-    messageSection,
-    finalSection
-];
-
-
-/* =========================================================
-   HIDE ALL SECTIONS
-========================================================= */
-
-function hideAllSections() {
-
-    sections.forEach(function(section) {
-
-        if (section) {
-            section.style.display = "none";
-        }
-
-    });
-
-}
-
-
-/* =========================================================
-   SHOW SECTION
-========================================================= */
-
-function showSection(section) {
-
-    hideAllSections();
-
-    if (!section) {
-        return;
-    }
-
-    section.style.display = "flex";
-
-    window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-    });
-
-}
-
-
-/* =========================================================
-   PAGE START
-========================================================= */
-
-document.addEventListener(
-    "DOMContentLoaded",
-    function() {
-
-        hideAllSections();
-
-        if (loading) {
-            loading.style.display = "flex";
-        }
-
-        if (website) {
-            website.style.display = "none";
-        }
-
-
-        setTimeout(function() {
-
-            if (loading) {
-                loading.style.display = "none";
-            }
-
-            if (website) {
-                website.style.display = "block";
-            }
-
-            showSection(hero);
-
-        }, 2200);
-
-    }
-);
-
-
-/* =========================================================
-   MUSIC
-========================================================= */
-
-function startMusic() {
-
-    if (!music || musicStarted) {
-        return;
-    }
-
-    music.volume = 0.45;
-
-    const playPromise =
-        music.play();
-
-
-    if (playPromise !== undefined) {
-
-        playPromise
-            .then(function() {
-
-                musicStarted = true;
-
-            })
-            .catch(function() {
-
-                /*
-                    Browser autoplay block hele
-                    next user click re retry heba.
-                */
-
-            });
-
-    }
-
-}
-
-
-/* =========================================================
-   HERO → GIFT
-========================================================= */
-
-function goGift() {
-
-    startMusic();
-
-    showSection(giftSection);
-
-}
+let giftOpened = false;
 
 
 /* =========================================================
    OPEN GIFT
 ========================================================= */
 
-let giftOpened = false;
-
-
 function openGift() {
-
-    startMusic();
-
 
     if (giftOpened) {
         return;
@@ -245,119 +237,89 @@ function openGift() {
             "gift-open"
         );
 
-        giftBox.style.transform =
-            "scale(1.08) rotate(4deg)";
-
     }
 
 
     if (giftHint) {
 
-        giftHint.style.display =
-            "none";
+        giftHint.style.opacity = "0";
 
     }
 
 
-    setTimeout(function() {
+    setTimeout(
+        function () {
 
-        if (giftBox) {
+            if (giftMessage) {
 
-            giftBox.style.transform =
-                "scale(1)";
+                giftMessage.style.display =
+                    "block";
 
-        }
+            }
 
-
-        if (giftMessage) {
-
-            giftMessage.style.display =
-                "block";
-
-        }
-
-    }, 650);
+        },
+        550
+    );
 
 }
 
 
 /* =========================================================
-   GIFT → PHOTO
+   GIFT CLICK
 ========================================================= */
 
-function showPhoto() {
+if (giftBox) {
 
-    showSection(photoSection);
+    giftBox.addEventListener(
+        "click",
+        function () {
+
+            openGift();
+
+        }
+    );
 
 }
 
 
 /* =========================================================
-   PHOTO → CAKE
+   GIFT → CAKE
 ========================================================= */
 
 function showCake() {
 
     showSection(cakeSection);
 
-
-    /*
-        Cake section reset.
-    */
-
-    if (birthdayCake) {
-
-        birthdayCake.src =
-            "images/cake.png";
-
-        birthdayCake.classList.remove(
-            "cake-cut-animation"
-        );
-
-    }
-
-
-    if (cutCakeBtn) {
-
-        cutCakeBtn.disabled =
-            false;
-
-        cutCakeBtn.style.display =
-            "inline-block";
-
-        cutCakeBtn.innerHTML =
-            "Cut the Cake";
-
-    }
-
-
-    if (cakeMessage) {
-
-        cakeMessage.style.display =
-            "none";
-
-    }
-
-
-    cakeAlreadyCut = false;
-
 }
+
+
+/* =========================================================
+   CAKE ELEMENTS
+========================================================= */
+
+const birthdayCake =
+    document.getElementById("birthdayCake");
+
+const cutCakeBtn =
+    document.getElementById("cutCakeBtn");
+
+const cakeMessage =
+    document.getElementById("cakeMessage");
+
+let cakeCut = false;
 
 
 /* =========================================================
    CUT CAKE
 ========================================================= */
 
-let cakeAlreadyCut = false;
-
-
 function cutCake() {
 
-    if (cakeAlreadyCut) {
+    if (cakeCut) {
         return;
     }
 
-    cakeAlreadyCut = true;
+    cakeCut = true;
 
 
     if (birthdayCake) {
@@ -371,8 +333,7 @@ function cutCake() {
 
     if (cutCakeBtn) {
 
-        cutCakeBtn.disabled =
-            true;
+        cutCakeBtn.disabled = true;
 
         cutCakeBtn.innerHTML =
             "Cake Cut";
@@ -380,16 +341,19 @@ function cutCake() {
     }
 
 
-    setTimeout(function() {
+    setTimeout(
+        function () {
 
-        if (cakeMessage) {
+            if (cakeMessage) {
 
-            cakeMessage.style.display =
-                "block";
+                cakeMessage.style.display =
+                    "block";
 
-        }
+            }
 
-    }, 700);
+        },
+        700
+    );
 
 }
 
@@ -406,31 +370,7 @@ function showCandles() {
 
 
 /* =========================================================
-   EXPORT FUNCTIONS
-========================================================= */
-
-window.goGift =
-    goGift;
-
-window.openGift =
-    openGift;
-
-window.showPhoto =
-    showPhoto;
-
-window.showCake =
-    showCake;
-
-window.cutCake =
-    cutCake;
-
-window.showCandles =
-    showCandles;
-
-window.startMusic =
-    startMusic;
-/* =========================================================
-   CANDLES
+   CANDLE ELEMENTS
 ========================================================= */
 
 const candleCake =
@@ -458,46 +398,64 @@ function blowCandles() {
     candlesBlown = true;
 
 
-    if (candleCake) {
-
-        candleCake.style.opacity = "0.5";
-
-        setTimeout(function() {
-
-            candleCake.src =
-                "images/candle-off.png";
-
-            candleCake.style.opacity = "1";
-
-        }, 300);
-
-    }
-
-
     if (blowBtn) {
 
         blowBtn.disabled = true;
 
         blowBtn.innerHTML =
-            "Wish Completed";
+            "Wish Complete";
 
     }
 
 
-    setTimeout(function() {
+    /*
+       Change candle-on.png
+       to candle-off.png.
+    */
 
-        if (wishText) {
+    if (candleCake) {
 
-            wishText.style.display =
-                "block";
+        candleCake.style.opacity = "0";
 
-        }
+        setTimeout(
+            function () {
 
-    }, 900);
+                candleCake.src =
+                    "images/candle-off.png";
+
+                candleCake.style.opacity = "1";
+
+            },
+            300
+        );
+
+    }
+
+
+    setTimeout(
+        function () {
+
+            if (wishText) {
+
+                wishText.style.display =
+                    "block";
+
+            }
+
+        },
+        850
+    );
 
 }
 
 
+/* =========================================================
+   BASIC ERROR CHECK
+========================================================= */
+
+console.log(
+    "Birthday Website: Part 1 loaded successfully."
+);
 /* =========================================================
    GALLERY
 ========================================================= */
@@ -508,6 +466,10 @@ const totalPhotos = 14;
 
 let slide = null;
 
+
+/* =========================================================
+   GALLERY ELEMENTS
+========================================================= */
 
 const galleryImage =
     document.getElementById("galleryImage");
@@ -549,42 +511,50 @@ function loadPhoto() {
     galleryImage.style.opacity = "0";
 
 
-    const imagePath =
+    const newPath =
         getPhotoPath(photo);
 
 
-    galleryImage.onload =
-        function() {
+    const testImage =
+        new Image();
 
-            galleryImage.style.opacity = "1";
+
+    testImage.onload =
+        function () {
+
+            galleryImage.src =
+                newPath;
+
+            galleryImage.style.opacity =
+                "1";
 
         };
 
 
-    galleryImage.onerror =
-        function() {
+    testImage.onerror =
+        function () {
 
-            galleryImage.style.opacity = "1";
+            galleryImage.style.opacity =
+                "1";
 
-            console.log(
+            console.error(
                 "Photo not found:",
-                imagePath
+                newPath
             );
 
         };
 
 
-    galleryImage.src =
-        imagePath;
+    testImage.src =
+        newPath;
 
 
     if (photoCounter) {
 
-        photoCounter.innerHTML =
-            "Photo " +
-            photo +
+        photoCounter.textContent =
+            String(photo).padStart(2, "0") +
             " / " +
-            totalPhotos;
+            String(totalPhotos).padStart(2, "0");
 
     }
 
@@ -592,7 +562,7 @@ function loadPhoto() {
 
 
 /* =========================================================
-   CANDLES → GALLERY
+   SHOW GALLERY
 ========================================================= */
 
 function showGallery() {
@@ -628,8 +598,12 @@ function nextPhoto() {
         photoViewer.style.display === "flex"
     ) {
 
-        fullPhoto.src =
-            getPhotoPath(photo);
+        if (fullPhoto) {
+
+            fullPhoto.src =
+                getPhotoPath(photo);
+
+        }
 
     }
 
@@ -656,8 +630,12 @@ function previousPhoto() {
         photoViewer.style.display === "flex"
     ) {
 
-        fullPhoto.src =
-            getPhotoPath(photo);
+        if (fullPhoto) {
+
+            fullPhoto.src =
+                getPhotoPath(photo);
+
+        }
 
     }
 
@@ -674,7 +652,7 @@ function autoSlide() {
 
 
     slide = setInterval(
-        function() {
+        function () {
 
             nextPhoto();
 
@@ -703,7 +681,7 @@ function stopSlide() {
 
 
 /* =========================================================
-   OPEN FULL PHOTO
+   FULL PHOTO
 ========================================================= */
 
 function openFullPhoto() {
@@ -752,12 +730,30 @@ function closeFullPhoto() {
 
 
 /* =========================================================
-   KEYBOARD PHOTO CONTROL
+   CLICK PHOTO → FULL VIEW
+========================================================= */
+
+if (galleryImage) {
+
+    galleryImage.addEventListener(
+        "click",
+        function () {
+
+            openFullPhoto();
+
+        }
+    );
+
+}
+
+
+/* =========================================================
+   KEYBOARD CONTROLS
 ========================================================= */
 
 document.addEventListener(
     "keydown",
-    function(event) {
+    function (event) {
 
         if (
             !photoViewer ||
@@ -835,47 +831,53 @@ function typeWriter() {
     typingStarted = true;
 
 
-    const originalText =
-        typingText.innerText.trim();
+    const text =
+        typingText.textContent.trim();
 
 
-    typingText.innerHTML =
+    typingText.textContent =
         "";
 
 
     let index = 0;
 
 
-    function writeCharacter() {
+    function write() {
 
-        if (
-            index <
-            originalText.length
-        ) {
-
-            typingText.innerHTML +=
-                originalText.charAt(index);
-
-            index++;
-
-
-            setTimeout(
-                writeCharacter,
-                35
-            );
-
+        if (index >= text.length) {
+            return;
         }
+
+
+        typingText.textContent +=
+            text.charAt(index);
+
+
+        index++;
+
+
+        setTimeout(
+            write,
+            30
+        );
 
     }
 
 
-    writeCharacter();
+    write();
 
 }
 
 
 /* =========================================================
-   FINAL SURPRISE
+   FINAL
+========================================================= */
+
+let finalStarted = false;
+
+
+/* =========================================================
+   MESSAGE → FINAL
 ========================================================= */
 
 function showFinal() {
@@ -884,18 +886,26 @@ function showFinal() {
 
     showSection(finalSection);
 
-    startHearts();
+    if (!finalStarted) {
 
-    startConfetti();
+        finalStarted = true;
+
+        startHearts();
+
+        startConfetti();
+
+    }
 
 }
 
 
 /* =========================================================
-   HEARTS
+   FLOATING HEARTS
 ========================================================= */
 
 let heartsStarted = false;
+
+let heartsTimer = null;
 
 
 function startHearts() {
@@ -904,54 +914,80 @@ function startHearts() {
         return;
     }
 
+
     heartsStarted = true;
 
 
-    setInterval(
-        function() {
+    heartsTimer =
+        setInterval(
+            function () {
 
-            const heart =
-                document.createElement("div");
-
-
-            heart.className =
-                "float-heart";
+                const heart =
+                    document.createElement("div");
 
 
-            heart.innerHTML =
-                "♥";
+                heart.className =
+                    "float-heart";
 
 
-            heart.style.left =
-                Math.random() * 100 +
-                "vw";
+                heart.textContent =
+                    "♥";
 
 
-            heart.style.fontSize =
-                (
-                    16 +
-                    Math.random() * 16
-                ) +
-                "px";
+                heart.style.position =
+                    "fixed";
 
 
-            document.body.appendChild(
-                heart
-            );
+                heart.style.left =
+                    Math.random() * 100 +
+                    "vw";
 
 
-            setTimeout(
-                function() {
+                heart.style.bottom =
+                    "-30px";
 
-                    heart.remove();
 
-                },
-                5000
-            );
+                heart.style.fontSize =
+                    (
+                        14 +
+                        Math.random() * 14
+                    ) +
+                    "px";
 
-        },
-        700
-    );
+
+                heart.style.color =
+                    "rgba(235, 145, 180, 0.55)";
+
+
+                heart.style.pointerEvents =
+                    "none";
+
+
+                heart.style.zIndex =
+                    "999";
+
+
+                heart.style.animation =
+                    "floatHeart 5s linear forwards";
+
+
+                document.body.appendChild(
+                    heart
+                );
+
+
+                setTimeout(
+                    function () {
+
+                        heart.remove();
+
+                    },
+                    5000
+                );
+
+            },
+            850
+        );
 
 }
 
@@ -962,6 +998,8 @@ function startHearts() {
 
 let confettiStarted = false;
 
+let confettiTimer = null;
+
 
 function startConfetti() {
 
@@ -969,60 +1007,86 @@ function startConfetti() {
         return;
     }
 
+
     confettiStarted = true;
 
 
-    setInterval(
-        function() {
+    confettiTimer =
+        setInterval(
+            function () {
 
-            const item =
-                document.createElement("div");
-
-
-            item.className =
-                "confetti";
+                const piece =
+                    document.createElement("div");
 
 
-            item.innerHTML =
-                "•";
+                piece.className =
+                    "confetti";
 
 
-            item.style.left =
-                Math.random() * 100 +
-                "vw";
+                piece.textContent =
+                    "•";
 
 
-            item.style.fontSize =
-                (
-                    15 +
-                    Math.random() * 12
-                ) +
-                "px";
+                piece.style.position =
+                    "fixed";
 
 
-            document.body.appendChild(
-                item
-            );
+                piece.style.left =
+                    Math.random() * 100 +
+                    "vw";
 
 
-            setTimeout(
-                function() {
+                piece.style.top =
+                    "-20px";
 
-                    item.remove();
 
-                },
-                4000
-            );
+                piece.style.fontSize =
+                    (
+                        12 +
+                        Math.random() * 10
+                    ) +
+                    "px";
 
-        },
-        400
-    );
+
+                piece.style.color =
+                    "rgba(239, 177, 202, 0.7)";
+
+
+                piece.style.pointerEvents =
+                    "none";
+
+
+                piece.style.zIndex =
+                    "999";
+
+
+                piece.style.animation =
+                    "fall 4s linear forwards";
+
+
+                document.body.appendChild(
+                    piece
+                );
+
+
+                setTimeout(
+                    function () {
+
+                        piece.remove();
+
+                    },
+                    4000
+                );
+
+            },
+            450
+        );
 
 }
 
 
 /* =========================================================
-   PRELOAD PHOTOS
+   PRELOAD ALL PHOTOS
 ========================================================= */
 
 for (
@@ -1041,12 +1105,31 @@ for (
 
 
 /* =========================================================
-   START AGAIN
+   RESTART
 ========================================================= */
 
 function restartWebsite() {
 
     stopSlide();
+
+
+    if (heartsTimer !== null) {
+
+        clearInterval(heartsTimer);
+
+        heartsTimer = null;
+
+    }
+
+
+    if (confettiTimer !== null) {
+
+        clearInterval(confettiTimer);
+
+        confettiTimer = null;
+
+    }
+
 
     location.reload();
 
@@ -1054,8 +1137,23 @@ function restartWebsite() {
 
 
 /* =========================================================
-   EXPORT
+   MAKE FUNCTIONS AVAILABLE TO HTML
 ========================================================= */
+
+window.goGift =
+    goGift;
+
+window.openGift =
+    openGift;
+
+window.showCake =
+    showCake;
+
+window.cutCake =
+    cutCake;
+
+window.showCandles =
+    showCandles;
 
 window.blowCandles =
     blowCandles;
@@ -1092,9 +1190,13 @@ window.restartWebsite =
 
 
 /* =========================================================
-   DONE
+   FINAL CHECK
 ========================================================= */
 
 console.log(
-    "Birthday Website Loaded Successfully"
+    "Birthday Website Loaded Successfully."
+);
+
+console.log(
+    "Flow: Intro → Gift → Cake → Candles → Memories → Message → Final"
 );
