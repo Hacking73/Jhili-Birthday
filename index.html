@@ -1,565 +1,169 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="or">
 <head>
-
     <meta charset="UTF-8">
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
 
-    <title>Happy Birthday Jhili</title>
+    <meta name="theme-color" content="#0d1110">
 
-    <link
-        rel="stylesheet"
-        href="style.css"
-    >
+    <title>ତୁମ ପାଇଁ ଏକ ଛୋଟ ସର୍ପ୍ରାଇଜ୍ ❤️</title>
 
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Odia friendly font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Oriya:wght@400;500;600;700&display=swap"
+          rel="stylesheet">
 </head>
-
 
 <body>
 
     <!-- =========================
-         SIDE LIGHTS
+         BACKGROUND MUSIC
     ========================== -->
 
-    <div class="side-light left-light"></div>
-    <div class="side-light right-light"></div>
+    <audio id="bgMusic" loop preload="auto">
+        <source src="song.mp3" type="audio/mpeg">
+    </audio>
 
 
     <!-- =========================
-         LOADING
+         MUSIC BUTTON
     ========================== -->
 
-    <div id="loading">
-
-        <div class="loading-inner">
-
-            <span class="loading-line"></span>
-
-            <p>For Jhili</p>
-
-            <span class="loading-line"></span>
-
-        </div>
-
-    </div>
+    <button class="music-btn" id="musicBtn" aria-label="ସଙ୍ଗୀତ">
+        <span class="music-icon">♪</span>
+        <span id="musicText">ସଙ୍ଗୀତ</span>
+    </button>
 
 
     <!-- =========================
-         MAIN WEBSITE
+         OPENING SCREEN
     ========================== -->
 
-    <main id="website">
+    <section class="opening" id="opening">
 
+        <div class="opening-glow glow-one"></div>
+        <div class="opening-glow glow-two"></div>
 
-        <!-- =========================
-             INTRO
-        ========================== -->
+        <div class="opening-content">
 
-        <section
-            id="hero"
-            class="screen active"
-        >
+            <div class="tiny-line"></div>
 
-            <div class="hero-content">
+            <p class="small-text">
+                ଏହା କେବଳ ଏକ ୱେବ୍ ପେଜ୍ ନୁହେଁ...
+            </p>
 
-                <p class="eyebrow">
-                    A little surprise
-                </p>
+            <h1>
+                ତୁମ ପାଇଁ<br>
+                ଏକ ଛୋଟ <span>ସର୍ପ୍ରାଇଜ୍</span>
+            </h1>
 
-                <h1>
-                    For Jhili
-                </h1>
+            <p class="opening-message">
+                କିଛି ଫଟୋ...<br>
+                କିଛି ସ୍ମୃତି...<br>
+                ଆଉ ମନରେ ରହିଯାଇଥିବା କିଛି କଥା। ❤️
+            </p>
 
-                <p class="short-text">
-                    A special day deserves
-                    a special moment.
-                </p>
-
-                <button
-                    id="startBtn"
-                    type="button"
-                    onclick="goGift()"
-                >
-                    Begin
-                </button>
-
-            </div>
-
-        </section>
-
-
-
-        <!-- =========================
-             GIFT
-        ========================== -->
-
-        <section
-            id="giftSection"
-            class="screen"
-        >
-
-            <div class="gift-content">
-
-                <p class="eyebrow">
-                    Just for you
-                </p>
-
-                <h2>
-                    Something special
-                </h2>
-
-
-                <div class="gift-stage">
-
-                    <img
-                        id="giftBox"
-                        src="images/gift.png"
-                        alt="Birthday Gift"
-                    >
-
-                </div>
-
-
-                <p
-                    id="giftHint"
-                    class="hint"
-                >
-                    Open it
-                </p>
-
-
-                <!-- Gift message -->
-
-                <div
-                    id="giftMessage"
-                    class="hidden-message"
-                >
-
-                    <p>
-                        Made with love, just for you.
-                    </p>
-
-                    <button
-                        type="button"
-                        onclick="showCake()"
-                    >
-                        Continue
-                    </button>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-
-        <!-- =========================
-             CAKE
-        ========================== -->
-
-        <section
-            id="cakeSection"
-            class="screen"
-        >
-
-            <div class="cake-content">
-
-                <p class="eyebrow">
-                    Your moment
-                </p>
-
-                <h2>
-                    Make a wish
-                </h2>
-
-                <p class="short-text">
-                    Cut the cake and make it special.
-                </p>
-
-
-                <div class="cake-stage">
-
-                    <img
-                        id="birthdayCake"
-                        src="images/cake.png"
-                        alt="Birthday Cake"
-                    >
-
-                </div>
-
-
-                <button
-                    id="cutCakeBtn"
-                    type="button"
-                    onclick="cutCake()"
-                >
-                    Cut the Cake
-                </button>
-
-
-                <div
-                    id="cakeMessage"
-                    class="hidden-message"
-                >
-
-                    <p>
-                        Now make your wish.
-                    </p>
-
-                    <button
-                        type="button"
-                        onclick="showCandles()"
-                    >
-                        Continue
-                    </button>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-
-        <!-- =========================
-             CANDLES
-        ========================== -->
-
-        <section
-            id="candleSection"
-            class="screen"
-        >
-
-            <div class="candle-content">
-
-                <p class="eyebrow">
-                    One wish
-                </p>
-
-                <h2>
-                    Blow the Candles
-                </h2>
-
-                <p class="short-text">
-                    Make a wish.
-                </p>
-
-
-                <div class="candle-stage">
-
-                    <img
-                        id="candleCake"
-                        src="images/candle-on.png"
-                        alt="Cake With Candles"
-                    >
-
-                </div>
-
-
-                <button
-                    id="blowBtn"
-                    type="button"
-                    onclick="blowCandles()"
-                >
-                    Blow Candles
-                </button>
-
-
-                <div
-                    id="wishText"
-                    class="hidden-message"
-                >
-
-                    <p>
-                        May your wish come true.
-                    </p>
-
-                    <button
-                        type="button"
-                        onclick="showGallery()"
-                    >
-                        View Memories
-                    </button>
-
-                </div>
-
-            </div>
-
-        </section>
-                <!-- =========================
-             MEMORIES
-        ========================== -->
-
-        <section
-            id="gallerySection"
-            class="screen"
-        >
-
-            <div class="gallery-content">
-
-                <p class="eyebrow">
-                    Beautiful memories
-                </p>
-
-                <h2>
-                    Moments to remember
-                </h2>
-
-
-                <!--
-                    4:3 PHOTO FRAME
-                    Only one photo is shown at a time.
-                -->
-
-                <div class="gallery-wrap">
-
-                    <button
-                        class="gallery-nav"
-                        type="button"
-                        onclick="previousPhoto()"
-                        aria-label="Previous photo"
-                    >
-                        ‹
-                    </button>
-
-
-                    <div class="gallery-frame">
-
-                        <img
-                            id="galleryImage"
-                            src="images/birthday (1).png"
-                            alt="Birthday Memory"
-                        >
-
-                        <div class="frame-shine"></div>
-
-                    </div>
-
-
-                    <button
-                        class="gallery-nav"
-                        type="button"
-                        onclick="nextPhoto()"
-                        aria-label="Next photo"
-                    >
-                        ›
-                    </button>
-
-                </div>
-
-
-                <div
-                    id="photoCounter"
-                    class="photo-counter"
-                >
-                    01 / 14
-                </div>
-
-
-                <div class="gallery-controls">
-
-                    <button
-                        type="button"
-                        onclick="autoSlide()"
-                    >
-                        Play
-                    </button>
-
-                    <button
-                        type="button"
-                        onclick="stopSlide()"
-                    >
-                        Stop
-                    </button>
-
-                </div>
-
-
-                <button
-                    type="button"
-                    onclick="showMessage()"
-                >
-                    Continue
-                </button>
-
-            </div>
-
-        </section>
-
-
-
-        <!-- =========================
-             FULL PHOTO VIEWER
-        ========================== -->
-
-        <div
-            id="photoViewer"
-            class="photo-viewer"
-        >
-
-            <button
-                class="viewer-close"
-                type="button"
-                onclick="closeFullPhoto()"
-                aria-label="Close"
-            >
-                ×
-            </button>
-
-
-            <button
-                class="viewer-nav"
-                type="button"
-                onclick="previousPhoto()"
-                aria-label="Previous photo"
-            >
-                ‹
-            </button>
-
-
-            <img
-                id="fullPhoto"
-                src=""
-                alt="Full Birthday Memory"
-            >
-
-
-            <button
-                class="viewer-nav"
-                type="button"
-                onclick="nextPhoto()"
-                aria-label="Next photo"
-            >
-                ›
+            <button class="open-btn" id="openBtn">
+                <span>ସର୍ପ୍ରାଇଜ୍ ଖୋଲନ୍ତୁ</span>
+                <span class="arrow">→</span>
             </button>
 
         </div>
 
+        <div class="scroll-hint">
+            <span></span>
+            ଆଗକୁ ଯିବା...
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         MAIN CONTENT
+    ========================== -->
+
+    <main id="mainContent" class="hidden">
+
+        <!-- MEMORY INTRO -->
+
+        <section class="memory-intro">
+
+            <div class="section-number">୦୧</div>
+
+            <p class="eyebrow">
+                କିଛି ସୁନ୍ଦର ମୁହୂର୍ତ୍ତ
+            </p>
+
+            <h2>
+                କେତେକ ଫଟୋ<br>
+                <span>କେତେକ ଅନୁଭବ</span>
+            </h2>
+
+            <p class="section-text">
+                କିଛି ମୁହୂର୍ତ୍ତ ଏମିତି ଥାଏ,
+                ଯାହାକୁ ଶବ୍ଦରେ କହିବା ଦରକାର ପଡ଼େନି।
+            </p>
+
+        </section>
 
 
         <!-- =========================
-             MESSAGE
+             FIRST LARGE PHOTO
         ========================== -->
 
-        <section
-            id="messageSection"
-            class="screen"
-        >
+        <section class="hero-memory">
 
-            <div class="message-content">
+            <div class="photo-frame">
 
-                <p class="eyebrow">
-                    A little message
-                </p>
-
-                <h2>
-                    Happy Birthday, Jhili
-                </h2>
-
-
-                <div class="message-line"></div>
-
-
-                <p
-                    id="typingText"
-                    class="birthday-message"
-                >Happy Birthday, Jhili.
-
-May your life always be filled with happiness, love and success.
-
-May your smile stay bright,
-your dreams come true,
-and every new day bring you something beautiful.
-
-Wishing you a wonderful year ahead.</p>
-
-
-                <button
-                    type="button"
-                    onclick="showFinal()"
+                <img
+                    src="birthday (13).png"
+                    alt="ସୁନ୍ଦର ସ୍ମୃତି"
+                    class="memory-photo"
                 >
-                    Final Surprise
-                </button>
+
+                <div class="photo-light"></div>
+
+                <div class="photo-caption">
+                    <span>ଏକ ସରଳ ହସ...</span>
+                </div>
+
+            </div>
+
+            <div class="memory-side-text">
+
+                <span class="mini-label">
+                    ସ୍ମୃତି — ୦୧
+                </span>
+
+                <h3>
+                    ଏହି ହସଟା<br>
+                    ଏମିତି ହିଁ ରହୁ। ❤️
+                </h3>
+
+                <p>
+                    ଜୀବନର ସବୁ ଦିନ ସମାନ ନୁହେଁ,
+                    କିନ୍ତୁ କିଛି ହସ ସବୁବେଳେ
+                    ମନେ ରହିଯାଏ।
+                </p>
 
             </div>
 
         </section>
 
 
+        <!-- NEXT INDICATOR -->
 
-        <!-- =========================
-             FINAL
-        ========================== -->
-
-        <section
-            id="finalSection"
-            class="screen"
-        >
-
-            <div class="final-content">
-
-                <p class="eyebrow">
-                    Your special day
-                </p>
-
-                <h1>
-                    Happy Birthday
-                </h1>
-
-                <h2>
-                    Jhili
-                </h2>
-
-
-                <div class="final-line"></div>
-
-
-                <p class="final-text">
-                    May this year bring you
-                    beautiful moments,
-                    endless happiness,
-                    and everything you wish for.
-                </p>
-
-
-                <p class="final-small">
-                    Keep smiling.
-                </p>
-
-
-                <button
-                    type="button"
-                    onclick="restartWebsite()"
-                >
-                    Start Again
-                </button>
-
-            </div>
-
-        </section>
-
+        <div class="next-indicator">
+            <span></span>
+            ଆଉ କିଛି ଅଛି...
+        </div>
 
     </main>
-
-
-
-    <!-- =========================
-         MUSIC
-    ========================== -->
-
-    <audio
-        id="music"
-        src="music/birthday.mp3"
-        preload="auto"
-        loop
-    ></audio>
-
 
 
     <!-- =========================
@@ -569,5 +173,4 @@ Wishing you a wonderful year ahead.</p>
     <script src="script.js"></script>
 
 </body>
-
 </html>
