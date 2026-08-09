@@ -1,278 +1,634 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
+    <!-- =========================================
+         BASIC SETTINGS
+    ========================================== -->
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Happy Birthday Jhili ❤️</title>
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+    <meta
+        name="description"
+        content="A special birthday surprise"
+    >
 
-        html,
-        body {
-            width: 100%;
-            min-height: 100%;
-        }
+    <title>Happy Birthday ❤️</title>
 
-        body {
-            font-family: "Poppins", sans-serif;
-            background: #08070b;
-            color: #fff;
-            overflow-x: hidden;
-        }
 
-        /* Soft light on both sides */
-        body::before,
-        body::after {
-            content: "";
-            position: fixed;
-            top: 0;
-            width: 180px;
-            height: 100%;
-            pointer-events: none;
-            z-index: 0;
-            opacity: 0.45;
-        }
+    <!-- =========================================
+         GOOGLE FONTS
+    ========================================== -->
 
-        body::before {
-            left: 0;
-            background: radial-gradient(
-                circle at left center,
-                rgba(255, 105, 180, 0.18),
-                transparent 70%
-            );
-        }
+    <link rel="preconnect" href="https://fonts.googleapis.com">
 
-        body::after {
-            right: 0;
-            background: radial-gradient(
-                circle at right center,
-                rgba(180, 120, 255, 0.16),
-                transparent 70%
-            );
-        }
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
 
-        /* Main page */
-        .page {
-            position: relative;
-            z-index: 1;
-            width: 100%;
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 30px 15px;
-        }
+    <link
+        href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
 
-        .container {
-            width: min(900px, 100%);
-            text-align: center;
-        }
 
-        /* Music button */
-        .music-btn {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            z-index: 100;
-            width: 48px;
-            height: 48px;
-            border-radius: 50%;
-            border: 1px solid rgba(255,255,255,0.18);
-            background: rgba(255,255,255,0.08);
-            backdrop-filter: blur(12px);
-            color: white;
-            font-size: 20px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: 0.3s ease;
-        }
+    <!-- =========================================
+         MAIN CSS
+    ========================================== -->
 
-        .music-btn:hover {
-            transform: scale(1.08);
-            background: rgba(255,255,255,0.14);
-        }
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
 
-        /* Start screen */
-        .start-screen {
-            min-height: 90vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            gap: 22px;
-        }
-
-        .small-line {
-            font-size: 13px;
-            letter-spacing: 4px;
-            text-transform: uppercase;
-            color: rgba(255,255,255,0.55);
-        }
-
-        .title {
-            font-size: clamp(38px, 8vw, 78px);
-            font-weight: 600;
-            letter-spacing: -2px;
-            line-height: 1.05;
-        }
-
-        .title span {
-            background: linear-gradient(
-                90deg,
-                #ff9ecb,
-                #ffffff,
-                #c9a7ff
-            );
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .start-btn {
-            margin-top: 12px;
-            padding: 14px 30px;
-            border: 1px solid rgba(255,255,255,0.22);
-            border-radius: 50px;
-            background: rgba(255,255,255,0.08);
-            color: white;
-            font-size: 15px;
-            cursor: pointer;
-            backdrop-filter: blur(10px);
-            transition: 0.3s ease;
-        }
-
-        .start-btn:hover {
-            transform: translateY(-2px);
-            background: rgba(255,255,255,0.14);
-        }
-
-        /* Hidden until start */
-        .main-content {
-            display: none;
-        }
-
-        @media (max-width: 600px) {
-            body::before,
-            body::after {
-                width: 100px;
-            }
-
-            .music-btn {
-                top: 14px;
-                right: 14px;
-                width: 44px;
-                height: 44px;
-            }
-        }
-    </style>
 </head>
+
 
 <body>
 
-    <!-- Birthday Song -->
-    <audio id="birthdaySong" loop preload="auto">
-        <source src="music/birthday.mp3" type="audio/mpeg">
+
+    <!-- =========================================
+         BACKGROUND
+    ========================================== -->
+
+    <div class="background">
+
+        <div class="glow glow-1"></div>
+
+        <div class="glow glow-2"></div>
+
+        <div class="glow glow-3"></div>
+
+        <div class="stars"></div>
+
+    </div>
+
+
+    <!-- =========================================
+         FLOATING HEARTS
+    ========================================== -->
+
+    <div class="floating-hearts">
+
+        <span>❤</span>
+        <span>♡</span>
+        <span>❤</span>
+        <span>♡</span>
+        <span>❤</span>
+        <span>♡</span>
+        <span>❤</span>
+        <span>♡</span>
+
+    </div>
+
+
+    <!-- =========================================
+         BACKGROUND MUSIC
+    ========================================== -->
+
+    <audio
+        id="bgMusic"
+        preload="auto"
+        loop
+    >
+
+        <source
+            src="music/birthday.mp3"
+            type="audio/mpeg"
+        >
+
     </audio>
 
-    <!-- Music Control -->
-    <button class="music-btn" id="musicBtn" aria-label="Music">
-        ♫
+
+    <!-- =========================================
+         MUSIC BUTTON
+    ========================================== -->
+
+    <button
+        id="musicBtn"
+        class="music-btn"
+        type="button"
+        aria-label="Music"
+    >
+
+        🔇
+
     </button>
 
-    <main class="page">
 
-        <div class="container">
+    <!-- =========================================
+         PAGE 1
+         WELCOME
+    ========================================== -->
 
-            <!-- Opening -->
-            <section class="start-screen" id="startScreen">
+    <main
+        id="page1"
+        class="page active"
+    >
 
-                <div class="small-line">
-                    A little surprise for
+        <div class="welcome-container">
+
+
+            <p class="small-title">
+
+                ✨ A Special Day ✨
+
+            </p>
+
+
+            <h1 class="main-title">
+
+                Happy Birthday
+
+            </h1>
+
+
+            <h2 class="birthday-name">
+
+                My Dear ❤️
+
+            </h2>
+
+
+            <div class="title-divider">
+
+                <span></span>
+
+                <i>♥</i>
+
+                <span></span>
+
+            </div>
+
+
+            <p class="welcome-text">
+
+                Today is a beautiful day because
+                someone very special was born.
+
+                <br>
+
+                I have prepared a little surprise
+                especially for you. ❤️
+
+            </p>
+
+
+            <!-- =================================
+                 BIRTHDAY DATE
+            ================================== -->
+
+            <div class="birthday-date">
+
+                <span>05</span>
+
+                <div>
+
+                    <small>SEPTEMBER</small>
+
+                    <strong>BIRTHDAY</strong>
+
                 </div>
 
-                <h1 class="title">
-                    Happy Birthday<br>
-                    <span>Jhili ❤️</span>
-                </h1>
-
-                <button class="start-btn" id="startBtn">
-                    Open Your Surprise ✨
-                </button>
-
-            </section>
+            </div>
 
 
-            <!-- Main Birthday Content -->
-            <section class="main-content" id="mainContent">
+            <!-- =================================
+                 OPEN SURPRISE
+            ================================== -->
 
-                <!-- PART 2 CONTENT WILL COME HERE -->
+            <button
+                id="openBtn"
+                class="open-btn"
+                type="button"
+            >
 
-            </section>
+                <span class="gift-icon">
+
+                    🎁
+
+                </span>
+
+                <span>
+
+                    Open Your Surprise
+
+                </span>
+
+                <span class="arrow">
+
+                    →
+
+                </span>
+
+            </button>
+
+
+            <p class="bottom-message">
+
+                Made with ❤️ just for you
+
+            </p>
+
 
         </div>
 
     </main>
 
 
-    <script>
-        const song = document.getElementById("birthdaySong");
-        const startBtn = document.getElementById("startBtn");
-        const startScreen = document.getElementById("startScreen");
-        const mainContent = document.getElementById("mainContent");
-        const musicBtn = document.getElementById("musicBtn");
+    <!-- =========================================
+         PAGE 2
+         GIFT SURPRISE
+    ========================================== -->
 
-        let musicPlaying = false;
+    <section
+        id="page2"
+        class="page"
+    >
 
-        /* Start surprise + song */
-        startBtn.addEventListener("click", async () => {
-
-            startScreen.style.display = "none";
-            mainContent.style.display = "block";
-
-            try {
-                song.volume = 0.65;
-                await song.play();
-
-                musicPlaying = true;
-                musicBtn.textContent = "♫";
-            } catch (error) {
-                console.log("Music could not start:", error);
-            }
-        });
+        <div class="gift-page">
 
 
-        /* Music ON / OFF */
-        musicBtn.addEventListener("click", async () => {
+            <p class="small-title">
 
-            if (song.paused) {
+                ✨ Your Surprise Is Here ✨
 
-                try {
-                    song.volume = 0.65;
-                    await song.play();
+            </p>
 
-                    musicPlaying = true;
-                    musicBtn.textContent = "♫";
 
-                } catch (error) {
-                    console.log("Music could not start:", error);
-                }
+            <h2 class="gift-title">
 
-            } else {
+                I Have Something For You 🎁
 
-                song.pause();
+            </h2>
 
-                musicPlaying = false;
-                musicBtn.textContent = "🔇";
-            }
-        });
-    </script>
+
+            <p class="gift-description">
+
+                Tap the gift box and discover
+                your surprise.
+
+            </p>
+
+
+            <!-- =================================
+                 GIFT IMAGE
+            ================================== -->
+
+            <div
+                id="giftBox"
+                class="gift-box"
+            >
+
+                <img
+                    src="images/gift.png"
+                    alt="Birthday Gift"
+                    class="gift-image"
+                >
+
+            </div>
+
+
+            <p class="tap-message">
+
+                👆 Tap the gift box
+
+            </p>
+
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================================
+         PAGE 3
+         PHOTO MEMORIES
+    ========================================== -->
+
+    <section
+        id="page3"
+        class="page"
+    >
+
+        <div class="photo-page">
+
+
+            <p class="small-title">
+
+                📸 Beautiful Memories
+
+            </p>
+
+
+            <h2 class="photo-title">
+
+                Every Picture Has A Story ❤️
+
+            </h2>
+
+
+            <!-- =================================
+                 PHOTO SLIDER
+            ================================== -->
+
+            <div class="photo-slider">
+
+                <img
+                    id="memoryPhoto"
+                    src="images/birthday (1).jpg"
+                    alt="Birthday Memory"
+                >
+
+
+                <div class="photo-overlay">
+
+                    <span id="photoNumber">
+
+                        1 / 14
+
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <p
+                id="photoCaption"
+                class="photo-caption"
+            >
+
+                A beautiful memory ❤️
+
+            </p>
+
+
+            <button
+                id="photoNextBtn"
+                class="open-btn"
+                type="button"
+            >
+
+                Continue →
+
+            </button>
+
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================================
+         PAGE 4
+         BIRTHDAY LETTER
+    ========================================== -->
+
+    <section
+        id="page4"
+        class="page"
+    >
+
+        <div class="letter-page">
+
+
+            <p class="small-title">
+
+                💌 A Little Message
+
+            </p>
+
+
+            <div class="letter-card">
+
+
+                <div class="letter-icon">
+
+                    💗
+
+                </div>
+
+
+                <h2>
+
+                    For You
+
+                </h2>
+
+
+                <div
+                    id="letterText"
+                    class="letter-text"
+                >
+
+                    You are one of the most
+                    beautiful parts of this special day.
+
+                    <br><br>
+
+                    On your birthday,
+                    I wish you happiness,
+                    beautiful memories,
+                    success and countless
+                    reasons to smile.
+
+                    <br><br>
+
+                    May every new day bring
+                    something beautiful into your life.
+
+                    <br><br>
+
+                    Happy Birthday ❤️
+
+                </div>
+
+
+                <button
+                    id="letterNextBtn"
+                    class="open-btn"
+                    type="button"
+                >
+
+                    One More Surprise →
+
+                </button>
+
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================================
+         PAGE 5
+         MAKE A WISH
+    ========================================== -->
+
+    <section
+        id="page5"
+        class="page"
+    >
+
+        <div class="cake-page">
+
+
+            <p class="small-title">
+
+                🎂 Make A Wish
+
+            </p>
+
+
+            <h2 class="cake-title">
+
+                Your Birthday Cake
+
+            </h2>
+
+
+            <!-- =================================
+                 CANDLE
+            ================================== -->
+
+            <div
+                id="candleArea"
+                class="candle-area"
+            >
+
+                <!-- Candle ON -->
+
+                <img
+                    id="candleOn"
+                    class="candle-image candle-on"
+                    src="images/candle-on.png"
+                    alt="Candle On"
+                >
+
+
+                <!-- Candle OFF -->
+
+                <img
+                    id="candleOff"
+                    class="candle-image candle-off"
+                    src="images/candle-off.png"
+                    alt="Candle Off"
+                >
+
+            </div>
+
+
+            <p
+                id="wishText"
+                class="wish-text"
+            >
+
+                Make a beautiful wish... ✨
+
+            </p>
+
+
+            <button
+                id="blowBtn"
+                class="open-btn"
+                type="button"
+            >
+
+                🕯️ Blow The Candle
+
+            </button>
+
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================================
+         PAGE 6
+         FINAL SURPRISE
+    ========================================== -->
+
+    <section
+        id="page6"
+        class="page"
+    >
+
+        <div class="final-page">
+
+
+            <!-- Fireworks -->
+
+            <div
+                id="fireworks"
+                class="fireworks"
+            ></div>
+
+
+            <p class="small-title">
+
+                ✨ One Last Thing ✨
+
+            </p>
+
+
+            <h1 class="final-title">
+
+                Happy Birthday ❤️
+
+            </h1>
+
+
+            <p class="final-message">
+
+                May your life always be filled
+                with happiness, beautiful memories,
+                smiles and wonderful moments.
+
+            </p>
+
+
+            <div class="final-heart">
+
+                ❤️
+
+            </div>
+
+
+            <p class="made-with">
+
+                Made with love
+
+                <br>
+
+                Just for you ❤️
+
+            </p>
+
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================================
+         JAVASCRIPT
+    ========================================== -->
+
+    <script src="script.js"></script>
+
 
 </body>
+
 </html>
