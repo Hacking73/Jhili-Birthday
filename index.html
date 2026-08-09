@@ -1,176 +1,278 @@
 <!DOCTYPE html>
-<html lang="or">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Jhili ❤️</title>
 
-    <meta name="theme-color" content="#0d1110">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    <title>ତୁମ ପାଇଁ ଏକ ଛୋଟ ସର୍ପ୍ରାଇଜ୍ ❤️</title>
+        html,
+        body {
+            width: 100%;
+            min-height: 100%;
+        }
 
-    <link rel="stylesheet" href="style.css">
+        body {
+            font-family: "Poppins", sans-serif;
+            background: #08070b;
+            color: #fff;
+            overflow-x: hidden;
+        }
 
-    <!-- Odia friendly font -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Oriya:wght@400;500;600;700&display=swap"
-          rel="stylesheet">
+        /* Soft light on both sides */
+        body::before,
+        body::after {
+            content: "";
+            position: fixed;
+            top: 0;
+            width: 180px;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0.45;
+        }
+
+        body::before {
+            left: 0;
+            background: radial-gradient(
+                circle at left center,
+                rgba(255, 105, 180, 0.18),
+                transparent 70%
+            );
+        }
+
+        body::after {
+            right: 0;
+            background: radial-gradient(
+                circle at right center,
+                rgba(180, 120, 255, 0.16),
+                transparent 70%
+            );
+        }
+
+        /* Main page */
+        .page {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 30px 15px;
+        }
+
+        .container {
+            width: min(900px, 100%);
+            text-align: center;
+        }
+
+        /* Music button */
+        .music-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 100;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            border: 1px solid rgba(255,255,255,0.18);
+            background: rgba(255,255,255,0.08);
+            backdrop-filter: blur(12px);
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.3s ease;
+        }
+
+        .music-btn:hover {
+            transform: scale(1.08);
+            background: rgba(255,255,255,0.14);
+        }
+
+        /* Start screen */
+        .start-screen {
+            min-height: 90vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 22px;
+        }
+
+        .small-line {
+            font-size: 13px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.55);
+        }
+
+        .title {
+            font-size: clamp(38px, 8vw, 78px);
+            font-weight: 600;
+            letter-spacing: -2px;
+            line-height: 1.05;
+        }
+
+        .title span {
+            background: linear-gradient(
+                90deg,
+                #ff9ecb,
+                #ffffff,
+                #c9a7ff
+            );
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .start-btn {
+            margin-top: 12px;
+            padding: 14px 30px;
+            border: 1px solid rgba(255,255,255,0.22);
+            border-radius: 50px;
+            background: rgba(255,255,255,0.08);
+            color: white;
+            font-size: 15px;
+            cursor: pointer;
+            backdrop-filter: blur(10px);
+            transition: 0.3s ease;
+        }
+
+        .start-btn:hover {
+            transform: translateY(-2px);
+            background: rgba(255,255,255,0.14);
+        }
+
+        /* Hidden until start */
+        .main-content {
+            display: none;
+        }
+
+        @media (max-width: 600px) {
+            body::before,
+            body::after {
+                width: 100px;
+            }
+
+            .music-btn {
+                top: 14px;
+                right: 14px;
+                width: 44px;
+                height: 44px;
+            }
+        }
+    </style>
 </head>
 
 <body>
 
-    <!-- =========================
-         BACKGROUND MUSIC
-    ========================== -->
-
-    <audio id="bgMusic" loop preload="auto">
-        <source src="song.mp3" type="audio/mpeg">
+    <!-- Birthday Song -->
+    <audio id="birthdaySong" loop preload="auto">
+        <source src="music/birthday.mp3" type="audio/mpeg">
     </audio>
 
-
-    <!-- =========================
-         MUSIC BUTTON
-    ========================== -->
-
-    <button class="music-btn" id="musicBtn" aria-label="ସଙ୍ଗୀତ">
-        <span class="music-icon">♪</span>
-        <span id="musicText">ସଙ୍ଗୀତ</span>
+    <!-- Music Control -->
+    <button class="music-btn" id="musicBtn" aria-label="Music">
+        ♫
     </button>
 
+    <main class="page">
 
-    <!-- =========================
-         OPENING SCREEN
-    ========================== -->
+        <div class="container">
 
-    <section class="opening" id="opening">
+            <!-- Opening -->
+            <section class="start-screen" id="startScreen">
 
-        <div class="opening-glow glow-one"></div>
-        <div class="opening-glow glow-two"></div>
-
-        <div class="opening-content">
-
-            <div class="tiny-line"></div>
-
-            <p class="small-text">
-                ଏହା କେବଳ ଏକ ୱେବ୍ ପେଜ୍ ନୁହେଁ...
-            </p>
-
-            <h1>
-                ତୁମ ପାଇଁ<br>
-                ଏକ ଛୋଟ <span>ସର୍ପ୍ରାଇଜ୍</span>
-            </h1>
-
-            <p class="opening-message">
-                କିଛି ଫଟୋ...<br>
-                କିଛି ସ୍ମୃତି...<br>
-                ଆଉ ମନରେ ରହିଯାଇଥିବା କିଛି କଥା। ❤️
-            </p>
-
-            <button class="open-btn" id="openBtn">
-                <span>ସର୍ପ୍ରାଇଜ୍ ଖୋଲନ୍ତୁ</span>
-                <span class="arrow">→</span>
-            </button>
-
-        </div>
-
-        <div class="scroll-hint">
-            <span></span>
-            ଆଗକୁ ଯିବା...
-        </div>
-
-    </section>
-
-
-    <!-- =========================
-         MAIN CONTENT
-    ========================== -->
-
-    <main id="mainContent" class="hidden">
-
-        <!-- MEMORY INTRO -->
-
-        <section class="memory-intro">
-
-            <div class="section-number">୦୧</div>
-
-            <p class="eyebrow">
-                କିଛି ସୁନ୍ଦର ମୁହୂର୍ତ୍ତ
-            </p>
-
-            <h2>
-                କେତେକ ଫଟୋ<br>
-                <span>କେତେକ ଅନୁଭବ</span>
-            </h2>
-
-            <p class="section-text">
-                କିଛି ମୁହୂର୍ତ୍ତ ଏମିତି ଥାଏ,
-                ଯାହାକୁ ଶବ୍ଦରେ କହିବା ଦରକାର ପଡ଼େନି।
-            </p>
-
-        </section>
-
-
-        <!-- =========================
-             FIRST LARGE PHOTO
-        ========================== -->
-
-        <section class="hero-memory">
-
-            <div class="photo-frame">
-
-                <img
-                    src="birthday (13).png"
-                    alt="ସୁନ୍ଦର ସ୍ମୃତି"
-                    class="memory-photo"
-                >
-
-                <div class="photo-light"></div>
-
-                <div class="photo-caption">
-                    <span>ଏକ ସରଳ ହସ...</span>
+                <div class="small-line">
+                    A little surprise for
                 </div>
 
-            </div>
+                <h1 class="title">
+                    Happy Birthday<br>
+                    <span>Jhili ❤️</span>
+                </h1>
 
-            <div class="memory-side-text">
+                <button class="start-btn" id="startBtn">
+                    Open Your Surprise ✨
+                </button>
 
-                <span class="mini-label">
-                    ସ୍ମୃତି — ୦୧
-                </span>
-
-                <h3>
-                    ଏହି ହସଟା<br>
-                    ଏମିତି ହିଁ ରହୁ। ❤️
-                </h3>
-
-                <p>
-                    ଜୀବନର ସବୁ ଦିନ ସମାନ ନୁହେଁ,
-                    କିନ୍ତୁ କିଛି ହସ ସବୁବେଳେ
-                    ମନେ ରହିଯାଏ।
-                </p>
-
-            </div>
-
-        </section>
+            </section>
 
 
-        <!-- NEXT INDICATOR -->
+            <!-- Main Birthday Content -->
+            <section class="main-content" id="mainContent">
 
-        <div class="next-indicator">
-            <span></span>
-            ଆଉ କିଛି ଅଛି...
+                <!-- PART 2 CONTENT WILL COME HERE -->
+
+            </section>
+
         </div>
 
     </main>
 
 
-    <!-- =========================
-         SCRIPT
-    ========================== -->
+    <script>
+        const song = document.getElementById("birthdaySong");
+        const startBtn = document.getElementById("startBtn");
+        const startScreen = document.getElementById("startScreen");
+        const mainContent = document.getElementById("mainContent");
+        const musicBtn = document.getElementById("musicBtn");
 
-    <script src="script.js"></script>
+        let musicPlaying = false;
+
+        /* Start surprise + song */
+        startBtn.addEventListener("click", async () => {
+
+            startScreen.style.display = "none";
+            mainContent.style.display = "block";
+
+            try {
+                song.volume = 0.65;
+                await song.play();
+
+                musicPlaying = true;
+                musicBtn.textContent = "♫";
+            } catch (error) {
+                console.log("Music could not start:", error);
+            }
+        });
+
+
+        /* Music ON / OFF */
+        musicBtn.addEventListener("click", async () => {
+
+            if (song.paused) {
+
+                try {
+                    song.volume = 0.65;
+                    await song.play();
+
+                    musicPlaying = true;
+                    musicBtn.textContent = "♫";
+
+                } catch (error) {
+                    console.log("Music could not start:", error);
+                }
+
+            } else {
+
+                song.pause();
+
+                musicPlaying = false;
+                musicBtn.textContent = "🔇";
+            }
+        });
+    </script>
 
 </body>
 </html>
