@@ -1,14 +1,3 @@
-/* =========================================================
-   BIRTHDAY WEBSITE
-   STYLE.CSS — PART 1
-   Clean • Elegant • Minimal
-========================================================= */
-
-
-/* =========================================================
-   RESET
-========================================================= */
-
 * {
     margin: 0;
     padding: 0;
@@ -20,1595 +9,584 @@ html {
 }
 
 body {
-    min-height: 100vh;
+    background: #0b0f0d;
+    color: #f5f1eb;
+    font-family: "Noto Sans Oriya", sans-serif;
     overflow-x: hidden;
-
-    font-family:
-        "Segoe UI",
-        "Helvetica Neue",
-        Arial,
-        sans-serif;
-
-    color: #f7eaf0;
-
-    background:
-        radial-gradient(
-            circle at 50% 20%,
-            #351d31 0%,
-            #1c101c 42%,
-            #100a11 100%
-        );
 }
 
 
-/* =========================================================
-   SIDE LIGHTS
-========================================================= */
+/* =========================
+   MUSIC BUTTON
+========================= */
 
-.side-light {
+.music-btn {
     position: fixed;
-
-    top: -10vh;
-
-    width: 180px;
-    height: 120vh;
-
-    z-index: 0;
-
-    pointer-events: none;
-
-    filter: blur(65px);
-
-    opacity: 0.32;
-
-    animation:
-        sideLightMove 7s ease-in-out infinite alternate;
-}
-
-.left-light {
-    left: -130px;
-
-    background:
-        linear-gradient(
-            180deg,
-            #e66b9e,
-            #a84f91
-        );
-}
-
-.right-light {
-    right: -130px;
-
-    background:
-        linear-gradient(
-            180deg,
-            #b56be0,
-            #e46b9c
-        );
-
-    animation-delay: -3s;
-}
-
-@keyframes sideLightMove {
-
-    from {
-        transform:
-            translateY(-20px)
-            scaleY(0.92);
-    }
-
-    to {
-        transform:
-            translateY(20px)
-            scaleY(1.06);
-    }
-}
-
-
-/* =========================================================
-   LOADING
-========================================================= */
-
-#loading {
-    position: fixed;
-
-    inset: 0;
-
-    z-index: 9999;
+    top: 22px;
+    right: 22px;
+    z-index: 1000;
 
     display: flex;
-
     align-items: center;
-    justify-content: center;
+    gap: 8px;
 
-    background:
-        radial-gradient(
-            circle at center,
-            #321a2d,
-            #100a11
-        );
-}
+    padding: 9px 14px;
 
-.loading-inner {
-    display: flex;
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 50px;
 
-    align-items: center;
-    justify-content: center;
+    background: rgba(10, 14, 12, 0.55);
+    backdrop-filter: blur(12px);
 
-    gap: 14px;
+    color: #fff;
 
-    color: #f5dce7;
-
-    letter-spacing: 3px;
-
-    text-transform: uppercase;
-
+    font-family: inherit;
     font-size: 12px;
 
-    animation:
-        loadingFade 1.8s ease-in-out infinite;
+    cursor: pointer;
+
+    transition: 0.3s ease;
 }
 
-.loading-line {
-    width: 34px;
-    height: 1px;
-
-    background:
-        rgba(239, 164, 193, 0.65);
+.music-btn:hover {
+    background: rgba(255,255,255,0.12);
+    transform: translateY(-2px);
 }
 
-@keyframes loadingFade {
-
-    0%,
-    100% {
-        opacity: 0.45;
-    }
-
-    50% {
-        opacity: 1;
-    }
+.music-icon {
+    font-size: 18px;
 }
 
 
-/* =========================================================
-   WEBSITE
-========================================================= */
+/* =========================
+   OPENING
+========================= */
 
-#website {
+.opening {
+    min-height: 100svh;
+
     position: relative;
 
-    z-index: 1;
-
-    width: 100%;
-    min-height: 100vh;
-}
-
-
-/* =========================================================
-   SCREEN
-========================================================= */
-
-.screen {
-    width: 100%;
-    min-height: 100vh;
-
-    display: none;
-
+    display: flex;
     align-items: center;
     justify-content: center;
 
-    padding:
-        70px 22px;
-
-    position: relative;
-
     overflow: hidden;
-}
 
-.screen.active {
-    display: flex;
-
-    animation:
-        screenIn 0.7s ease both;
-}
-
-@keyframes screenIn {
-
-    from {
-        opacity: 0;
-
-        transform:
-            translateY(16px);
-    }
-
-    to {
-        opacity: 1;
-
-        transform:
-            translateY(0);
-    }
+    background:
+        radial-gradient(
+            circle at 50% 40%,
+            rgba(65, 100, 73, 0.24),
+            transparent 40%
+        ),
+        #0b0f0d;
 }
 
 
-/* =========================================================
-   COMMON CONTENT
-========================================================= */
+.opening::before {
+    content: "";
 
-.hero-content,
-.gift-content,
-.cake-content,
-.candle-content,
-.gallery-content,
-.message-content,
-.final-content {
+    position: absolute;
+    inset: 0;
 
+    background:
+        linear-gradient(
+            180deg,
+            rgba(0,0,0,0.15),
+            rgba(0,0,0,0.65)
+        );
+
+    pointer-events: none;
+}
+
+
+/* soft light */
+
+.opening-glow {
+    position: absolute;
+
+    width: 420px;
+    height: 420px;
+
+    border-radius: 50%;
+
+    filter: blur(100px);
+
+    opacity: 0.18;
+
+    pointer-events: none;
+}
+
+.glow-one {
+    background: #6f9477;
+    top: -160px;
+    left: -130px;
+}
+
+.glow-two {
+    background: #d3a17d;
+    right: -150px;
+    bottom: -180px;
+}
+
+
+/* =========================
+   OPENING CONTENT
+========================= */
+
+.opening-content {
     position: relative;
-
     z-index: 2;
 
-    width: min(900px, 94vw);
+    width: min(720px, 88%);
 
     text-align: center;
+
+    animation: openingIn 1.5s ease forwards;
 }
 
 
-/* =========================================================
-   SMALL LABEL
-========================================================= */
+.tiny-line {
+    width: 42px;
+    height: 1px;
 
-.eyebrow {
-    margin-bottom: 18px;
+    margin: 0 auto 25px;
 
-    color: #e4a7bd;
+    background: rgba(255,255,255,0.55);
+}
 
-    font-size: 11px;
+
+.small-text {
+    font-size: 13px;
+    letter-spacing: 1px;
+
+    color: rgba(255,255,255,0.55);
+
+    margin-bottom: 22px;
+}
+
+
+.opening h1 {
+    font-size: clamp(42px, 8vw, 78px);
+
+    line-height: 1.08;
 
     font-weight: 600;
-
-    letter-spacing: 4px;
-
-    text-transform: uppercase;
-}
-
-
-/* =========================================================
-   HEADINGS
-========================================================= */
-
-h1,
-h2 {
-    font-family:
-        Georgia,
-        "Times New Roman",
-        serif;
-
-    font-weight: 400;
-}
-
-.hero-content h1 {
-    margin-bottom: 4px;
-
-    color: #f8e7ee;
-
-    font-size:
-        clamp(52px, 9vw, 100px);
-
-    line-height: 0.98;
 
     letter-spacing: -2px;
 }
 
-.gift-content h2,
-.cake-content h2,
-.candle-content h2,
-.gallery-content h2,
-.message-content h2 {
 
-    margin-bottom: 14px;
-
-    color: #f5dce6;
-
-    font-size:
-        clamp(34px, 5vw, 58px);
-
-    line-height: 1.05;
+.opening h1 span {
+    color: #d7b58e;
 }
 
 
-/* =========================================================
-   TEXT
-========================================================= */
+.opening-message {
+    margin: 30px auto 35px;
 
-.short-text {
-    max-width: 470px;
+    max-width: 440px;
 
-    margin:
-        0 auto 28px;
+    color: rgba(255,255,255,0.67);
 
-    color: #c9aab9;
+    font-size: 15px;
 
-    font-size: 16px;
-
-    line-height: 1.7;
-}
-
-.hint {
-    margin-top: 8px;
-
-    color: #bd91a5;
-
-    font-size: 12px;
-
-    letter-spacing: 1.5px;
+    line-height: 2;
 }
 
 
-/* =========================================================
-   BUTTON
-========================================================= */
+/* =========================
+   OPEN BUTTON
+========================= */
 
-button {
-    border: 1px solid
-        rgba(240, 181, 205, 0.35);
+.open-btn {
+    border: 1px solid rgba(255,255,255,0.25);
 
-    outline: none;
+    background: rgba(255,255,255,0.07);
 
-    padding:
-        12px 25px;
+    color: white;
 
-    border-radius: 999px;
+    padding: 14px 21px;
 
-    color: #fff3f7;
-
-    background:
-        rgba(255, 255, 255, 0.07);
-
-    backdrop-filter: blur(8px);
+    border-radius: 50px;
 
     font-family: inherit;
 
-    font-size: 13px;
-
-    letter-spacing: 0.4px;
-
     cursor: pointer;
 
+    backdrop-filter: blur(12px);
+
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+
     transition:
-        background 0.3s ease,
-        border-color 0.3s ease,
-        transform 0.3s ease,
-        box-shadow 0.3s ease;
+        transform 0.35s ease,
+        background 0.35s ease,
+        border 0.35s ease;
 }
 
-button:hover {
-    background:
-        rgba(224, 105, 154, 0.18);
+.open-btn:hover {
+    transform: translateY(-3px);
 
-    border-color:
-        rgba(240, 181, 205, 0.65);
+    background: rgba(255,255,255,0.13);
 
-    box-shadow:
-        0 8px 28px
-        rgba(218, 92, 145, 0.16);
-
-    transform:
-        translateY(-2px);
-}
-
-button:active {
-    transform:
-        translateY(0)
-        scale(0.97);
-}
-
-button:disabled {
-    opacity: 0.45;
-
-    cursor: not-allowed;
-
-    transform: none;
+    border-color: rgba(255,255,255,0.4);
 }
 
 
-/* =========================================================
-   INTRO
-========================================================= */
+.arrow {
+    font-size: 20px;
 
-.hero-content::before {
-    content: "";
+    transition: transform 0.3s ease;
+}
 
+.open-btn:hover .arrow {
+    transform: translateX(5px);
+}
+
+
+/* =========================
+   SCROLL HINT
+========================= */
+
+.scroll-hint {
     position: absolute;
 
+    bottom: 25px;
     left: 50%;
-    top: 50%;
 
-    width: 360px;
-    height: 360px;
+    transform: translateX(-50%);
 
-    transform:
-        translate(-50%, -50%);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    font-size: 11px;
+
+    color: rgba(255,255,255,0.4);
+}
+
+.scroll-hint span {
+    width: 5px;
+    height: 5px;
 
     border-radius: 50%;
+
+    background: #d7b58e;
+
+    animation: pulse 1.8s infinite;
+}
+
+
+/* =========================
+   MAIN
+========================= */
+
+.hidden {
+    display: none;
+}
+
+#mainContent {
+    min-height: 100vh;
 
     background:
         radial-gradient(
-            circle,
-            rgba(213, 91, 143, 0.14),
-            transparent 68%
-        );
-
-    filter: blur(8px);
-
-    z-index: -1;
+            circle at 20% 20%,
+            rgba(70,100,75,0.12),
+            transparent 35%
+        ),
+        #0b0f0d;
 }
 
 
-/* =========================================================
-   GIFT
-========================================================= */
+/* =========================
+   INTRO
+========================= */
 
-.gift-stage {
-    width: min(390px, 78vw);
+.memory-intro {
+    width: min(1050px, 88%);
 
-    height: min(390px, 55vh);
+    margin: 0 auto;
 
-    margin:
-        10px auto 5px;
-
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-    position: relative;
-}
-
-.gift-stage::after {
-    content: "";
-
-    position: absolute;
-
-    bottom: 20px;
-
-    left: 50%;
-
-    width: 190px;
-    height: 25px;
-
-    transform:
-        translateX(-50%);
-
-    border-radius: 50%;
-
-    background:
-        rgba(0, 0, 0, 0.38);
-
-    filter: blur(15px);
-
-    z-index: -1;
-}
-
-#giftBox {
-    width: 100%;
-    height: 100%;
-
-    display: block;
-
-    object-fit: contain;
-
-    cursor: pointer;
-
-    filter:
-        drop-shadow(
-            0 22px 30px
-            rgba(0, 0, 0, 0.34)
-        );
-
-    transition:
-        transform 0.45s ease,
-        filter 0.45s ease;
-}
-
-#giftBox:hover {
-    transform:
-        translateY(-6px)
-        scale(1.025);
-
-    filter:
-        drop-shadow(
-            0 28px 35px
-            rgba(0, 0, 0, 0.42)
-        );
-}
-
-#giftBox.gift-open {
-    animation:
-        giftOpen 0.65s ease both;
-}
-
-@keyframes giftOpen {
-
-    0% {
-        transform:
-            scale(1)
-            rotate(0);
-    }
-
-    45% {
-        transform:
-            scale(1.08)
-            rotate(-3deg);
-    }
-
-    75% {
-        transform:
-            scale(1.06)
-            rotate(3deg);
-    }
-
-    100% {
-        transform:
-            scale(1)
-            rotate(0);
-    }
+    padding:
+        150px 0
+        90px;
 }
 
 
-/* =========================================================
-   HIDDEN MESSAGE
-========================================================= */
-
-.hidden-message {
-    margin-top: 20px;
-
-    animation:
-        messageIn 0.55s ease both;
-}
-
-.hidden-message p {
-    margin-bottom: 18px;
-
-    color: #d5b5c3;
-
-    font-size: 15px;
-}
-
-@keyframes messageIn {
-
-    from {
-        opacity: 0;
-
-        transform:
-            translateY(10px);
-    }
-
-    to {
-        opacity: 1;
-
-        transform:
-            translateY(0);
-    }
-}
-/* =========================================================
-   CAKE
-========================================================= */
-
-.cake-stage {
-    width: min(520px, 88vw);
-
-    height: min(390px, 52vh);
-
-    margin:
-        15px auto 22px;
-
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-    position: relative;
-}
-
-.cake-stage::after,
-.candle-stage::after {
-    content: "";
-
-    position: absolute;
-
-    left: 50%;
-    bottom: 15px;
-
-    width: 210px;
-    height: 24px;
-
-    transform:
-        translateX(-50%);
-
-    border-radius: 50%;
-
-    background:
-        rgba(0, 0, 0, 0.35);
-
-    filter: blur(15px);
-
-    z-index: -1;
-}
-
-#birthdayCake,
-#candleCake {
-    width: 100%;
-    height: 100%;
-
-    display: block;
-
-    object-fit: contain;
-
-    filter:
-        drop-shadow(
-            0 22px 28px
-            rgba(0, 0, 0, 0.35)
-        );
-
-    transition:
-        opacity 0.35s ease,
-        transform 0.45s ease;
-}
-
-.cake-cut-animation {
-    animation:
-        cakeCut 0.65s ease both;
-}
-
-@keyframes cakeCut {
-
-    0% {
-        transform:
-            scale(1);
-    }
-
-    45% {
-        transform:
-            scale(1.04)
-            rotate(-1deg);
-    }
-
-    75% {
-        transform:
-            scale(0.98)
-            rotate(1deg);
-    }
-
-    100% {
-        transform:
-            scale(1);
-    }
-}
-
-
-/* =========================================================
-   CANDLE
-========================================================= */
-
-.candle-stage {
-    width: min(520px, 88vw);
-
-    height: min(390px, 52vh);
-
-    margin:
-        15px auto 22px;
-
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-    position: relative;
-}
-
-#candleCake {
-    animation:
-        candleGlow 2.4s ease-in-out infinite alternate;
-}
-
-@keyframes candleGlow {
-
-    from {
-        filter:
-            drop-shadow(
-                0 18px 25px
-                rgba(0, 0, 0, 0.32)
-            );
-    }
-
-    to {
-        filter:
-            drop-shadow(
-                0 18px 32px
-                rgba(224, 110, 156, 0.25)
-            );
-    }
-}
-
-
-/* =========================================================
-   WISH MESSAGE
-========================================================= */
-
-#wishText {
-    margin-top: 20px;
-}
-
-
-/* =========================================================
-   GALLERY
-========================================================= */
-
-.gallery-content {
-    width: min(1100px, 95vw);
-}
-
-.gallery-wrap {
-    width: 100%;
-
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-    gap: 18px;
-
-    margin:
-        25px auto 10px;
-}
-
-
-/* =========================================================
-   UNIQUE 4:3 PHOTO FRAME
-========================================================= */
-
-.gallery-frame {
-    width: min(820px, 82vw);
-
-    aspect-ratio: 4 / 3;
-
-    position: relative;
-
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-    padding: 9px;
-
-    overflow: hidden;
-
-    border:
-        1px solid
-        rgba(235, 166, 194, 0.34);
-
-    border-radius: 20px;
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(255, 255, 255, 0.11),
-            rgba(255, 255, 255, 0.025)
-        );
-
-    box-shadow:
-        0 25px 70px
-        rgba(0, 0, 0, 0.38),
-
-        inset 0 0 0 1px
-        rgba(255, 255, 255, 0.04);
-
-    backdrop-filter:
-        blur(8px);
-
-    transition:
-        transform 0.4s ease,
-        box-shadow 0.4s ease;
-}
-
-.gallery-frame:hover {
-    transform:
-        translateY(-3px);
-
-    box-shadow:
-        0 30px 80px
-        rgba(0, 0, 0, 0.44),
-
-        0 0 35px
-        rgba(218, 102, 155, 0.10);
-}
-
-
-/* =========================================================
-   PHOTO
-========================================================= */
-
-#galleryImage {
-    width: 100%;
-    height: 100%;
-
-    display: block;
-
-    object-fit: contain;
-
-    border-radius: 13px;
-
-    cursor: pointer;
-
-    opacity: 1;
-
-    transition:
-        opacity 0.3s ease,
-        transform 0.45s ease;
-}
-
-#galleryImage:hover {
-    transform:
-        scale(1.008);
-}
-
-
-/* =========================================================
-   FRAME LIGHT
-========================================================= */
-
-.frame-shine {
-    position: absolute;
-
-    top: 0;
-    left: -30%;
-
-    width: 30%;
-    height: 100%;
-
-    pointer-events: none;
-
-    background:
-        linear-gradient(
-            90deg,
-            transparent,
-            rgba(255, 255, 255, 0.08),
-            transparent
-        );
-
-    transform:
-        skewX(-15deg);
-
-    animation:
-        frameShine 6s ease-in-out infinite;
-}
-
-@keyframes frameShine {
-
-    0%,
-    55% {
-        left: -35%;
-    }
-
-    80%,
-    100% {
-        left: 125%;
-    }
-}
-
-
-/* =========================================================
-   GALLERY NAVIGATION
-========================================================= */
-
-.gallery-nav {
-    width: 48px;
-    height: 48px;
-
-    flex-shrink: 0;
-
-    padding: 0;
-    margin: 0;
-
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-    border-radius: 50%;
-
-    color: #f4dce7;
-
-    font-family:
-        Georgia,
-        serif;
-
-    font-size: 30px;
-
-    line-height: 1;
-
-    background:
-        rgba(255, 255, 255, 0.055);
-}
-
-.gallery-nav:hover {
-    background:
-        rgba(221, 94, 151, 0.18);
-}
-
-
-/* =========================================================
-   PHOTO COUNTER
-========================================================= */
-
-.photo-counter {
-    margin-top: 14px;
-
-    color: #cba7b8;
-
+.section-number {
     font-size: 11px;
 
     letter-spacing: 3px;
 
-    font-weight: 600;
+    color: #d7b58e;
+
+    margin-bottom: 18px;
 }
 
 
-/* =========================================================
-   GALLERY CONTROLS
-========================================================= */
+.eyebrow {
+    font-size: 12px;
 
-.gallery-controls {
-    display: flex;
+    color: rgba(255,255,255,0.45);
 
-    align-items: center;
-    justify-content: center;
-
-    gap: 5px;
-
-    margin:
-        12px 0 16px;
-}
-
-.gallery-controls button {
-    padding:
-        9px 17px;
-
-    color: #cdaaba;
-
-    border-color:
-        rgba(235, 166, 194, 0.20);
-
-    background:
-        rgba(255, 255, 255, 0.035);
-
-    font-size: 11px;
+    margin-bottom: 18px;
 }
 
 
-/* =========================================================
-   FULL PHOTO VIEWER
-========================================================= */
+.memory-intro h2 {
+    font-size: clamp(38px, 6vw, 68px);
 
-.photo-viewer {
-    position: fixed;
+    line-height: 1.12;
 
-    inset: 0;
-
-    z-index: 9998;
-
-    display: none;
-
-    align-items: center;
-    justify-content: center;
-
-    gap: 18px;
-
-    padding: 30px;
-
-    background:
-        rgba(8, 5, 9, 0.96);
-
-    backdrop-filter:
-        blur(14px);
-}
-
-#fullPhoto {
-    max-width: 82vw;
-    max-height: 86vh;
-
-    width: auto;
-    height: auto;
-
-    display: block;
-
-    object-fit: contain;
-
-    border-radius: 12px;
-
-    box-shadow:
-        0 30px 90px
-        rgba(0, 0, 0, 0.65);
-}
-
-.viewer-close {
-    position: absolute;
-
-    top: 18px;
-    right: 22px;
-
-    width: 42px;
-    height: 42px;
-
-    padding: 0;
-    margin: 0;
-
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-    border-radius: 50%;
-
-    font-size: 26px;
-
-    line-height: 1;
-
-    background:
-        rgba(255, 255, 255, 0.07);
-}
-
-.viewer-nav {
-    width: 46px;
-    height: 46px;
-
-    padding: 0;
-    margin: 0;
-
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-    flex-shrink: 0;
-
-    border-radius: 50%;
-
-    font-family:
-        Georgia,
-        serif;
-
-    font-size: 30px;
-
-    line-height: 1;
-
-    background:
-        rgba(255, 255, 255, 0.07);
-}
-
-.viewer-nav:hover,
-.viewer-close:hover {
-    background:
-        rgba(221, 94, 151, 0.18);
-}
-/* =========================================================
-   MESSAGE
-========================================================= */
-
-.message-content {
-    width: min(760px, 92vw);
-}
-
-.message-content h2 {
-    margin-bottom: 24px;
-}
-
-.message-line {
-    width: 45px;
-    height: 1px;
-
-    margin:
-        0 auto 28px;
-
-    background:
-        rgba(235, 166, 194, 0.65);
-}
-
-.birthday-message {
-    max-width: 650px;
-
-    margin:
-        0 auto 30px;
-
-    color: #d2b4c2;
-
-    font-family:
-        Georgia,
-        "Times New Roman",
-        serif;
-
-    font-size:
-        clamp(17px, 2.2vw, 21px);
-
-    line-height: 1.9;
-
-    white-space: pre-line;
-}
-
-
-/* =========================================================
-   FINAL
-========================================================= */
-
-.final-content {
-    width: min(760px, 94vw);
-}
-
-.final-content h1 {
-    margin-bottom: 4px;
-
-    color: #f7e3eb;
-
-    font-size:
-        clamp(48px, 8vw, 82px);
-
-    line-height: 1;
+    font-weight: 500;
 
     letter-spacing: -1px;
 }
 
-.final-content h2 {
-    margin-bottom: 25px;
 
-    color: #d99bb5;
-
-    font-size:
-        clamp(32px, 5vw, 52px);
+.memory-intro h2 span {
+    color: #b5c6ae;
 }
 
-.final-line {
-    width: 55px;
-    height: 1px;
 
-    margin:
-        0 auto 28px;
+.section-text {
+    max-width: 470px;
+
+    margin-top: 25px;
+
+    color: rgba(255,255,255,0.52);
+
+    line-height: 1.9;
+
+    font-size: 14px;
+}
+
+
+/* =========================
+   HERO MEMORY
+========================= */
+
+.hero-memory {
+    width: min(1200px, 90%);
+
+    margin: 0 auto;
+
+    padding-bottom: 150px;
+
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1.35fr)
+        minmax(260px, 0.65fr);
+
+    gap: 70px;
+
+    align-items: center;
+}
+
+
+.photo-frame {
+    position: relative;
+
+    overflow: hidden;
+
+    border-radius: 4px;
+
+    background: #111;
+
+    box-shadow:
+        0 30px 70px rgba(0,0,0,0.35);
+}
+
+
+.memory-photo {
+    width: 100%;
+
+    display: block;
+
+    aspect-ratio: 4 / 5;
+
+    object-fit: cover;
+
+    transform: scale(1.01);
+
+    transition: transform 1.5s ease;
+}
+
+
+.photo-frame:hover .memory-photo {
+    transform: scale(1.045);
+}
+
+
+.photo-light {
+    position: absolute;
+
+    inset: 0;
 
     background:
-        rgba(235, 166, 194, 0.65);
+        linear-gradient(
+            180deg,
+            transparent 55%,
+            rgba(0,0,0,0.6)
+        );
+
+    pointer-events: none;
 }
 
-.final-text {
-    max-width: 570px;
 
-    margin:
-        0 auto 18px;
+.photo-caption {
+    position: absolute;
 
-    color: #cfb0bf;
+    left: 25px;
+    bottom: 22px;
 
-    font-family:
-        Georgia,
-        "Times New Roman",
-        serif;
+    font-size: 13px;
 
-    font-size:
-        clamp(16px, 2vw, 19px);
-
-    line-height: 1.8;
+    color: rgba(255,255,255,0.8);
 }
 
-.final-small {
-    margin-bottom: 27px;
 
-    color: #e0a4bc;
+.memory-side-text {
+    padding-right: 15px;
+}
 
-    font-size: 12px;
+
+.mini-label {
+    display: block;
+
+    color: #d7b58e;
+
+    font-size: 11px;
 
     letter-spacing: 2px;
 
-    text-transform: uppercase;
+    margin-bottom: 20px;
 }
 
 
-/* =========================================================
-   FINAL DECORATION
-========================================================= */
+.memory-side-text h3 {
+    font-size: clamp(28px, 4vw, 44px);
 
-.final-content::before,
-.final-content::after {
-    content: "";
+    line-height: 1.3;
 
-    position: absolute;
-
-    width: 170px;
-    height: 170px;
-
-    border-radius: 50%;
-
-    pointer-events: none;
-
-    filter: blur(55px);
-
-    opacity: 0.22;
-
-    z-index: -1;
-}
-
-.final-content::before {
-    left: 0;
-    top: 30%;
-
-    background:
-        #d45a91;
-}
-
-.final-content::after {
-    right: 0;
-    top: 55%;
-
-    background:
-        #a45fc7;
+    font-weight: 500;
 }
 
 
-/* =========================================================
-   SOFT FLOATING LIGHT
-========================================================= */
+.memory-side-text p {
+    margin-top: 25px;
 
-#website::before {
-    content: "";
+    color: rgba(255,255,255,0.48);
 
-    position: fixed;
+    font-size: 14px;
 
-    left: 50%;
-    top: 50%;
-
-    width: 280px;
-    height: 280px;
-
-    transform:
-        translate(-50%, -50%);
-
-    border-radius: 50%;
-
-    pointer-events: none;
-
-    background:
-        radial-gradient(
-            circle,
-            rgba(205, 89, 143, 0.055),
-            transparent 70%
-        );
-
-    filter: blur(10px);
-
-    z-index: -1;
+    line-height: 1.9;
 }
 
 
-/* =========================================================
-   MOBILE — TABLET
-========================================================= */
+/* =========================
+   NEXT
+========================= */
 
-@media (max-width: 800px) {
+.next-indicator {
+    width: 100%;
 
-    .screen {
-        padding:
-            55px 15px;
-    }
+    padding-bottom: 70px;
 
-    .side-light {
-        width: 120px;
+    text-align: center;
 
-        filter: blur(55px);
+    color: rgba(255,255,255,0.35);
 
-        opacity: 0.25;
-    }
+    font-size: 11px;
 
-    .left-light {
-        left: -90px;
-    }
+    letter-spacing: 1px;
+}
 
-    .right-light {
-        right: -90px;
-    }
+.next-indicator span {
+    display: block;
 
-    .gallery-wrap {
-        gap: 9px;
-    }
+    width: 1px;
+    height: 45px;
 
-    .gallery-frame {
-        width: 78vw;
+    margin: 0 auto 15px;
 
-        padding: 7px;
-
-        border-radius: 16px;
-    }
-
-    .gallery-nav {
-        width: 42px;
-        height: 42px;
-
-        font-size: 27px;
-    }
-
-    .cake-stage,
-    .candle-stage {
-        width: 88vw;
-
-        height: 46vh;
-    }
-
-    .gift-stage {
-        width: 78vw;
-
-        height: 48vh;
-    }
-
+    background: linear-gradient(
+        to bottom,
+        transparent,
+        rgba(255,255,255,0.4)
+    );
 }
 
 
-/* =========================================================
+/* =========================
+   ANIMATIONS
+========================= */
+
+@keyframes openingIn {
+
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+@keyframes pulse {
+
+    0%, 100% {
+        opacity: 0.3;
+        transform: scale(0.8);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.2);
+    }
+}
+
+
+/* =========================
    MOBILE
-========================================================= */
+========================= */
 
-@media (max-width: 600px) {
+@media (max-width: 750px) {
 
-    .screen {
-        min-height: 100svh;
-
-        padding:
-            40px 10px;
+    .music-btn {
+        top: 14px;
+        right: 14px;
     }
 
-    .eyebrow {
-        margin-bottom: 14px;
-
-        font-size: 9px;
-
-        letter-spacing: 3px;
-    }
-
-    .hero-content h1 {
-        font-size:
-            clamp(48px, 15vw, 72px);
-
+    .opening h1 {
         letter-spacing: -1px;
     }
 
-    .gift-content h2,
-    .cake-content h2,
-    .candle-content h2,
-    .gallery-content h2,
-    .message-content h2 {
-        font-size:
-            clamp(31px, 9vw, 43px);
-    }
-
-    .short-text {
-        max-width: 330px;
-
+    .opening-message {
         font-size: 14px;
-
-        line-height: 1.7;
     }
 
-    button {
-        padding:
-            11px 21px;
-
-        font-size: 12px;
+    .memory-intro {
+        padding-top: 110px;
     }
 
+    .hero-memory {
+        grid-template-columns: 1fr;
 
-    /* -------------------------
-       Gift
-    ------------------------- */
-
-    .gift-stage {
-        width: 78vw;
-
-        height: 42vh;
+        gap: 35px;
     }
 
-
-    /* -------------------------
-       Cake
-    ------------------------- */
-
-    .cake-stage,
-    .candle-stage {
-        width: 91vw;
-
-        height: 43vh;
+    .memory-side-text {
+        padding: 0 5px;
     }
 
-
-    /* -------------------------
-       Gallery
-    ------------------------- */
-
-    .gallery-wrap {
-        gap: 4px;
+    .memory-photo {
+        aspect-ratio: 4 / 5;
     }
-
-    .gallery-frame {
-        width: 79vw;
-
-        aspect-ratio: 4 / 3;
-
-        padding: 5px;
-
-        border-radius: 14px;
-    }
-
-    #galleryImage {
-        border-radius: 9px;
-    }
-
-    .gallery-nav {
-        width: 36px;
-        height: 36px;
-
-        font-size: 23px;
-    }
-
-    .photo-counter {
-        margin-top: 10px;
-
-        font-size: 9px;
-
-        letter-spacing: 2px;
-    }
-
-    .gallery-controls {
-        margin:
-            9px 0 13px;
-    }
-
-    .gallery-controls button {
-        padding:
-            8px 14px;
-
-        font-size: 10px;
-    }
-
-
-    /* -------------------------
-       Full Photo
-    ------------------------- */
-
-    .photo-viewer {
-        padding: 15px 3px;
-
-        gap: 3px;
-    }
-
-    #fullPhoto {
-        max-width: 84vw;
-        max-height: 80vh;
-
-        border-radius: 8px;
-    }
-
-    .viewer-nav {
-        width: 34px;
-        height: 34px;
-
-        font-size: 24px;
-    }
-
-    .viewer-close {
-        top: 10px;
-        right: 10px;
-
-        width: 37px;
-        height: 37px;
-
-        font-size: 23px;
-    }
-
-
-    /* -------------------------
-       Message
-    ------------------------- */
-
-    .birthday-message {
-        max-width: 340px;
-
-        font-size: 16px;
-
-        line-height: 1.8;
-    }
-
-
-    /* -------------------------
-       Final
-    ------------------------- */
-
-    .final-content h1 {
-        font-size:
-            clamp(45px, 13vw, 65px);
-    }
-
-    .final-content h2 {
-        font-size:
-            clamp(30px, 9vw, 42px);
-    }
-
-    .final-text {
-        max-width: 340px;
-
-        font-size: 15px;
-
-        line-height: 1.75;
-    }
-
 }
-
-
-/* =========================================================
-   SMALL PHONES
-========================================================= */
-
-@media (max-width: 380px) {
-
-    .screen {
-        padding:
-            32px 7px;
-    }
-
-    .gift-stage {
-        width: 75vw;
-
-        height: 38vh;
-    }
-
-    .cake-stage,
-    .candle-stage {
-        width: 92vw;
-
-        height: 38vh;
-    }
-
-    .gallery-frame {
-        width: 76vw;
-    }
-
-    .gallery-nav {
-        width: 32px;
-        height: 32px;
-
-        font-size: 21px;
-    }
-
-    .gallery-controls button {
-        padding:
-            7px 11px;
-    }
-
-}
-
-
-/* =========================================================
-   REDUCED MOTION
-========================================================= */
-
-@media (prefers-reduced-motion: reduce) {
-
-    *,
-    *::before,
-    *::after {
-        animation-duration: 0.01ms !important;
-
-        animation-iteration-count: 1 !important;
-
-        transition-duration: 0.01ms !important;
-
-        scroll-behavior: auto !important;
-    }
-
-}
-
-
-/* =========================================================
-   END OF STYLE.CSS
-========================================================= */
