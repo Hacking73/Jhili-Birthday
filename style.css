@@ -1,4 +1,11 @@
 /* =========================================================
+   BIRTHDAY WEBSITE
+   STYLE.CSS — PART 1
+   Clean • Elegant • Minimal
+========================================================= */
+
+
+/* =========================================================
    RESET
 ========================================================= */
 
@@ -16,17 +23,85 @@ body {
     min-height: 100vh;
     overflow-x: hidden;
 
-    font-family: "Segoe UI", Arial, sans-serif;
+    font-family:
+        "Segoe UI",
+        "Helvetica Neue",
+        Arial,
+        sans-serif;
 
-    color: #5b2947;
+    color: #f7eaf0;
+
+    background:
+        radial-gradient(
+            circle at 50% 20%,
+            #351d31 0%,
+            #1c101c 42%,
+            #100a11 100%
+        );
+}
+
+
+/* =========================================================
+   SIDE LIGHTS
+========================================================= */
+
+.side-light {
+    position: fixed;
+
+    top: -10vh;
+
+    width: 180px;
+    height: 120vh;
+
+    z-index: 0;
+
+    pointer-events: none;
+
+    filter: blur(65px);
+
+    opacity: 0.32;
+
+    animation:
+        sideLightMove 7s ease-in-out infinite alternate;
+}
+
+.left-light {
+    left: -130px;
 
     background:
         linear-gradient(
-            135deg,
-            #ffe1ec 0%,
-            #f6d9ea 50%,
-            #eadcf5 100%
+            180deg,
+            #e66b9e,
+            #a84f91
         );
+}
+
+.right-light {
+    right: -130px;
+
+    background:
+        linear-gradient(
+            180deg,
+            #b56be0,
+            #e46b9c
+        );
+
+    animation-delay: -3s;
+}
+
+@keyframes sideLightMove {
+
+    from {
+        transform:
+            translateY(-20px)
+            scaleY(0.92);
+    }
+
+    to {
+        transform:
+            translateY(20px)
+            scaleY(1.06);
+    }
 }
 
 
@@ -36,45 +111,62 @@ body {
 
 #loading {
     position: fixed;
+
     inset: 0;
+
     z-index: 9999;
 
     display: flex;
+
     align-items: center;
     justify-content: center;
 
-    text-align: center;
-
-    color: #ffffff;
-
     background:
-        linear-gradient(
-            135deg,
-            #d96a9f,
-            #a86ac2
+        radial-gradient(
+            circle at center,
+            #321a2d,
+            #100a11
         );
 }
 
-.loading-content {
-    padding: 30px;
+.loading-inner {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 14px;
+
+    color: #f5dce7;
+
+    letter-spacing: 3px;
+
+    text-transform: uppercase;
+
+    font-size: 12px;
+
+    animation:
+        loadingFade 1.8s ease-in-out infinite;
 }
 
-.loading-heart {
-    margin-bottom: 18px;
+.loading-line {
+    width: 34px;
+    height: 1px;
 
-    font-size: 60px;
-
-    animation: heartbeat 1.2s infinite;
+    background:
+        rgba(239, 164, 193, 0.65);
 }
 
-.loading-content h2 {
-    margin-bottom: 8px;
+@keyframes loadingFade {
 
-    font-size: 27px;
-}
+    0%,
+    100% {
+        opacity: 0.45;
+    }
 
-.loading-content p {
-    font-size: 17px;
+    50% {
+        opacity: 1;
+    }
 }
 
 
@@ -83,7 +175,9 @@ body {
 ========================================================= */
 
 #website {
-    display: none;
+    position: relative;
+
+    z-index: 1;
 
     width: 100%;
     min-height: 100vh;
@@ -91,10 +185,10 @@ body {
 
 
 /* =========================================================
-   PAGE SECTIONS
+   SCREEN
 ========================================================= */
 
-.page-section {
+.screen {
     width: 100%;
     min-height: 100vh;
 
@@ -103,36 +197,121 @@ body {
     align-items: center;
     justify-content: center;
 
-    padding: 40px 20px;
+    padding:
+        70px 22px;
+
+    position: relative;
+
+    overflow: hidden;
+}
+
+.screen.active {
+    display: flex;
+
+    animation:
+        screenIn 0.7s ease both;
+}
+
+@keyframes screenIn {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(16px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0);
+    }
+}
+
+
+/* =========================================================
+   COMMON CONTENT
+========================================================= */
+
+.hero-content,
+.gift-content,
+.cake-content,
+.candle-content,
+.gallery-content,
+.message-content,
+.final-content {
+
+    position: relative;
+
+    z-index: 2;
+
+    width: min(900px, 94vw);
 
     text-align: center;
 }
 
 
 /* =========================================================
-   CONTENT
+   SMALL LABEL
 ========================================================= */
 
-.content-box {
-    width: min(900px, 94vw);
+.eyebrow {
+    margin-bottom: 18px;
 
-    padding: 45px 30px;
+    color: #e4a7bd;
 
-    border-radius: 28px;
+    font-size: 11px;
 
-    background:
-        rgba(255, 255, 255, 0.48);
+    font-weight: 600;
 
-    border:
-        1px solid
-        rgba(255, 255, 255, 0.7);
+    letter-spacing: 4px;
 
-    box-shadow:
-        0 18px 55px
-        rgba(94, 36, 75, 0.16);
+    text-transform: uppercase;
+}
 
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+
+/* =========================================================
+   HEADINGS
+========================================================= */
+
+h1,
+h2 {
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-weight: 400;
+}
+
+.hero-content h1 {
+    margin-bottom: 4px;
+
+    color: #f8e7ee;
+
+    font-size:
+        clamp(52px, 9vw, 100px);
+
+    line-height: 0.98;
+
+    letter-spacing: -2px;
+}
+
+.gift-content h2,
+.cake-content h2,
+.candle-content h2,
+.gallery-content h2,
+.message-content h2 {
+
+    margin-bottom: 14px;
+
+    color: #f5dce6;
+
+    font-size:
+        clamp(34px, 5vw, 58px);
+
+    line-height: 1.05;
 }
 
 
@@ -140,47 +319,27 @@ body {
    TEXT
 ========================================================= */
 
-.subtitle {
-    margin-bottom: 14px;
+.short-text {
+    max-width: 470px;
 
-    font-size: 15px;
+    margin:
+        0 auto 28px;
 
-    letter-spacing: 2px;
+    color: #c9aab9;
 
-    text-transform: uppercase;
+    font-size: 16px;
 
-    color: #a14a76;
+    line-height: 1.7;
 }
 
-.content-box h1 {
-    margin-bottom: 12px;
+.hint {
+    margin-top: 8px;
 
-    color: #963565;
+    color: #bd91a5;
 
-    font-size:
-        clamp(40px, 7vw, 70px);
+    font-size: 12px;
 
-    line-height: 1.1;
-}
-
-.content-box h2 {
-    margin-bottom: 18px;
-
-    color: #963565;
-
-    font-size:
-        clamp(28px, 5vw, 45px);
-}
-
-.description {
-    max-width: 700px;
-
-    margin: 15px auto 25px;
-
-    font-size:
-        clamp(16px, 2vw, 19px);
-
-    line-height: 1.8;
+    letter-spacing: 1.5px;
 }
 
 
@@ -189,54 +348,98 @@ body {
 ========================================================= */
 
 button {
-    border: 0;
-    outline: 0;
+    border: 1px solid
+        rgba(240, 181, 205, 0.35);
+
+    outline: none;
+
+    padding:
+        12px 25px;
+
+    border-radius: 999px;
+
+    color: #fff3f7;
+
+    background:
+        rgba(255, 255, 255, 0.07);
+
+    backdrop-filter: blur(8px);
+
+    font-family: inherit;
+
+    font-size: 13px;
+
+    letter-spacing: 0.4px;
 
     cursor: pointer;
 
-    margin: 7px 4px;
-    padding: 13px 28px;
-
-    border-radius: 40px;
-
-    color: #ffffff;
-
-    background:
-        linear-gradient(
-            135deg,
-            #dc5b98,
-            #a456c2
-        );
-
-    font-size: 16px;
-    font-weight: 600;
-
-    box-shadow:
-        0 8px 20px
-        rgba(145, 55, 120, 0.22);
-
     transition:
-        transform 0.25s ease,
-        box-shadow 0.25s ease,
-        opacity 0.25s ease;
+        background 0.3s ease,
+        border-color 0.3s ease,
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
 }
 
 button:hover {
-    transform: translateY(-2px);
+    background:
+        rgba(224, 105, 154, 0.18);
+
+    border-color:
+        rgba(240, 181, 205, 0.65);
 
     box-shadow:
-        0 12px 25px
-        rgba(145, 55, 120, 0.30);
+        0 8px 28px
+        rgba(218, 92, 145, 0.16);
+
+    transform:
+        translateY(-2px);
 }
 
 button:active {
-    transform: scale(0.97);
+    transform:
+        translateY(0)
+        scale(0.97);
 }
 
 button:disabled {
-    opacity: 0.6;
+    opacity: 0.45;
 
     cursor: not-allowed;
+
+    transform: none;
+}
+
+
+/* =========================================================
+   INTRO
+========================================================= */
+
+.hero-content::before {
+    content: "";
+
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    width: 360px;
+    height: 360px;
+
+    transform:
+        translate(-50%, -50%);
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(213, 91, 143, 0.14),
+            transparent 68%
+        );
+
+    filter: blur(8px);
+
+    z-index: -1;
 }
 
 
@@ -244,81 +447,48 @@ button:disabled {
    GIFT
 ========================================================= */
 
-.gift-box {
-    width: min(360px, 78vw);
+.gift-stage {
+    width: min(390px, 78vw);
 
-    margin: 25px auto 10px;
+    height: min(390px, 55vh);
+
+    margin:
+        10px auto 5px;
 
     display: flex;
 
     align-items: center;
     justify-content: center;
+
+    position: relative;
+}
+
+.gift-stage::after {
+    content: "";
+
+    position: absolute;
+
+    bottom: 20px;
+
+    left: 50%;
+
+    width: 190px;
+    height: 25px;
+
+    transform:
+        translateX(-50%);
+
+    border-radius: 50%;
+
+    background:
+        rgba(0, 0, 0, 0.38);
+
+    filter: blur(15px);
+
+    z-index: -1;
 }
 
 #giftBox {
-    width: 100%;
-    height: auto;
-
-    display: block;
-
-    object-fit: contain;
-
-    cursor: pointer;
-
-    transition:
-        transform 0.35s ease;
-}
-
-#giftBox:hover {
-    transform: scale(1.04);
-}
-
-#giftHint {
-    margin-top: 10px;
-
-    color: #8d466c;
-
-    font-size: 15px;
-}
-
-#giftMessage {
-    margin-top: 20px;
-
-    animation: popIn 0.5s ease;
-}
-
-
-/* =========================================================
-   MAIN PHOTO — 4:3
-========================================================= */
-
-.main-photo-box {
-    width: min(720px, 90vw);
-
-    aspect-ratio: 4 / 3;
-
-    margin: 25px auto;
-
-    padding: 7px;
-
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-    overflow: hidden;
-
-    border-radius: 22px;
-
-    background:
-        rgba(255, 255, 255, 0.4);
-
-    box-shadow:
-        0 15px 40px
-        rgba(75, 25, 65, 0.18);
-}
-
-#mainPhoto {
     width: 100%;
     height: 100%;
 
@@ -326,112 +496,90 @@ button:disabled {
 
     object-fit: contain;
 
-    border-radius: 16px;
-}
-
-.photo-caption {
-    margin: 10px auto 20px;
-
-    color: #75405e;
-
-    font-size: 16px;
-}
-
-
-/* =========================================================
-   CAKE
-========================================================= */
-
-.cake-box {
-    width: min(520px, 85vw);
-
-    margin: 25px auto;
-
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-}
-
-.cake-box img {
-    width: 100%;
-    height: auto;
-
-    max-height: 55vh;
-
-    display: block;
-
-    object-fit: contain;
+    cursor: pointer;
 
     filter:
         drop-shadow(
-            0 15px 20px
-            rgba(70, 25, 60, 0.18)
+            0 22px 30px
+            rgba(0, 0, 0, 0.34)
         );
 
     transition:
-        transform 0.4s ease;
+        transform 0.45s ease,
+        filter 0.45s ease;
 }
 
+#giftBox:hover {
+    transform:
+        translateY(-6px)
+        scale(1.025);
 
-/* =========================================================
-   CAKE MESSAGE
-========================================================= */
-
-#cakeMessage {
-    margin-top: 25px;
-
-    padding: 22px;
-
-    border-radius: 22px;
-
-    background:
-        rgba(255, 255, 255, 0.30);
-
-    animation: popIn 0.5s ease;
+    filter:
+        drop-shadow(
+            0 28px 35px
+            rgba(0, 0, 0, 0.42)
+        );
 }
 
+#giftBox.gift-open {
+    animation:
+        giftOpen 0.65s ease both;
+}
 
-/* =========================================================
-   ANIMATIONS
-========================================================= */
+@keyframes giftOpen {
 
-@keyframes heartbeat {
+    0% {
+        transform:
+            scale(1)
+            rotate(0);
+    }
 
-    0%,
+    45% {
+        transform:
+            scale(1.08)
+            rotate(-3deg);
+    }
+
+    75% {
+        transform:
+            scale(1.06)
+            rotate(3deg);
+    }
+
     100% {
-        transform: scale(1);
-    }
-
-    50% {
-        transform: scale(1.18);
+        transform:
+            scale(1)
+            rotate(0);
     }
 }
 
-@keyframes popIn {
+
+/* =========================================================
+   HIDDEN MESSAGE
+========================================================= */
+
+.hidden-message {
+    margin-top: 20px;
+
+    animation:
+        messageIn 0.55s ease both;
+}
+
+.hidden-message p {
+    margin-bottom: 18px;
+
+    color: #d5b5c3;
+
+    font-size: 15px;
+}
+
+@keyframes messageIn {
 
     from {
         opacity: 0;
 
         transform:
-            scale(0.92);
-    }
-
-    to {
-        opacity: 1;
-
-        transform:
-            scale(1);
-    }
-}
-
-@keyframes pageEnter {
-
-    from {
-        opacity: 0;
-
-        transform:
-            translateY(20px);
+            translateY(10px);
     }
 
     to {
@@ -442,34 +590,152 @@ button:disabled {
     }
 }
 /* =========================================================
-   CANDLE SECTION
+   CAKE
 ========================================================= */
 
-#candleSection .cake-box {
-    width: min(500px, 85vw);
+.cake-stage {
+    width: min(520px, 88vw);
+
+    height: min(390px, 52vh);
+
+    margin:
+        15px auto 22px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    position: relative;
+}
+
+.cake-stage::after,
+.candle-stage::after {
+    content: "";
+
+    position: absolute;
+
+    left: 50%;
+    bottom: 15px;
+
+    width: 210px;
+    height: 24px;
+
+    transform:
+        translateX(-50%);
+
+    border-radius: 50%;
+
+    background:
+        rgba(0, 0, 0, 0.35);
+
+    filter: blur(15px);
+
+    z-index: -1;
+}
+
+#birthdayCake,
+#candleCake {
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    object-fit: contain;
+
+    filter:
+        drop-shadow(
+            0 22px 28px
+            rgba(0, 0, 0, 0.35)
+        );
+
+    transition:
+        opacity 0.35s ease,
+        transform 0.45s ease;
+}
+
+.cake-cut-animation {
+    animation:
+        cakeCut 0.65s ease both;
+}
+
+@keyframes cakeCut {
+
+    0% {
+        transform:
+            scale(1);
+    }
+
+    45% {
+        transform:
+            scale(1.04)
+            rotate(-1deg);
+    }
+
+    75% {
+        transform:
+            scale(0.98)
+            rotate(1deg);
+    }
+
+    100% {
+        transform:
+            scale(1);
+    }
+}
+
+
+/* =========================================================
+   CANDLE
+========================================================= */
+
+.candle-stage {
+    width: min(520px, 88vw);
+
+    height: min(390px, 52vh);
+
+    margin:
+        15px auto 22px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    position: relative;
 }
 
 #candleCake {
-    transition:
-        opacity 0.3s ease,
-        transform 0.3s ease;
+    animation:
+        candleGlow 2.4s ease-in-out infinite alternate;
 }
 
-#blowBtn {
-    min-width: 170px;
+@keyframes candleGlow {
+
+    from {
+        filter:
+            drop-shadow(
+                0 18px 25px
+                rgba(0, 0, 0, 0.32)
+            );
+    }
+
+    to {
+        filter:
+            drop-shadow(
+                0 18px 32px
+                rgba(224, 110, 156, 0.25)
+            );
+    }
 }
+
+
+/* =========================================================
+   WISH MESSAGE
+========================================================= */
 
 #wishText {
-    margin-top: 25px;
-
-    padding: 22px;
-
-    border-radius: 22px;
-
-    background:
-        rgba(255, 255, 255, 0.32);
-
-    animation: popIn 0.5s ease;
+    margin-top: 20px;
 }
 
 
@@ -478,10 +744,10 @@ button:disabled {
 ========================================================= */
 
 .gallery-content {
-    width: min(1050px, 94vw);
+    width: min(1100px, 95vw);
 }
 
-.gallery-box {
+.gallery-wrap {
     width: 100%;
 
     display: flex;
@@ -489,34 +755,77 @@ button:disabled {
     align-items: center;
     justify-content: center;
 
-    gap: 12px;
+    gap: 18px;
 
-    margin: 25px auto 8px;
+    margin:
+        25px auto 10px;
 }
 
-.gallery-photo-box {
-    width: min(720px, 78vw);
+
+/* =========================================================
+   UNIQUE 4:3 PHOTO FRAME
+========================================================= */
+
+.gallery-frame {
+    width: min(820px, 82vw);
 
     aspect-ratio: 4 / 3;
 
-    padding: 7px;
+    position: relative;
 
     display: flex;
 
     align-items: center;
     justify-content: center;
 
+    padding: 9px;
+
     overflow: hidden;
 
-    border-radius: 22px;
+    border:
+        1px solid
+        rgba(235, 166, 194, 0.34);
+
+    border-radius: 20px;
 
     background:
-        rgba(255, 255, 255, 0.42);
+        linear-gradient(
+            145deg,
+            rgba(255, 255, 255, 0.11),
+            rgba(255, 255, 255, 0.025)
+        );
 
     box-shadow:
-        0 15px 40px
-        rgba(75, 25, 65, 0.18);
+        0 25px 70px
+        rgba(0, 0, 0, 0.38),
+
+        inset 0 0 0 1px
+        rgba(255, 255, 255, 0.04);
+
+    backdrop-filter:
+        blur(8px);
+
+    transition:
+        transform 0.4s ease,
+        box-shadow 0.4s ease;
 }
+
+.gallery-frame:hover {
+    transform:
+        translateY(-3px);
+
+    box-shadow:
+        0 30px 80px
+        rgba(0, 0, 0, 0.44),
+
+        0 0 35px
+        rgba(218, 102, 155, 0.10);
+}
+
+
+/* =========================================================
+   PHOTO
+========================================================= */
 
 #galleryImage {
     width: 100%;
@@ -526,53 +835,158 @@ button:disabled {
 
     object-fit: contain;
 
-    border-radius: 16px;
+    border-radius: 13px;
 
     cursor: pointer;
 
     opacity: 1;
 
     transition:
-        opacity 0.25s ease,
-        transform 0.3s ease;
+        opacity 0.3s ease,
+        transform 0.45s ease;
 }
 
 #galleryImage:hover {
-    transform: scale(1.01);
+    transform:
+        scale(1.008);
 }
 
-.nav-btn {
+
+/* =========================================================
+   FRAME LIGHT
+========================================================= */
+
+.frame-shine {
+    position: absolute;
+
+    top: 0;
+    left: -30%;
+
+    width: 30%;
+    height: 100%;
+
+    pointer-events: none;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255, 255, 255, 0.08),
+            transparent
+        );
+
+    transform:
+        skewX(-15deg);
+
+    animation:
+        frameShine 6s ease-in-out infinite;
+}
+
+@keyframes frameShine {
+
+    0%,
+    55% {
+        left: -35%;
+    }
+
+    80%,
+    100% {
+        left: 125%;
+    }
+}
+
+
+/* =========================================================
+   GALLERY NAVIGATION
+========================================================= */
+
+.gallery-nav {
     width: 48px;
     height: 48px;
 
     flex-shrink: 0;
 
-    margin: 0;
     padding: 0;
+    margin: 0;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
 
     border-radius: 50%;
 
-    font-size: 32px;
-    line-height: 48px;
+    color: #f4dce7;
+
+    font-family:
+        Georgia,
+        serif;
+
+    font-size: 30px;
+
+    line-height: 1;
+
+    background:
+        rgba(255, 255, 255, 0.055);
 }
 
-.photo-counter {
-    margin: 10px 0 15px;
-
-    color: #814260;
-
-    font-size: 15px;
-
-    font-weight: 600;
-}
-
-.gallery-buttons {
-    margin-bottom: 12px;
+.gallery-nav:hover {
+    background:
+        rgba(221, 94, 151, 0.18);
 }
 
 
 /* =========================================================
-   FULL SCREEN PHOTO VIEWER
+   PHOTO COUNTER
+========================================================= */
+
+.photo-counter {
+    margin-top: 14px;
+
+    color: #cba7b8;
+
+    font-size: 11px;
+
+    letter-spacing: 3px;
+
+    font-weight: 600;
+}
+
+
+/* =========================================================
+   GALLERY CONTROLS
+========================================================= */
+
+.gallery-controls {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 5px;
+
+    margin:
+        12px 0 16px;
+}
+
+.gallery-controls button {
+    padding:
+        9px 17px;
+
+    color: #cdaaba;
+
+    border-color:
+        rgba(235, 166, 194, 0.20);
+
+    background:
+        rgba(255, 255, 255, 0.035);
+
+    font-size: 11px;
+}
+
+
+/* =========================================================
+   FULL PHOTO VIEWER
 ========================================================= */
 
 .photo-viewer {
@@ -580,7 +994,7 @@ button:disabled {
 
     inset: 0;
 
-    z-index: 10000;
+    z-index: 9998;
 
     display: none;
 
@@ -589,17 +1003,18 @@ button:disabled {
 
     gap: 18px;
 
-    padding: 25px;
+    padding: 30px;
 
     background:
-        rgba(20, 7, 20, 0.95);
+        rgba(8, 5, 9, 0.96);
 
-    backdrop-filter: blur(8px);
+    backdrop-filter:
+        blur(14px);
 }
 
 #fullPhoto {
     max-width: 82vw;
-    max-height: 88vh;
+    max-height: 86vh;
 
     width: auto;
     height: auto;
@@ -608,282 +1023,379 @@ button:disabled {
 
     object-fit: contain;
 
-    border-radius: 10px;
+    border-radius: 12px;
 
     box-shadow:
-        0 20px 60px
-        rgba(0, 0, 0, 0.5);
+        0 30px 90px
+        rgba(0, 0, 0, 0.65);
 }
 
-.close-photo {
+.viewer-close {
     position: absolute;
 
     top: 18px;
     right: 22px;
 
-    width: 45px;
-    height: 45px;
+    width: 42px;
+    height: 42px;
 
-    margin: 0;
     padding: 0;
-
-    border-radius: 50%;
-
-    color: white;
-
-    background:
-        rgba(255, 255, 255, 0.18);
-
-    font-size: 29px;
-
-    line-height: 45px;
-}
-
-.viewer-nav {
-    width: 48px;
-    height: 48px;
-
     margin: 0;
-    padding: 0;
-
-    flex-shrink: 0;
-
-    border-radius: 50%;
-
-    background:
-        rgba(255, 255, 255, 0.18);
-
-    font-size: 32px;
-
-    line-height: 48px;
-}
-
-
-/* =========================================================
-   MESSAGE
-========================================================= */
-
-.message-box {
-    width: min(760px, 92vw);
-
-    min-height: 280px;
-
-    margin: 25px auto;
-
-    padding: 30px;
 
     display: flex;
 
     align-items: center;
     justify-content: center;
 
-    border-radius: 24px;
+    border-radius: 50%;
+
+    font-size: 26px;
+
+    line-height: 1;
 
     background:
-        rgba(255, 255, 255, 0.32);
-
-    box-shadow:
-        inset 0 0 25px
-        rgba(255, 255, 255, 0.18);
+        rgba(255, 255, 255, 0.07);
 }
 
-.message-box p {
+.viewer-nav {
+    width: 46px;
+    height: 46px;
+
+    padding: 0;
     margin: 0;
 
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    border-radius: 50%;
+
+    font-family:
+        Georgia,
+        serif;
+
+    font-size: 30px;
+
+    line-height: 1;
+
+    background:
+        rgba(255, 255, 255, 0.07);
+}
+
+.viewer-nav:hover,
+.viewer-close:hover {
+    background:
+        rgba(221, 94, 151, 0.18);
+}
+/* =========================================================
+   MESSAGE
+========================================================= */
+
+.message-content {
+    width: min(760px, 92vw);
+}
+
+.message-content h2 {
+    margin-bottom: 24px;
+}
+
+.message-line {
+    width: 45px;
+    height: 1px;
+
+    margin:
+        0 auto 28px;
+
+    background:
+        rgba(235, 166, 194, 0.65);
+}
+
+.birthday-message {
+    max-width: 650px;
+
+    margin:
+        0 auto 30px;
+
+    color: #d2b4c2;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size:
+        clamp(17px, 2.2vw, 21px);
+
+    line-height: 1.9;
+
     white-space: pre-line;
+}
+
+
+/* =========================================================
+   FINAL
+========================================================= */
+
+.final-content {
+    width: min(760px, 94vw);
+}
+
+.final-content h1 {
+    margin-bottom: 4px;
+
+    color: #f7e3eb;
+
+    font-size:
+        clamp(48px, 8vw, 82px);
+
+    line-height: 1;
+
+    letter-spacing: -1px;
+}
+
+.final-content h2 {
+    margin-bottom: 25px;
+
+    color: #d99bb5;
+
+    font-size:
+        clamp(32px, 5vw, 52px);
+}
+
+.final-line {
+    width: 55px;
+    height: 1px;
+
+    margin:
+        0 auto 28px;
+
+    background:
+        rgba(235, 166, 194, 0.65);
+}
+
+.final-text {
+    max-width: 570px;
+
+    margin:
+        0 auto 18px;
+
+    color: #cfb0bf;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
 
     font-size:
         clamp(16px, 2vw, 19px);
 
-    line-height: 1.9;
+    line-height: 1.8;
 }
 
-.wish-icons {
-    margin: 20px 0;
+.final-small {
+    margin-bottom: 27px;
 
-    color: #9b4772;
+    color: #e0a4bc;
 
-    font-size: 17px;
+    font-size: 12px;
 
-    font-weight: 600;
-}
+    letter-spacing: 2px;
 
-
-/* =========================================================
-   FINAL SECTION
-========================================================= */
-
-.final-card {
-    padding:
-        55px 30px;
-}
-
-.final-title {
-    animation:
-        softGlow 1.8s ease-in-out infinite alternate;
-}
-
-.final-decoration {
-    margin: 25px 0;
-
-    font-size: 18px;
-
-    color: #9b4772;
-}
-
-@keyframes softGlow {
-
-    from {
-        text-shadow:
-            0 0 3px
-            rgba(210, 70, 145, 0.15);
-    }
-
-    to {
-        text-shadow:
-            0 0 18px
-            rgba(210, 70, 145, 0.5);
-    }
+    text-transform: uppercase;
 }
 
 
 /* =========================================================
-   FLOATING HEARTS
+   FINAL DECORATION
 ========================================================= */
 
-.float-heart {
-    position: fixed;
+.final-content::before,
+.final-content::after {
+    content: "";
 
-    bottom: -50px;
+    position: absolute;
 
-    z-index: 9997;
+    width: 170px;
+    height: 170px;
+
+    border-radius: 50%;
 
     pointer-events: none;
 
-    color: #e35c99;
+    filter: blur(55px);
 
-    animation:
-        floatUp 5s linear forwards;
+    opacity: 0.22;
+
+    z-index: -1;
 }
 
-@keyframes floatUp {
+.final-content::before {
+    left: 0;
+    top: 30%;
 
-    from {
-        transform:
-            translateY(0)
-            rotate(0deg);
+    background:
+        #d45a91;
+}
 
-        opacity: 1;
-    }
+.final-content::after {
+    right: 0;
+    top: 55%;
 
-    to {
-        transform:
-            translateY(-110vh)
-            rotate(180deg);
-
-        opacity: 0;
-    }
+    background:
+        #a45fc7;
 }
 
 
 /* =========================================================
-   CONFETTI
+   SOFT FLOATING LIGHT
 ========================================================= */
 
-.confetti {
+#website::before {
+    content: "";
+
     position: fixed;
 
-    top: -30px;
+    left: 50%;
+    top: 50%;
 
-    z-index: 9996;
+    width: 280px;
+    height: 280px;
+
+    transform:
+        translate(-50%, -50%);
+
+    border-radius: 50%;
 
     pointer-events: none;
 
-    color: #d95b98;
+    background:
+        radial-gradient(
+            circle,
+            rgba(205, 89, 143, 0.055),
+            transparent 70%
+        );
 
-    animation:
-        fallDown 4s linear forwards;
+    filter: blur(10px);
+
+    z-index: -1;
 }
 
-@keyframes fallDown {
 
-    from {
-        transform:
-            translateY(0)
-            rotate(0deg);
-
-        opacity: 1;
-    }
-
-    to {
-        transform:
-            translateY(110vh)
-            rotate(360deg);
-
-        opacity: 0;
-    }
-}
 /* =========================================================
-   RESPONSIVE — TABLET
+   MOBILE — TABLET
 ========================================================= */
 
-@media (max-width: 900px) {
+@media (max-width: 800px) {
 
-    .content-box {
-        width: 94vw;
+    .screen {
+        padding:
+            55px 15px;
     }
 
-    .gallery-content {
-        width: 94vw;
+    .side-light {
+        width: 120px;
+
+        filter: blur(55px);
+
+        opacity: 0.25;
     }
 
-    .main-photo-box {
+    .left-light {
+        left: -90px;
+    }
+
+    .right-light {
+        right: -90px;
+    }
+
+    .gallery-wrap {
+        gap: 9px;
+    }
+
+    .gallery-frame {
+        width: 78vw;
+
+        padding: 7px;
+
+        border-radius: 16px;
+    }
+
+    .gallery-nav {
+        width: 42px;
+        height: 42px;
+
+        font-size: 27px;
+    }
+
+    .cake-stage,
+    .candle-stage {
         width: 88vw;
+
+        height: 46vh;
     }
 
-    .gallery-photo-box {
-        width: 76vw;
+    .gift-stage {
+        width: 78vw;
+
+        height: 48vh;
     }
 
 }
 
 
 /* =========================================================
-   RESPONSIVE — MOBILE
+   MOBILE
 ========================================================= */
 
-@media (max-width: 700px) {
+@media (max-width: 600px) {
 
-    .page-section {
-        min-height: 100vh;
-
-        padding:
-            25px 10px;
-    }
-
-    .content-box {
-        width: 96vw;
+    .screen {
+        min-height: 100svh;
 
         padding:
-            32px 15px;
-
-        border-radius: 23px;
+            40px 10px;
     }
 
-    .content-box h1 {
+    .eyebrow {
+        margin-bottom: 14px;
+
+        font-size: 9px;
+
+        letter-spacing: 3px;
+    }
+
+    .hero-content h1 {
         font-size:
-            clamp(34px, 10vw, 52px);
+            clamp(48px, 15vw, 72px);
+
+        letter-spacing: -1px;
     }
 
-    .content-box h2 {
+    .gift-content h2,
+    .cake-content h2,
+    .candle-content h2,
+    .gallery-content h2,
+    .message-content h2 {
         font-size:
-            clamp(27px, 8vw, 38px);
+            clamp(31px, 9vw, 43px);
     }
 
-    .description {
-        font-size: 16px;
+    .short-text {
+        max-width: 330px;
+
+        font-size: 14px;
 
         line-height: 1.7;
+    }
+
+    button {
+        padding:
+            11px 21px;
+
+        font-size: 12px;
     }
 
 
@@ -891,22 +1403,10 @@ button:disabled {
        Gift
     ------------------------- */
 
-    .gift-box {
+    .gift-stage {
         width: 78vw;
-        max-width: 330px;
-    }
 
-
-    /* -------------------------
-       Main Photo
-    ------------------------- */
-
-    .main-photo-box {
-        width: 92vw;
-
-        aspect-ratio: 4 / 3;
-
-        border-radius: 18px;
+        height: 42vh;
     }
 
 
@@ -914,8 +1414,11 @@ button:disabled {
        Cake
     ------------------------- */
 
-    .cake-box {
-        width: 90vw;
+    .cake-stage,
+    .candle-stage {
+        width: 91vw;
+
+        height: 43vh;
     }
 
 
@@ -923,25 +1426,49 @@ button:disabled {
        Gallery
     ------------------------- */
 
-    .gallery-box {
+    .gallery-wrap {
         gap: 4px;
     }
 
-    .gallery-photo-box {
-        width: 78vw;
+    .gallery-frame {
+        width: 79vw;
 
         aspect-ratio: 4 / 3;
 
-        border-radius: 18px;
+        padding: 5px;
+
+        border-radius: 14px;
     }
 
-    .nav-btn {
-        width: 40px;
-        height: 40px;
+    #galleryImage {
+        border-radius: 9px;
+    }
 
-        font-size: 27px;
+    .gallery-nav {
+        width: 36px;
+        height: 36px;
 
-        line-height: 40px;
+        font-size: 23px;
+    }
+
+    .photo-counter {
+        margin-top: 10px;
+
+        font-size: 9px;
+
+        letter-spacing: 2px;
+    }
+
+    .gallery-controls {
+        margin:
+            9px 0 13px;
+    }
+
+    .gallery-controls button {
+        padding:
+            8px 14px;
+
+        font-size: 10px;
     }
 
 
@@ -950,36 +1477,33 @@ button:disabled {
     ------------------------- */
 
     .photo-viewer {
-        padding:
-            15px 4px;
+        padding: 15px 3px;
 
-        gap: 4px;
+        gap: 3px;
     }
 
     #fullPhoto {
-        max-width: 86vw;
-        max-height: 82vh;
+        max-width: 84vw;
+        max-height: 80vh;
+
+        border-radius: 8px;
     }
 
     .viewer-nav {
-        width: 38px;
-        height: 38px;
+        width: 34px;
+        height: 34px;
 
-        font-size: 25px;
-
-        line-height: 38px;
+        font-size: 24px;
     }
 
-    .close-photo {
+    .viewer-close {
         top: 10px;
         right: 10px;
 
-        width: 40px;
-        height: 40px;
+        width: 37px;
+        height: 37px;
 
-        font-size: 25px;
-
-        line-height: 40px;
+        font-size: 23px;
     }
 
 
@@ -987,158 +1511,80 @@ button:disabled {
        Message
     ------------------------- */
 
-    .message-box {
-        width: 92vw;
+    .birthday-message {
+        max-width: 340px;
 
-        min-height: 260px;
+        font-size: 16px;
 
-        padding: 20px;
+        line-height: 1.8;
     }
 
 
     /* -------------------------
-       Buttons
+       Final
     ------------------------- */
 
-    button {
-        padding:
-            12px 22px;
+    .final-content h1 {
+        font-size:
+            clamp(45px, 13vw, 65px);
+    }
+
+    .final-content h2 {
+        font-size:
+            clamp(30px, 9vw, 42px);
+    }
+
+    .final-text {
+        max-width: 340px;
 
         font-size: 15px;
+
+        line-height: 1.75;
     }
 
 }
 
 
 /* =========================================================
-   RESPONSIVE — SMALL PHONE
+   SMALL PHONES
 ========================================================= */
 
-@media (max-width: 420px) {
+@media (max-width: 380px) {
 
-    .page-section {
+    .screen {
         padding:
-            18px 7px;
+            32px 7px;
     }
 
-    .content-box {
-        width: 97vw;
+    .gift-stage {
+        width: 75vw;
 
-        padding:
-            27px 11px;
-
-        border-radius: 20px;
+        height: 38vh;
     }
 
-    .content-box h1 {
-        font-size: 35px;
-    }
-
-    .content-box h2 {
-        font-size: 28px;
-    }
-
-    .description {
-        font-size: 14px;
-
-        line-height: 1.65;
-    }
-
-
-    .gift-box {
-        width: 74vw;
-    }
-
-
-    .main-photo-box {
-        width: 93vw;
-
-        padding: 5px;
-
-        border-radius: 16px;
-    }
-
-
-    .cake-box {
+    .cake-stage,
+    .candle-stage {
         width: 92vw;
+
+        height: 38vh;
     }
 
-
-    .gallery-photo-box {
-        width: 74vw;
-
-        padding: 5px;
-
-        border-radius: 16px;
+    .gallery-frame {
+        width: 76vw;
     }
 
-    .nav-btn {
-        width: 35px;
-        height: 35px;
+    .gallery-nav {
+        width: 32px;
+        height: 32px;
 
-        font-size: 22px;
-
-        line-height: 35px;
+        font-size: 21px;
     }
 
-
-    .message-box {
-        width: 93vw;
-
-        padding: 17px;
-    }
-
-
-    .final-card {
+    .gallery-controls button {
         padding:
-            40px 15px;
+            7px 11px;
     }
 
-}
-
-
-/* =========================================================
-   VERY SMALL PHONE
-========================================================= */
-
-@media (max-width: 350px) {
-
-    .content-box h1 {
-        font-size: 31px;
-    }
-
-    .content-box h2 {
-        font-size: 25px;
-    }
-
-    .gift-box {
-        width: 70vw;
-    }
-
-    .gallery-photo-box {
-        width: 70vw;
-    }
-
-    button {
-        padding:
-            10px 17px;
-
-        font-size: 14px;
-    }
-
-}
-
-
-/* =========================================================
-   ACCESSIBILITY
-========================================================= */
-
-button:focus-visible {
-    outline:
-        3px solid
-        rgba(150, 70, 150, 0.4);
-
-    outline-offset: 3px;
 }
 
 
