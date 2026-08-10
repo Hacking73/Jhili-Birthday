@@ -1,111 +1,262 @@
-// Music Start
-function startMusic() {
-    const music = document.getElementById("music");
+```javascript
+/* =========================================
+   BIRTHDAY WEBSITE - SCRIPT.JS
+   For Jhili ❤️
+========================================= */
 
-    if (music) {
-        music.play().catch(() => {
-            console.log("Music autoplay blocked.");
+
+/* =========================================
+   PAGE NAVIGATION
+========================================= */
+
+function nextPage(pageNumber) {
+
+    const pages = document.querySelectorAll(".page");
+
+    pages.forEach(function(page) {
+        page.classList.remove("active");
+    });
+
+    const selectedPage =
+        document.getElementById("page" + pageNumber);
+
+    if (selectedPage) {
+
+        selectedPage.classList.add("active");
+
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
         });
+
     }
-
-    createHearts();
 }
 
-// Gift Open
-function openGift() {
-    const gift = document.getElementById("giftMessage");
 
-    gift.style.display = "block";
-    gift.style.animation = "fadeIn 1s ease";
-}
+/* =========================================
+   FLOATING HEARTS
+========================================= */
 
-// Candle Blow
-function blowCandle() {
-    const candle = document.getElementById("candle");
-
-    candle.src = "images/candle-off.png";
-
-    createConfetti();
-
-    setTimeout(() => {
-        alert("🎉 Happy Birthday My Love ❤️\nMake a wish and enjoy your special day!");
-    }, 500);
-}
-
-// Floating Hearts
 function createHearts() {
 
-    setInterval(() => {
+    const hearts = [
+        "❤️",
+        "💖",
+        "💕",
+        "💗",
+        "💓",
+        "💞",
+        "💘",
+        "✨"
+    ];
+
+    for (let i = 0; i < 40; i++) {
 
         const heart = document.createElement("div");
 
-        heart.classList.add("heart");
-        heart.innerHTML = "❤️";
+        heart.className = "heart";
 
-        heart.style.left = Math.random() * window.innerWidth + "px";
-        heart.style.fontSize = (20 + Math.random() * 30) + "px";
+        heart.innerHTML =
+            hearts[Math.floor(Math.random() * hearts.length)];
+
+        heart.style.left =
+            Math.random() * 100 + "vw";
+
+        heart.style.animationDuration =
+            (3 + Math.random() * 4) + "s";
+
+        heart.style.animationDelay =
+            Math.random() * 2 + "s";
+
+        heart.style.fontSize =
+            (18 + Math.random() * 25) + "px";
 
         document.body.appendChild(heart);
 
-        setTimeout(() => {
+        setTimeout(function() {
             heart.remove();
         }, 8000);
-
-    }, 500);
+    }
 }
 
-// Simple Confetti
+
+/* =========================================
+   CONFETTI EFFECT
+========================================= */
+
 function createConfetti() {
 
-    for (let i = 0; i < 100; i++) {
+    const confettiSymbols = [
+        "🎉",
+        "🎊",
+        "✨",
+        "💖",
+        "❤️",
+        "🌸",
+        "⭐"
+    ];
 
-        const confetti = document.createElement("div");
+    for (let i = 0; i < 60; i++) {
+
+        const confetti =
+            document.createElement("div");
 
         confetti.style.position = "fixed";
-        confetti.style.width = "10px";
-        confetti.style.height = "10px";
 
-        confetti.style.background =
-            `hsl(${Math.random()*360},100%,50%)`;
+        confetti.style.left =
+            Math.random() * 100 + "vw";
 
-        confetti.style.left = Math.random() * 100 + "vw";
-        confetti.style.top = "-10px";
+        confetti.style.top = "-30px";
 
-        confetti.style.zIndex = "9999";
-        confetti.style.borderRadius = "50%";
+        confetti.style.fontSize =
+            (15 + Math.random() * 20) + "px";
+
+        confetti.style.zIndex = "1000";
+
+        confetti.style.pointerEvents = "none";
+
+        confetti.innerHTML =
+            confettiSymbols[
+                Math.floor(
+                    Math.random() *
+                    confettiSymbols.length
+                )
+            ];
 
         document.body.appendChild(confetti);
 
-        const duration = 2000 + Math.random() * 3000;
+        const duration =
+            2000 + Math.random() * 3000;
 
-        confetti.animate([
+        confetti.animate(
+
+            [
+                {
+                    transform:
+                        "translateY(0) rotate(0deg)",
+                    opacity: 1
+                },
+
+                {
+                    transform:
+                        `translateY(110vh) rotate(${360 + Math.random() * 720}deg)`,
+                    opacity: 0
+                }
+            ],
+
             {
-                transform: "translateY(0)",
-                opacity: 1
-            },
-            {
-                transform: `translateY(${window.innerHeight}px)`,
-                opacity: 0
+                duration: duration,
+                easing: "linear"
             }
-        ], {
-            duration: duration,
-            easing: "linear"
-        });
 
-        setTimeout(() => {
+        );
+
+        setTimeout(function() {
             confetti.remove();
         }, duration);
     }
 }
 
-// Page Load Animation
-window.addEventListener("load", () => {
 
-    document.body.style.opacity = "0";
+/* =========================================
+   FINAL SURPRISE
+========================================= */
 
-    setTimeout(() => {
-        document.body.style.transition = "1.5s";
-        document.body.style.opacity = "1";
-    }, 200);
+function finalSurprise() {
 
-});
+    createHearts();
+
+    createConfetti();
+
+    setTimeout(function() {
+
+        alert(
+            "🎂 Happy Birthday Jhili! ❤️\n\n" +
+            "May your life always be filled " +
+            "with happiness, love and beautiful memories. ✨"
+        );
+
+    }, 500);
+}
+
+
+/* =========================================
+   BUTTON EFFECT
+========================================= */
+
+document.addEventListener(
+    "click",
+    function(event) {
+
+        const button =
+            event.target.closest(".btn");
+
+        if (!button) return;
+
+        button.style.transform =
+            "scale(0.95)";
+
+        setTimeout(function() {
+
+            button.style.transform =
+                "";
+
+        }, 150);
+
+    }
+);
+
+
+/* =========================================
+   AUTO FLOATING HEARTS
+   Small background effect
+========================================= */
+
+setInterval(function() {
+
+    const heart =
+        document.createElement("div");
+
+    heart.className = "heart";
+
+    heart.innerHTML =
+        ["❤️", "💕", "✨"][
+            Math.floor(Math.random() * 3)
+        ];
+
+    heart.style.left =
+        Math.random() * 100 + "vw";
+
+    heart.style.fontSize =
+        (15 + Math.random() * 15) + "px";
+
+    heart.style.animationDuration =
+        (5 + Math.random() * 4) + "s";
+
+    document.body.appendChild(heart);
+
+    setTimeout(function() {
+        heart.remove();
+    }, 9000);
+
+}, 1800);
+
+
+/* =========================================
+   PAGE LOAD
+========================================= */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function() {
+
+        const firstPage =
+            document.getElementById("page1");
+
+        if (firstPage) {
+            firstPage.classList.add("active");
+        }
+
+    }
+);
+```
